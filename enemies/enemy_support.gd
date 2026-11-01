@@ -2,7 +2,8 @@ class_name EnemySupport
 extends Enemy
 ## Саппорт (№38): небольшой летающий враг. Привязывается к одному врагу, парит над ним и лечит.
 ## Привязка показана лучом между саппортом и целью в мире (11-UI-design, №50). Когда цель погибла,
-## выбирает другую. Сам не атакует.
+## выбирает другую. Пока нет ни одного врага, которому можно помочь, не простаивает, а нападает на игрока (№91):
+## подлетает и бьёт в ближнем бою, как летающий; появился союзник — возвращается к лечению (щитовик к барьеру).
 
 const BEAM_THICKNESS: float = 0.06
 const BEAM_COLOR: Color = Color(0.4, 1.0, 0.5)
@@ -13,6 +14,8 @@ const HOVER_STIFFNESS: float = 6.0
 
 var ally: Enemy
 var _beam: MeshInstance3D
+var _attack_cooldown: float = 0.0
+var _attack_in_range: bool = false
 
 
 func is_flier() -> bool:
@@ -34,21 +37,48 @@ func _ready() -> void:
 	add_child(_beam)
 
 
-func _behavior(delta: float, _player_or_null: Player) -> void:
+func _behavior(delta: float, player_or_null: Player) -> void:
 	if ally == null or not is_instance_valid(ally) or ally.is_dead:
 		ally = _find_ally()
+	if ally == null:
+		_update_beam(false)
+		_attack_player(delta, player_or_null)
+		return
+	_attack_in_range = false
 	var desired: Vector3 = Vector3.ZERO
-	var healing: bool = false
-	if ally != null:
-		var to_point: Vector3 = _hover_point() - global_position
-		var distance: float = to_point.length()
-		if distance > HOVER_TOLERANCE:
-			var speed: float = minf(settings.move_speed * get_speed_multiplier(), distance * HOVER_STIFFNESS)
-			desired = to_point / distance * speed
-		_face(ally.global_position - global_position)
-		healing = _affect_ally(delta)
-	_update_beam(healing)
+	var to_point: Vector3 = _hover_point() - global_position
+	var distance: float = to_point.length()
+	if distance > HOVER_TOLERANCE:
+		var speed: float = minf(settings.move_speed * get_speed_multiplier(), distance * HOVER_STIFFNESS)
+		desired = to_point / distance * speed
+	_face(ally.global_position - global_position)
+	_update_beam(_affect_ally(delta))
 	# Летает: тяжести нет, на землю не падает.
+	velocity = desired
+	move_and_slide()
+
+
+## Нет союзника: летит к точке над игроком и бьёт в ближнем бою (как EnemyFlyer, без охвата и покачивания).
+func _attack_player(delta: float, player: Player) -> void:
+	_attack_cooldown = maxf(_attack_cooldown - delta, 0.0)
+	var desired: Vector3 = Vector3.ZERO
+	var close: bool = false
+	if player != null:
+		var center: Vector3 = player.get_center_position()
+		var to_center: float = global_position.distance_to(center)
+		if to_center <= settings.aggro_range or always_aggro:
+			var to_target: Vector3 = center + Vector3(0.0, settings.fly_height_offset, 0.0) - global_position
+			var distance: float = to_target.length()
+			_face(_flat_to(player))
+			if distance > settings.melee_range * 0.5:
+				desired = to_target / distance * settings.move_speed * get_speed_multiplier()
+			close = to_center <= settings.melee_range
+			if close and not _attack_in_range:
+				_attack_cooldown = maxf(_attack_cooldown, settings.melee_cooldown * 0.5)
+			if close and _attack_cooldown <= 0.0:
+				_attack_cooldown = settings.melee_cooldown
+				player.take_damage(settings.melee_damage * damage_scale, global_position)
+	_attack_in_range = close
 	velocity = desired
 	move_and_slide()
 

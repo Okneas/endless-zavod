@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/hangar_concrete_floor_c.jpg" id="1_owqsp"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/hangar_concrete_floor_n.png" id="2_fcqrh"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/hangar_concrete_floor_r.jpg" id="3_g0sle"]
+
+[resource]
+resource_name = "hangar_concrete_floor"
+albedo_texture = ExtResource("1_owqsp")
+roughness_texture = ExtResource("3_g0sle")
+normal_enabled = true
+normal_texture = ExtResource("2_fcqrh")
+texture_filter = 2

@@ -79,6 +79,8 @@ func _initialize() -> void:
 	_room.get_node("Dummies").queue_free()
 	await _frames(10)
 	_player = _room.get_node("Player")
+	# Замеры здоровья без щита: он впитывал бы урон (щиты проверяет test_shields).
+	root.get_node("Inventory").shield = null
 	await _run()
 	print("=== FAILS: ", _fails)
 	quit(_fails)

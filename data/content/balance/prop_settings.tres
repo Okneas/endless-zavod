@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="PropSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/prop_settings.gd" id="1_props"]
+[ext_resource type="Script" path="res://data/definitions/barrel_definition.gd" id="2_barrel_script"]
+[ext_resource type="Script" path="res://data/definitions/crate_definition.gd" id="3_crate_script"]
+[ext_resource type="Script" path="res://data/definitions/item_definition.gd" id="4_item_script"]
+[ext_resource type="Script" path="res://data/definitions/cover_definition.gd" id="5_cover_script"]
+[ext_resource type="Resource" path="res://data/content/props/cover/wall.tres" id="cv_wall"]
+[ext_resource type="Resource" path="res://data/content/props/cover/block.tres" id="cv_block"]
+[ext_resource type="Resource" path="res://data/content/props/barrels/explosive.tres" id="b_explosive"]
+[ext_resource type="Resource" path="res://data/content/props/barrels/acid.tres" id="b_acid"]
+[ext_resource type="Resource" path="res://data/content/props/barrels/electric.tres" id="b_electric"]
+[ext_resource type="Resource" path="res://data/content/props/barrels/frost.tres" id="b_frost"]
+[ext_resource type="Resource" path="res://data/content/props/barrels/fire.tres" id="b_fire"]
+[ext_resource type="Resource" path="res://data/content/props/crates/wooden.tres" id="c_wooden"]
+[ext_resource type="Resource" path="res://data/content/props/crates/metal.tres" id="c_metal"]
+[ext_resource type="Resource" path="res://data/content/items/junk/condensed_milk.tres" id="j_condensed_milk"]
+[ext_resource type="Resource" path="res://data/content/items/junk/microchip.tres" id="j_microchip"]
+[ext_resource type="Resource" path="res://data/content/items/junk/radio_tube.tres" id="j_radio_tube"]
+[ext_resource type="Resource" path="res://data/content/items/junk/copper_coil.tres" id="j_copper_coil"]
+[ext_resource type="Resource" path="res://data/content/items/junk/enamel_mug.tres" id="j_enamel_mug"]
+[ext_resource type="Resource" path="res://data/content/items/junk/shock_worker_badge.tres" id="j_shock_worker_badge"]
+[ext_resource type="Resource" path="res://data/content/items/junk/tape_reel.tres" id="j_tape_reel"]
+[ext_resource type="Resource" path="res://data/content/items/junk/wristwatch.tres" id="j_wristwatch"]
+[ext_resource type="Resource" path="res://data/content/items/junk/thermos.tres" id="j_thermos"]
+[ext_resource type="Resource" path="res://data/content/items/junk/photo_film.tres" id="j_photo_film"]
+[ext_resource type="Resource" path="res://data/content/items/junk/transistor_radio.tres" id="j_transistor_radio"]
+[ext_resource type="Resource" path="res://data/content/items/junk/canned_stew.tres" id="j_canned_stew"]
+[ext_resource type="Resource" path="res://data/content/items/junk/capacitor.tres" id="j_capacitor"]
+[ext_resource type="Resource" path="res://data/content/items/junk/brass_gear.tres" id="j_brass_gear"]
+[ext_resource type="Resource" path="res://data/content/items/junk/elephant_tea.tres" id="j_elephant_tea"]
+[ext_resource type="Resource" path="res://data/content/items/junk/pennant.tres" id="j_pennant"]
+
+[resource]
+script = ExtResource("1_props")
+enabled = true
+barrels = Array[ExtResource("2_barrel_script")]([ExtResource("b_explosive"), ExtResource("b_acid"), ExtResource("b_electric"), ExtResource("b_frost"), ExtResource("b_fire")])
+crates = Array[ExtResource("3_crate_script")]([ExtResource("c_wooden"), ExtResource("c_metal")])
+cover = Array[ExtResource("5_cover_script")]([ExtResource("cv_wall"), ExtResource("cv_block")])
+junk_items = Array[ExtResource("4_item_script")]([ExtResource("j_condensed_milk"), ExtResource("j_microchip"), ExtResource("j_radio_tube"), ExtResource("j_copper_coil"), ExtResource("j_enamel_mug"), ExtResource("j_shock_worker_badge"), ExtResource("j_tape_reel"), ExtResource("j_wristwatch"), ExtResource("j_thermos"), ExtResource("j_photo_film"), ExtResource("j_transistor_radio"), ExtResource("j_canned_stew"), ExtResource("j_capacitor"), ExtResource("j_brass_gear"), ExtResource("j_elephant_tea"), ExtResource("j_pennant")])
+combat_barrels_min = 3
+combat_barrels_max = 6
+combat_crates_min = 4
+combat_crates_max = 8
+loot_barrels_min = 0
+loot_barrels_max = 1
+loot_crates_min = 4
+loot_crates_max = 7
+entrance_clearance = 5.0
+min_spacing = 2.5
+push_seek_range = 45.0
+push_speed = 24.0
+push_idle_speed = 12.0
+push_launch_delay = 0.12
+chain_delay = 0.18
+blast_edge_share = 0.5
+loot_junk_chance = 0.35
+combat_cover_min = 2
+combat_cover_max = 4
+cover_spawn_clearance = 2.5
+cover_walk_margin = 1.2
+cover_hide_margin = 0.9
+cover_peek_margin = 0.8
+cover_slot_spacing = 1.3

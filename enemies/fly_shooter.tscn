@@ -37,7 +37,7 @@ size = Vector3(0.1, 0.1, 0.5)
 
 [node name="FlyShooter" type="CharacterBody3D" unique_id=1679053499]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_4fc2h")
 settings = ExtResource("2_u6kts")

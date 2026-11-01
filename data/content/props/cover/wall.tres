@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CoverDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/cover_definition.gd" id="1_cover"]
+
+[resource]
+script = ExtResource("1_cover")
+color = Color(0.42, 0.45, 0.5, 1)
+size = Vector3(3.2, 2, 0.5)
+weight = 3.0
+capacity = 2

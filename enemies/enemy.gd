@@ -18,6 +18,12 @@ const TINT_FIRE: Color = Color(1.0, 0.55, 0.2)
 ## Подсветка врага под барьером щитовика и знак замаха (прыжок, рывок камикадзе).
 const TINT_WARD: Color = Color(0.55, 0.45, 1.0)
 const TINT_TELEGRAPH: Color = Color(1.0, 0.9, 0.25)
+## Оттенок врага, пока цел щит (№93), и вспышка в миг, когда щит пробит.
+const TINT_SHIELD: Color = Color(0.4, 0.7, 1.0)
+const SHIELD_BREAK_TIME: float = 0.25
+## Метка слабого места (№93): светящийся шар на теле. Размер метки относительно радиуса слабого места.
+const WEAK_POINT_COLOR: Color = Color(1.0, 0.95, 0.35)
+const WEAK_POINT_MARKER_SHARE: float = 0.35
 
 ## Настройки врага. Править в Inspector здесь или двойным щелчком по .tres в data/content/enemies/.
 @export var settings: EnemySettings
@@ -41,10 +47,21 @@ var dormant: bool = false
 ## Боковая полоса подхода к игроку (-1..1, не около нуля): у каждого врага своя, поэтому толпа заходит с разных сторон (№86).
 var flank_lane: float = 0.0
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+## Префикс врага (№92): сдвигает характеристики, размер и даёт особенности. Ставится apply_modifier() до add_child.
+var modifier: EnemyModifier
+## Ярость префикса включилась (здоровье упало ниже порога).
+var enraged: bool = false
+## Щит врага (№93): урон идёт в него первым, остаток в здоровье. Ёмкость считается в _ready (тип, уровень зоны и префикс).
+var shield: float = 0.0
+var max_shield: float = 0.0
 
+var _base_damage_scale: float = 1.0
+var _since_hit: float = 999.0
 var _player: Player
 var _awake_layer: int = 0
 var _flash_left: float = 0.0
+var _shield_break_left: float = 0.0
+var _weak_marker: MeshInstance3D
 # Оставшееся время эффектов стихий (секунды) и урон тока в секунду.
 var _acid_left: float = 0.0
 var _electric_left: float = 0.0
@@ -65,10 +82,15 @@ func _ready() -> void:
 	rng.randomize()
 	flank_lane = rng.randf_range(0.4, 1.0) * (1.0 if rng.randf() < 0.5 else -1.0)
 	health = get_max_health()
+	max_shield = get_max_shield()
+	shield = max_shield
 	# Материал свой у каждого врага, иначе подсветка одного мигала бы у всех.
 	_material = (_body.mesh.material as StandardMaterial3D).duplicate()
 	_body.material_override = _material
 	_base_color = _material.albedo_color
+	if modifier != null and modifier.tint_amount > 0.0:
+		_base_color = _base_color.lerp(modifier.tint, modifier.tint_amount)
+	_build_weak_marker()
 
 
 ## Усыпить врага до появления (true) или разбудить (false).
@@ -87,7 +109,23 @@ func set_dormant(value: bool) -> void:
 
 ## Название врага для плашки цели над прицелом (№86).
 func get_display_name() -> String:
+	if modifier != null:
+		return tr("ENEMY_MODIFIED_NAME").format({"prefix": tr(modifier.name_key), "name": tr(settings.name_key)})
 	return tr(settings.name_key)
+
+
+## Ставит префикс (№92): здоровье, урон, размер модели. Вызывать до add_child: здоровье считается в _ready.
+func apply_modifier(new_modifier: EnemyModifier) -> void:
+	modifier = new_modifier
+	health_scale *= modifier.health_mult
+	damage_scale *= modifier.damage_mult
+	_base_damage_scale = damage_scale
+	scale = Vector3.ONE * modifier.model_scale
+
+
+## Во сколько раз префикс увеличивает шансы выпадения деталей, гранат и хлама.
+func loot_chance_multiplier() -> float:
+	return modifier.drop_mult if modifier != null else 1.0
 
 
 ## Здоровье врага с учётом уровня зоны.
@@ -95,11 +133,46 @@ func get_max_health() -> float:
 	return settings.max_health * health_scale
 
 
+## Ёмкость щита врага (№93): щит типа, растущий с уровнем зоны вместе со здоровьем, плюс доля здоровья от префикса.
+func get_max_shield() -> float:
+	var value: float = settings.shield_capacity * health_scale
+	if modifier != null:
+		value += modifier.shield_share * get_max_health()
+	return value
+
+
+## Есть ли у врага слабое место (№93).
+func has_weak_point() -> bool:
+	return settings.weak_point_multiplier > 1.0 and settings.weak_point_radius > 0.0
+
+
+## Центр слабого места в мире: смещение из настроек поворачивается и растёт вместе с врагом.
+func get_weak_point_center() -> Vector3:
+	return to_global(settings.weak_point_offset)
+
+
+## Радиус слабого места в мире.
+func get_weak_point_world_radius() -> float:
+	return settings.weak_point_radius * global_basis.get_scale().x
+
+
+## Во сколько раз выстрел в точку point сильнее обычного: множитель слабого места, если точка внутри его шара, иначе 1.
+func get_weak_point_multiplier_at(point: Vector3) -> float:
+	if dormant or is_dead or not has_weak_point():
+		return 1.0
+	if point.distance_to(get_weak_point_center()) <= get_weak_point_world_radius():
+		return settings.weak_point_multiplier
+	return 1.0
+
+
 func _process(delta: float) -> void:
 	if is_dead:
 		return
 	_flash_left = maxf(_flash_left - delta, 0.0)
+	_shield_break_left = maxf(_shield_break_left - delta, 0.0)
 	var color: Color = _base_color
+	if shield > 0.0:
+		color = color.lerp(TINT_SHIELD, 0.3)
 	if _electric_left > 0.0:
 		color = color.lerp(TINT_ELECTRIC, 0.55)
 	elif _frost_left > 0.0:
@@ -112,6 +185,8 @@ func _process(delta: float) -> void:
 		color = color.lerp(TINT_WARD, 0.5)
 	if telegraph_amount > 0.0:
 		color = color.lerp(TINT_TELEGRAPH, telegraph_amount * (0.55 + 0.45 * sin(Time.get_ticks_msec() * 0.03)))
+	if _shield_break_left > 0.0:
+		color = color.lerp(TINT_SHIELD.lerp(Color.WHITE, 0.6), _shield_break_left / SHIELD_BREAK_TIME)
 	if _flash_left > 0.0:
 		color = color.lerp(Color.WHITE, _flash_left / FLASH_TIME)
 	_material.albedo_color = color
@@ -123,6 +198,9 @@ func _physics_process(delta: float) -> void:
 	_update_status(delta)
 	if is_dead:
 		return
+	_since_hit += delta
+	_update_modifier(delta)
+	_update_shield(delta)
 	var player: Player = _get_player()
 	_behavior(delta, player if player != null and not player.is_dead else null)
 
@@ -142,13 +220,59 @@ func take_hit(info: DamageInfo) -> bool:
 	if _acid_left > 0.0:
 		amount *= Config.data.elements.acid_damage_taken_multiplier
 	_flash_left = FLASH_TIME
-	DamageNumber.spawn_hit(get_parent(), info, amount)
-	_lose_health(amount)
+	_since_hit = 0.0
+	var had_shield: bool = shield > 0.0
+	var through: float = _absorb_by_shield(amount, info.element)
+	DamageNumber.spawn_hit(get_parent(), info, amount, had_shield and through <= 0.0)
+	_lose_health(through)
 	if is_dead:
 		return true
-	if info.element != CombatEnums.Element.NONE:
+	# Пока щит цел, он прикрывает от эффектов стихий: они цепляются после пробития (ток зато бьёт по щиту сильнее).
+	if info.element != CombatEnums.Element.NONE and shield <= 0.0:
 		apply_element(info.element, amount)
 	return false
+
+
+# Щит впитывает урон первым (№93). Ток съедает его быстрее (electric_shield_multiplier), остаток урона после пробития идёт в здоровье.
+# Возвращает урон, дошедший до здоровья.
+func _absorb_by_shield(amount: float, element: CombatEnums.Element) -> float:
+	if shield <= 0.0:
+		return amount
+	var multiplier: float = Config.data.elements.electric_shield_multiplier if element == CombatEnums.Element.ELECTRIC else 1.0
+	var needed: float = amount * multiplier
+	if needed < shield:
+		shield -= needed
+		return 0.0
+	var covered: float = shield / multiplier
+	shield = 0.0
+	_shield_break_left = SHIELD_BREAK_TIME
+	return maxf(amount - covered, 0.0)
+
+
+# Восстановление щита: после shield_recharge_delay без попаданий набирает shield_recharge_rate (с ростом по уровню зоны) в секунду.
+func _update_shield(delta: float) -> void:
+	if max_shield <= 0.0 or shield >= max_shield or settings.shield_recharge_rate <= 0.0 or _since_hit < settings.shield_recharge_delay:
+		return
+	shield = minf(shield + settings.shield_recharge_rate * health_scale * delta, max_shield)
+
+
+# Метка слабого места: светящийся шар на поверхности тела, виден всегда.
+func _build_weak_marker() -> void:
+	if not has_weak_point():
+		return
+	var material: StandardMaterial3D = StandardMaterial3D.new()
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = WEAK_POINT_COLOR
+	var mesh: SphereMesh = SphereMesh.new()
+	mesh.radius = settings.weak_point_radius * WEAK_POINT_MARKER_SHARE
+	mesh.height = mesh.radius * 2.0
+	mesh.material = material
+	_weak_marker = MeshInstance3D.new()
+	_weak_marker.name = "WeakPoint"
+	_weak_marker.mesh = mesh
+	_weak_marker.position = settings.weak_point_offset
+	_weak_marker.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	add_child(_weak_marker)
 
 
 ## Накладывает эффект стихии. hit_amount: урон попавшего выстрела (от него считается ток).
@@ -168,9 +292,10 @@ func apply_element(element: CombatEnums.Element, hit_amount: float) -> void:
 
 ## Во сколько раз игрок снижает урон по этому врагу: барьер щитовика почти обнуляет его (EnemySettings.ward_damage_taken).
 func get_damage_taken_multiplier() -> float:
+	var armor: float = modifier.damage_taken_mult if modifier != null else 1.0
 	if warded_by != null and is_instance_valid(warded_by) and not warded_by.is_dead and warded_by.is_warding(self):
-		return warded_by.settings.ward_damage_taken
-	return 1.0
+		return warded_by.settings.ward_damage_taken * armor
+	return armor
 
 
 ## Гасит ли этот враг (щитовик) урон по target прямо сейчас.
@@ -191,7 +316,10 @@ func heal(amount: float) -> void:
 
 ## Множитель скорости: мороз замедляет.
 func get_speed_multiplier() -> float:
-	return Config.data.elements.frost_speed_multiplier if _frost_left > 0.0 else 1.0
+	var multiplier: float = Config.data.elements.frost_speed_multiplier if _frost_left > 0.0 else 1.0
+	if modifier != null:
+		multiplier *= modifier.speed_mult * (modifier.enrage_speed_mult if enraged else 1.0)
+	return multiplier
 
 
 func is_electrified() -> bool:
@@ -251,17 +379,41 @@ func _lose_health(amount: float) -> void:
 func _die() -> void:
 	is_dead = true
 	remove_from_group(&"enemies")
+	_blast_on_death()
 	if _gives_rewards():
 		_drop_loot()
-		Progress.add_xp(settings.xp_reward)
-		if settings.xp_reward > 0:
-			get_tree().call_group(&"hud", &"show_pickup", tr("HUD_PICKUP_XP").format({"amount": settings.xp_reward}))
+		var xp: int = roundi(float(settings.xp_reward) * (modifier.reward_mult if modifier != null else 1.0))
+		Progress.add_xp(xp)
+		if xp > 0:
+			get_tree().call_group(&"hud", &"show_pickup", tr("HUD_PICKUP_XP").format({"amount": xp}))
 	visible = false
 	set_deferred("collision_layer", 0)
 	set_physics_process(false)
 	died.emit(self)
 	# Узел живёт ещё немного: цифры урона и проверки успевают к нему обратиться.
 	get_tree().create_timer(0.5).timeout.connect(queue_free)
+
+
+# Особенности префикса (№92): восстановление после паузы без попаданий и ярость при низком здоровье.
+func _update_modifier(delta: float) -> void:
+	if modifier == null:
+		return
+	if modifier.regen_per_second > 0.0 and _since_hit >= modifier.regen_delay and health < get_max_health():
+		heal(get_max_health() * modifier.regen_per_second * delta)
+	if modifier.enrage_below > 0.0:
+		var should_enrage: bool = health < get_max_health() * modifier.enrage_below
+		if should_enrage != enraged:
+			enraged = should_enrage
+			damage_scale = _base_damage_scale * (modifier.enrage_damage_mult if enraged else 1.0)
+
+
+# Взрыв при гибели (префикс «Подрывник»): задевает только игрока в радиусе, сила растёт вместе с уроном врага.
+func _blast_on_death() -> void:
+	if modifier == null or modifier.death_blast_radius <= 0.0:
+		return
+	var origin: Vector3 = global_position + Vector3(0.0, 0.6, 0.0)
+	BlastEffect.spawn(get_parent(), origin, modifier.death_blast_radius, modifier.tint if modifier.tint_amount > 0.0 else Color(1.0, 0.5, 0.2))
+	Blast.apply(self, origin, modifier.death_blast_radius, 0.0, CombatEnums.Element.NONE, 0.5, modifier.death_blast_damage * _base_damage_scale, [get_rid()])
 
 
 ## Даёт ли гибель награду (деньги, опыт, дроп). Камикадзе, взорвавшийся сам, награды не даёт.
@@ -272,19 +424,32 @@ func _gives_rewards() -> bool:
 func _drop_loot() -> void:
 	var parent: Node = get_parent()
 	var at: Vector3 = global_position + Vector3(0.0, 0.8, 0.0)
-	var money: int = rng.randi_range(settings.money_min, maxi(settings.money_min, settings.money_max))
+	var money: int = roundi(float(rng.randi_range(settings.money_min, maxi(settings.money_min, settings.money_max))) * (modifier.reward_mult if modifier != null else 1.0))
 	if money > 0:
 		Pickup.spawn(parent, at, Pickup.Kind.MONEY, float(money))
 	if rng.randf() < settings.medkit_chance:
 		Pickup.spawn(parent, at, Pickup.Kind.MEDKIT, settings.medkit_heal)
 	# Деталь оружия отдельным предметом: выпадает заметно чаще целого оружия (оно из врагов не падает).
-	if settings.part_chance > 0.0 and rng.randf() < settings.part_chance:
+	if settings.part_chance > 0.0 and rng.randf() < settings.part_chance * loot_chance_multiplier():
 		var generator: WeaponGenerator = WeaponGenerator.new(Config.data.weapons)
 		var rolled: PartInstance = generator.generate_part(rng)
 		if rolled != null:
 			var loot: LootSettings = Config.data.loot
 			var toss: Vector3 = Vector3(rng.randf_range(-1.0, 1.0) * loot.scatter_speed, loot.toss_speed, rng.randf_range(-1.0, 1.0) * loot.scatter_speed)
 			ItemPickup.spawn(parent, InventoryItem.from_part(rolled, Config.data.weapons), at, toss)
+	# Граната (№92): уровня врага.
+	if settings.grenade_chance > 0.0 and rng.randf() < settings.grenade_chance * loot_chance_multiplier():
+		var grenades: GrenadeGenerator = GrenadeGenerator.new(Config.data.grenades, Config.data.weapons.quality_scale)
+		ItemPickup.spawn_tossed(parent, InventoryItem.from_grenade(grenades.generate(rng, level)), at, rng)
+	# Щит игрока (№93): уровня врага.
+	if settings.shield_item_chance > 0.0 and rng.randf() < settings.shield_item_chance * loot_chance_multiplier():
+		var shields: ShieldGenerator = ShieldGenerator.new(Config.data.shields, Config.data.weapons.quality_scale)
+		ItemPickup.spawn_tossed(parent, InventoryItem.from_shield(shields.generate(rng, level)), at, rng)
+	# Хлам для продажи (№91).
+	if settings.junk_chance > 0.0 and rng.randf() < settings.junk_chance * loot_chance_multiplier():
+		var junk: InventoryItem = JunkLoot.roll(rng, Config.data.props)
+		if junk != null:
+			ItemPickup.spawn_tossed(parent, junk, at, rng)
 
 
 # Общие помощники для наследников.

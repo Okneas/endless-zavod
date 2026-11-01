@@ -84,6 +84,10 @@ func _populate(item: InventoryItem, context: Dictionary, level: int) -> void:
 			_build_components(item, tight)
 		else:
 			_build_weapon(item, context)
+	elif item.is_shield():
+		_build_shield(item)
+	elif item.is_grenade():
+		_build_grenade(item)
 	elif item.is_part():
 		_build_part(item)
 	else:
@@ -295,6 +299,49 @@ func _part_quality_name(item: InventoryItem) -> String:
 	return ""
 
 
+# --- граната (№92)
+
+func _build_grenade(item: InventoryItem) -> void:
+	var grenade: GrenadeInstance = item.grenade
+	var definition: GrenadeDefinition = grenade.definition
+	var stats: GrenadeInstance.Stats = grenade.compute_stats()
+	_add(_label(tr(definition.description_key), 22, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_GRENADE_DAMAGE").format({"value": roundi(stats.damage)}), 24, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_GRENADE_RADIUS").format({"value": "%.1f" % stats.radius}), 22, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_GRENADE_COOLDOWN").format({"seconds": "%.0f" % stats.cooldown}), 22, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_GRENADE_FUSE").format({"value": "%.1f" % stats.fuse}), 22, Color.WHITE, INNER_WIDTH))
+	if definition.kind == GrenadeDefinition.Kind.CLUSTER:
+		_add(_label(tr("CARD_GRENADE_BOMBLETS").format({"value": stats.bomblets}), 22, Color.WHITE, INNER_WIDTH))
+	if definition.kind == GrenadeDefinition.Kind.SINGULARITY:
+		_add(_label(tr("CARD_GRENADE_PULL").format({"value": "%.1f" % stats.pull_time}), 22, Color.WHITE, INNER_WIDTH))
+	if definition.element != CombatEnums.Element.NONE:
+		_add(_label(tr("CARD_GRENADE_ELEMENT").format({"name": tr("ELEMENT_" + CombatEnums.Element.keys()[definition.element])}), 22, _element_color(definition.element), INNER_WIDTH))
+	for rolled: GrenadeInstance.Rolled in grenade.modifiers:
+		var amount: String = ("+%d" % roundi(rolled.value)) if rolled.modifier.stat == GrenadeModifier.Stat.BOMBLETS else ("%+d%%" % roundi(rolled.value * 100.0))
+		_add(_label(tr("CARD_GRENADE_MODIFIER").format({"name": tr(rolled.modifier.name_key), "stat": tr("GRENADE_STAT_" + GrenadeModifier.Stat.keys()[rolled.modifier.stat]), "value": amount}), 20, COLOR_DIM, INNER_WIDTH))
+
+
+# --- щит (№93)
+
+func _build_shield(item: InventoryItem) -> void:
+	var shield: ShieldInstance = item.shield
+	var definition: ShieldDefinition = shield.definition
+	var stats: ShieldInstance.Stats = shield.compute_stats()
+	_add(_label(tr(definition.description_key), 22, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_SHIELD_CAPACITY").format({"value": roundi(stats.capacity)}), 24, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_SHIELD_DELAY").format({"seconds": "%.1f" % stats.recharge_delay}), 22, Color.WHITE, INNER_WIDTH))
+	_add(_label(tr("CARD_SHIELD_RATE").format({"value": "%.0f" % stats.recharge_rate}), 22, Color.WHITE, INNER_WIDTH))
+	match definition.kind:
+		ShieldDefinition.Kind.NOVA:
+			_add(_label(tr("CARD_SHIELD_NOVA").format({"value": roundi(stats.effect_power), "radius": "%.1f" % stats.effect_radius}), 22, definition.color, INNER_WIDTH))
+		ShieldDefinition.Kind.SPIKE:
+			_add(_label(tr("CARD_SHIELD_SPIKE").format({"value": roundi(stats.effect_power), "radius": "%.1f" % stats.effect_radius}), 22, definition.color, INNER_WIDTH))
+		ShieldDefinition.Kind.ABSORB:
+			_add(_label(tr("CARD_SHIELD_ABSORB").format({"value": roundi(stats.effect_power * 100.0)}), 22, definition.color, INNER_WIDTH))
+	for rolled: ShieldInstance.Rolled in shield.modifiers:
+		_add(_label(tr("CARD_SHIELD_MODIFIER").format({"name": tr(rolled.modifier.name_key), "stat": tr("SHIELD_STAT_" + ShieldModifier.Stat.keys()[rolled.modifier.stat]), "value": "%+d%%" % roundi(rolled.value * 100.0)}), 20, COLOR_DIM, INNER_WIDTH))
+
+
 # --- прочие предметы
 
 func _build_misc(item: InventoryItem) -> void:
@@ -331,6 +378,38 @@ func _header(item: InventoryItem, context: Dictionary, slim: bool) -> Control:
 	var right: VBoxContainer = VBoxContainer.new()
 	right.custom_minimum_size.x = HEADER_SIDE_WIDTH
 	right.add_theme_constant_override("separation", 3)
+	if item.is_shield():
+		var shield: ShieldInstance = item.shield
+		info.add_child(_label(shield.get_quality_name(), 20, color))
+		var shield_marks: QualityMarks = QualityMarks.new()
+		shield_marks.set_marks(shield.quality + 1, color)
+		shield_marks.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		info.add_child(shield_marks)
+		if shield.is_eternal:
+			info.add_child(_label(tr("CARD_ETERNAL"), 20, COLOR_GOLD))
+		var shield_too_high: bool = shield.level > int(context.get("player_level", 1))
+		var shield_level: Label = _label(tr("CARD_REQUIRED_LEVEL" if shield_too_high else "CARD_LEVEL").format({"level": shield.level}), 22, COLOR_RED if shield_too_high else Color.WHITE, 0.0 if slim else HEADER_SIDE_WIDTH)
+		shield_level.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		if slim:
+			info.add_child(shield_level)
+		else:
+			right.add_child(shield_level)
+	if item.is_grenade():
+		var grenade: GrenadeInstance = item.grenade
+		info.add_child(_label(grenade.get_quality_name(), 20, color))
+		var grenade_marks: QualityMarks = QualityMarks.new()
+		grenade_marks.set_marks(grenade.quality + 1, color)
+		grenade_marks.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		info.add_child(grenade_marks)
+		if grenade.is_eternal:
+			info.add_child(_label(tr("CARD_ETERNAL"), 20, COLOR_GOLD))
+		var grenade_too_high: bool = grenade.level > int(context.get("player_level", 1))
+		var grenade_level: Label = _label(tr("CARD_REQUIRED_LEVEL" if grenade_too_high else "CARD_LEVEL").format({"level": grenade.level}), 22, COLOR_RED if grenade_too_high else Color.WHITE, 0.0 if slim else HEADER_SIDE_WIDTH)
+		grenade_level.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+		if slim:
+			info.add_child(grenade_level)
+		else:
+			right.add_child(grenade_level)
 	if item.is_weapon():
 		var weapon: WeaponInstance = item.weapon
 		info.add_child(_label(_quality_name(weapon, weapon.get_quality()), 20, color))
@@ -400,6 +479,12 @@ func _hint_entries(item: InventoryItem, context: Dictionary) -> Array:
 			entries.append([&"inventory_compare", "CARD_BTN_EXIT_COMPARE" if compare else "CARD_BTN_COMPARE", true])
 		entries.append([&"inventory_components", "CARD_BTN_BACK" if components else "CARD_BTN_COMPONENTS", true])
 		if not context.get("equipped", false):
+			entries.append([&"inventory_drop", "CARD_BTN_DROP", context.get("can_drop", false)])
+	elif item.is_grenade() or item.is_shield():
+		if context.get("equipped", false):
+			entries.append([&"inventory_unequip", "CARD_BTN_UNEQUIP", context.get("can_unequip", false)])
+		else:
+			entries.append([&"inventory_equip", "CARD_BTN_EQUIP", context.get("can_equip", false)])
 			entries.append([&"inventory_drop", "CARD_BTN_DROP", context.get("can_drop", false)])
 	elif item.is_part():
 		entries.append([&"inventory_drop", "CARD_BTN_DROP", context.get("can_drop", false)])

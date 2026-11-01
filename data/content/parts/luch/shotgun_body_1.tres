@@ -7,12 +7,12 @@
 script = ExtResource("2_pw7jl")
 name_key = "WEAPON_BODY_LUCH_SHOTGUN_1"
 weapon_type = 3
-base_damage = 34.0
+base_damage = 44.2
 base_fire_rate = 3.6
 automatic = true
 base_magazine_size = 10
 base_reload_time = 2.6
-base_spread_deg = 4.8
+base_spread_deg = 3.84
 base_range = 28.0
 base_recoil_deg = 1.8
 base_aim_time = 0.24

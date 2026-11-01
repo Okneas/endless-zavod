@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyModifierSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_modifier_settings.gd" id="1_ems"]
+[ext_resource type="Script" path="res://data/definitions/enemy_modifier.gd" id="2_em"]
+[ext_resource type="Resource" path="res://data/content/modifiers/brute.tres" id="e_brute"]
+[ext_resource type="Resource" path="res://data/content/modifiers/runner.tres" id="e_runner"]
+[ext_resource type="Resource" path="res://data/content/modifiers/ironclad.tres" id="e_ironclad"]
+[ext_resource type="Resource" path="res://data/content/modifiers/berserk.tres" id="e_berserk"]
+[ext_resource type="Resource" path="res://data/content/modifiers/regenerator.tres" id="e_regenerator"]
+[ext_resource type="Resource" path="res://data/content/modifiers/bomber.tres" id="e_bomber"]
+[ext_resource type="Resource" path="res://data/content/modifiers/shielded.tres" id="e_shielded"]
+
+[resource]
+script = ExtResource("1_ems")
+enabled = true
+modifiers = Array[ExtResource("2_em")]([ExtResource("e_brute"), ExtResource("e_runner"), ExtResource("e_ironclad"), ExtResource("e_berserk"), ExtResource("e_regenerator"), ExtResource("e_bomber"), ExtResource("e_shielded")])
+chance_base = 0.08
+chance_per_zone = 0.04
+chance_max = 0.45

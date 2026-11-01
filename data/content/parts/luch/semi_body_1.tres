@@ -7,7 +7,7 @@
 script = ExtResource("2_8ikoj")
 name_key = "WEAPON_BODY_LUCH_SEMI_1"
 weapon_type = 5
-base_damage = 34.0
+base_damage = 37.4
 base_fire_rate = 3.5
 base_magazine_size = 15
 base_reload_time = 2.2

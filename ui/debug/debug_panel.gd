@@ -38,6 +38,8 @@ func _build() -> void:
 		_button(tr("DBG_GIVE_WEAPON"), _act.bind(DebugTools.give_weapon)),
 		_button(tr("DBG_GIVE_PART"), _act.bind(DebugTools.give_part)),
 		_button(tr("DBG_GIVE_ITEM"), _act.bind(DebugTools.give_item)),
+		_button(tr("DBG_GIVE_GRENADE"), _act.bind(DebugTools.give_grenade)),
+		_button(tr("DBG_GIVE_SHIELD"), _act.bind(DebugTools.give_shield)),
 	])
 	_row([
 		_button(tr("DBG_PHASE_DAY"), _set_phase.bind(false), not GameClock.is_night),

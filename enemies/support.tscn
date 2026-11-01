@@ -32,7 +32,7 @@ height = 0.03
 
 [node name="Support" type="CharacterBody3D" unique_id=702132387]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_d5qpu")
 settings = ExtResource("2_hp86y")

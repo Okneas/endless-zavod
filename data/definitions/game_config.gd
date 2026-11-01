@@ -31,3 +31,11 @@ extends Resource
 @export var run: RunSettings
 ## Магазин-хаб: покупатели, прилавки, сундук, торговец (срез 8).
 @export var shop: ShopSettings
+## Бочки, ящики и хлам (№91): виды, расстановка в комнатах, толчок и взрыв.
+@export var props: PropSettings
+## Гранаты (№92): типы, модификаторы, бросок, источники.
+@export var grenades: GrenadeSettings
+## Щиты игрока (№93).
+@export var shields: ShieldSettings
+## Модификаторы врагов, префиксы (№92): шанс по зонам, награда.
+@export var enemy_modifiers: EnemyModifierSettings

@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_c.jpg" id="1_g7iot"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_m.jpg" id="2_noog0"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_n.png" id="3_k6fne"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_r.jpg" id="4_sikt6"]
+
+[resource]
+resource_name = "denim_fabric_05_tri"
+albedo_texture = ExtResource("1_g7iot")
+metallic = 1.0
+metallic_texture = ExtResource("2_noog0")
+roughness_texture = ExtResource("4_sikt6")
+normal_enabled = true
+normal_texture = ExtResource("3_k6fne")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

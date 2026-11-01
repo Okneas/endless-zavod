@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_leather_02_c.jpg" id="1_53xvm"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_leather_02_n.png" id="2_dwhk2"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_leather_02_r.jpg" id="3_krcdh"]
+
+[resource]
+resource_name = "fabric_leather_02"
+albedo_texture = ExtResource("1_53xvm")
+roughness_texture = ExtResource("3_krcdh")
+normal_enabled = true
+normal_texture = ExtResource("2_dwhk2")
+texture_filter = 2

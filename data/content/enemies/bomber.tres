@@ -25,3 +25,6 @@ explosion_damage = 30.0
 flank_width = 16.0
 flank_close_distance = 10.0
 flank_fade_distance = 20.0
+weak_point_offset = Vector3(0.0, 0.05, -0.38)
+weak_point_radius = 0.22
+weak_point_multiplier = 2.0

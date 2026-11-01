@@ -6,12 +6,20 @@ extends RefCounted
 
 ## Можно ли экипировать предмет: оружие не выше уровня персонажа (02-combat-fps, №1).
 static func can_equip(item: InventoryItem) -> bool:
+	if item.is_shield():
+		return item.shield.level <= Progress.level
+	if item.is_grenade():
+		return item.grenade.level <= Progress.level
 	return item.is_weapon() and item.weapon.level <= Progress.level
 
 
 ## Экипировать оружие из инвентаря в слот (-1: первый пустой, иначе активный). Вытесненное оружие
 ## занимает освободившуюся ячейку, поэтому место всегда есть.
 static func equip(player: Player, item: InventoryItem, slot: int = -1) -> bool:
+	if item.is_shield():
+		return equip_shield(player, item)
+	if item.is_grenade():
+		return equip_grenade(player, item)
 	if not can_equip(item):
 		_warn(player, TranslationServer.translate("HUD_NEED_LEVEL").format({"level": item.weapon.level}) if item.is_weapon() else "")
 		return false
@@ -22,6 +30,56 @@ static func equip(player: Player, item: InventoryItem, slot: int = -1) -> bool:
 	if replaced != null:
 		Inventory.add(InventoryItem.from_weapon(replaced))
 	return true
+
+
+## Экипировать гранату в слот гранат (№92). Вытесненная граната занимает освободившуюся ячейку, поэтому место всегда есть.
+static func equip_grenade(player: Player, item: InventoryItem) -> bool:
+	if not item.is_grenade() or not can_equip(item):
+		_warn(player, TranslationServer.translate("HUD_NEED_LEVEL").format({"level": item.get_level()}) if item.is_grenade() else "")
+		return false
+	Inventory.remove(item)
+	var replaced: GrenadeInstance = Inventory.grenade
+	Inventory.grenade = item.grenade
+	if replaced != null:
+		Inventory.add(InventoryItem.from_grenade(replaced))
+	return true
+
+
+## Экипировать щит в слот щита (№93). Вытесненный щит занимает освободившуюся ячейку, поэтому место всегда есть.
+static func equip_shield(player: Player, item: InventoryItem) -> bool:
+	if not item.is_shield() or not can_equip(item):
+		_warn(player, TranslationServer.translate("HUD_NEED_LEVEL").format({"level": item.get_level()}) if item.is_shield() else "")
+		return false
+	Inventory.remove(item)
+	var replaced: ShieldInstance = Inventory.shield
+	Inventory.shield = item.shield
+	if replaced != null:
+		Inventory.add(InventoryItem.from_shield(replaced))
+	return true
+
+
+## Снять щит из слота в инвентарь (при полном инвентаре нельзя).
+static func unequip_shield() -> bool:
+	var current: ShieldInstance = Inventory.shield
+	if current == null:
+		return false
+	if Inventory.is_full():
+		Inventory.rejected.emit(InventoryItem.from_shield(current))
+		return false
+	Inventory.shield = null
+	return Inventory.add(InventoryItem.from_shield(current))
+
+
+## Снять гранату из слота в инвентарь (при полном инвентаре нельзя).
+static func unequip_grenade() -> bool:
+	var current: GrenadeInstance = Inventory.grenade
+	if current == null:
+		return false
+	if Inventory.is_full():
+		Inventory.rejected.emit(InventoryItem.from_grenade(current))
+		return false
+	Inventory.grenade = null
+	return Inventory.add(InventoryItem.from_grenade(current))
 
 
 ## Снять оружие из слота в инвентарь. Последнее оружие снять нельзя, при полном инвентаре тоже.

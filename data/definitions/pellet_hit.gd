@@ -4,6 +4,7 @@ extends RefCounted
 
 var amount: float = 0.0
 var is_crit: bool = false
+var is_weak_point: bool = false
 var point: Vector3 = Vector3.ZERO
 
 

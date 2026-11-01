@@ -3,7 +3,8 @@ extends Resource
 ## Предмет инвентаря, который не оружие: расходник или материал (11-UI-design, раздел «Карточка прочих предметов»).
 ## Данные: data/content/items/*.tres. Оружие описывается не этим классом, а WeaponInstance.
 
-enum Category { WEAPON, CONSUMABLE, MATERIAL, PART }
+## JUNK (№91): хлам, лут только на продажу (сгущёнка, микросхемы и т.п.), ни на что не годится в забеге.
+enum Category { WEAPON, CONSUMABLE, MATERIAL, PART, JUNK, GRENADE, SHIELD }
 
 ## Ключи названия и описания в таблице переводов.
 @export var name_key: String = ""
@@ -16,3 +17,5 @@ enum Category { WEAPON, CONSUMABLE, MATERIAL, PART }
 @export var icon_color: Color = Color(0.8, 0.8, 0.8)
 ## Расходник: сколько здоровья восстанавливает при использовании. 0 = не лечит.
 @export_range(0.0, 1000.0, 1.0) var heal_amount: float = 0.0
+## Хлам: во сколько раз чаще остальных выпадает (вес выбора среди `PropSettings.junk_items`).
+@export_range(0.1, 20.0, 0.1) var drop_weight: float = 1.0

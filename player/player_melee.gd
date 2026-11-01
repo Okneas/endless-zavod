@@ -57,6 +57,8 @@ func swing() -> bool:
 		# Особенность аксессуара оружия в руках усиливает и удар в ближнем бою.
 		var info: DamageInfo = DamageInfo.create(settings.damage * (1.0 + _weapon.stats.melee_damage_bonus), false, center)
 		info.apply_vulnerability = false
+		info.is_melee = true
+		info.direction = -_camera.global_basis.z
 		nearest.call(&"take_hit", info)
 	swung.emit(nearest != null)
 	return nearest != null

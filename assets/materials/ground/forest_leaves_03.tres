@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/forest_leaves_03_c.jpg" id="1_f3bbl"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/forest_leaves_03_n.png" id="2_8pc4i"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/forest_leaves_03_r.jpg" id="3_kiqlv"]
+
+[resource]
+resource_name = "forest_leaves_03"
+albedo_texture = ExtResource("1_f3bbl")
+roughness_texture = ExtResource("3_kiqlv")
+normal_enabled = true
+normal_texture = ExtResource("2_8pc4i")
+texture_filter = 2

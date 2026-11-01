@@ -7,12 +7,12 @@
 script = ExtResource("2_kjusb")
 name_key = "WEAPON_BODY_UDARNIK_RIFLE_2"
 weapon_type = 4
-base_damage = 16.0
+base_damage = 11.5
 base_fire_rate = 10.5
 automatic = true
 base_magazine_size = 36
 base_reload_time = 1.9
-base_spread_deg = 2.0
+base_spread_deg = 1.4
 base_range = 90.0
 base_recoil_deg = 0.85
 base_aim_time = 0.18

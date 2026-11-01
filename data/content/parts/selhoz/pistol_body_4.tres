@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_8s6q3")
 name_key = "WEAPON_BODY_SELHOZ_PISTOL_4"
-base_damage = 40.0
+base_damage = 53.2
 base_fire_rate = 2.4
 base_magazine_size = 5
 base_reload_time = 1.8
-base_spread_deg = 4.6
+base_spread_deg = 3.68
 base_range = 18.0
 base_recoil_deg = 2.0
 base_aim_time = 0.14

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_016_c.jpg" id="1_6n5bg"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_016_n.png" id="2_f50yo"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_016_r.jpg" id="3_4krpn"]
+
+[resource]
+resource_name = "carpet_016"
+albedo_texture = ExtResource("1_6n5bg")
+roughness_texture = ExtResource("3_4krpn")
+normal_enabled = true
+normal_texture = ExtResource("2_f50yo")
+texture_filter = 2

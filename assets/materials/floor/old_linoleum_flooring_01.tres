@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/old_linoleum_flooring_01_c.jpg" id="1_wn7mv"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/old_linoleum_flooring_01_n.png" id="2_14n7p"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/old_linoleum_flooring_01_r.jpg" id="3_rwipn"]
+
+[resource]
+resource_name = "old_linoleum_flooring_01"
+albedo_texture = ExtResource("1_wn7mv")
+roughness_texture = ExtResource("3_rwipn")
+normal_enabled = true
+normal_texture = ExtResource("2_14n7p")
+texture_filter = 2

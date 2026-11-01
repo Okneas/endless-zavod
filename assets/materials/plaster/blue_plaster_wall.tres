@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/blue_plaster_wall_c.jpg" id="1_wnitv"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/blue_plaster_wall_n.png" id="2_rvbmh"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/blue_plaster_wall_r.jpg" id="3_hhqi4"]
+
+[resource]
+resource_name = "blue_plaster_wall"
+albedo_texture = ExtResource("1_wnitv")
+roughness_texture = ExtResource("3_hhqi4")
+normal_enabled = true
+normal_texture = ExtResource("2_rvbmh")
+texture_filter = 2

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/tiles_133d_c.jpg" id="1_3ikj1"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/tiles_133d_n.png" id="2_i0g21"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/tiles_133d_r.jpg" id="3_y88c3"]
+
+[resource]
+resource_name = "tiles_133d"
+albedo_texture = ExtResource("1_3ikj1")
+roughness_texture = ExtResource("3_y88c3")
+normal_enabled = true
+normal_texture = ExtResource("2_i0g21")
+texture_filter = 2

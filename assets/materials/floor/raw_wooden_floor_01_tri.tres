@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/raw_wooden_floor_01_c.jpg" id="1_y6ck6"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/raw_wooden_floor_01_n.png" id="2_m1jox"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/raw_wooden_floor_01_r.jpg" id="3_x57de"]
+
+[resource]
+resource_name = "raw_wooden_floor_01_tri"
+albedo_texture = ExtResource("1_y6ck6")
+roughness_texture = ExtResource("3_x57de")
+normal_enabled = true
+normal_texture = ExtResource("2_m1jox")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

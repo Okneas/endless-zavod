@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/green_metal_rust_c.jpg" id="1_m17m5"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/green_metal_rust_n.png" id="2_exuoo"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/green_metal_rust_r.jpg" id="3_rsdfa"]
+
+[resource]
+resource_name = "green_metal_rust_tri"
+albedo_texture = ExtResource("1_m17m5")
+roughness_texture = ExtResource("3_rsdfa")
+normal_enabled = true
+normal_texture = ExtResource("2_exuoo")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

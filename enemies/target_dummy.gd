@@ -81,7 +81,7 @@ func _respawn() -> void:
 	is_dead = false
 	health = settings.max_health
 	visible = true
-	collision_layer = 4
+	collision_layer = 20
 	_update_bar()
 
 

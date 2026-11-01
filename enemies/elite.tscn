@@ -24,7 +24,7 @@ size = Vector3(0.7, 0.16, 0.16)
 
 [node name="Elite" type="CharacterBody3D" unique_id=739211489]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_v2jwp")
 settings = ExtResource("2_n7sjn")
 

@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="GrenadeSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/grenade_settings.gd" id="1_gs"]
+[ext_resource type="Script" path="res://data/definitions/grenade_definition.gd" id="2_gd"]
+[ext_resource type="Script" path="res://data/definitions/grenade_modifier.gd" id="3_gm"]
+[ext_resource type="Resource" path="res://data/content/grenades/frag.tres" id="t_frag"]
+[ext_resource type="Resource" path="res://data/content/grenades/acid.tres" id="t_acid"]
+[ext_resource type="Resource" path="res://data/content/grenades/electric.tres" id="t_electric"]
+[ext_resource type="Resource" path="res://data/content/grenades/frost.tres" id="t_frost"]
+[ext_resource type="Resource" path="res://data/content/grenades/fire.tres" id="t_fire"]
+[ext_resource type="Resource" path="res://data/content/grenades/sticky.tres" id="t_sticky"]
+[ext_resource type="Resource" path="res://data/content/grenades/cluster.tres" id="t_cluster"]
+[ext_resource type="Resource" path="res://data/content/grenades/singularity.tres" id="t_singularity"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/powerful.tres" id="m_powerful"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/wide.tres" id="m_wide"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/swift.tres" id="m_swift"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/sharp.tres" id="m_sharp"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/multi.tres" id="m_multi"]
+[ext_resource type="Resource" path="res://data/content/grenades/modifiers/lingering.tres" id="m_lingering"]
+
+[resource]
+script = ExtResource("1_gs")
+types = Array[ExtResource("2_gd")]([ExtResource("t_frag"), ExtResource("t_acid"), ExtResource("t_electric"), ExtResource("t_frost"), ExtResource("t_fire"), ExtResource("t_sticky"), ExtResource("t_cluster"), ExtResource("t_singularity")])
+modifiers = Array[ExtResource("3_gm")]([ExtResource("m_powerful"), ExtResource("m_wide"), ExtResource("m_swift"), ExtResource("m_sharp"), ExtResource("m_multi"), ExtResource("m_lingering")])
+starter = ExtResource("t_frag")
+throw_speed = 22.0
+throw_lift = 4.5
+blast_edge_share = 0.5
+chain_delay = 0.18
+damage_per_level = 0.06
+price_per_level = 0.1
+modifier_price = 20
+loot_point_chance = 0.2
+trader_count = 2

@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/stenciled_brick_floor_c.jpg" id="1_8lyb6"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/stenciled_brick_floor_n.png" id="2_yn50k"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/stenciled_brick_floor_r.jpg" id="3_2wcyb"]
+
+[resource]
+resource_name = "stenciled_brick_floor"
+albedo_texture = ExtResource("1_8lyb6")
+roughness_texture = ExtResource("3_2wcyb")
+normal_enabled = true
+normal_texture = ExtResource("2_yn50k")
+texture_filter = 2

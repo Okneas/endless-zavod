@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CrateDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/crate_definition.gd" id="1_crate"]
+
+[resource]
+script = ExtResource("1_crate")
+color = Color(0.55, 0.38, 0.2, 1)
+size = Vector3(0.9, 0.9, 0.9)
+weight = 3.0
+health = 45.0
+money_chance = 0.7
+money_min = 8
+money_max = 22
+medkit_chance = 0.18
+medkit_heal = 30.0
+part_chance = 0.1
+junk_chance = 0.35
+junk_min = 1
+junk_max = 2
+grenade_chance = 0.05
+shield_chance = 0.04

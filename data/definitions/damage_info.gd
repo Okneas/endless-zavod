@@ -4,10 +4,15 @@ extends RefCounted
 
 var amount: float = 0.0
 var is_crit: bool = false
+## Выстрел попал в слабое место врага (№93): считается критом, множитель берётся у врага.
+var is_weak_point: bool = false
 var element: CombatEnums.Element = CombatEnums.Element.NONE
 var weapon_type: CombatEnums.WeaponType = CombatEnums.WeaponType.PISTOL
 ## Таблица уязвимостей работает только для оружия; удар в ближнем бою её не использует.
 var apply_vulnerability: bool = true
+## Удар в ближнем бою (№91): бочку он толкает, а не повреждает. direction это куда смотрел игрок при ударе.
+var is_melee: bool = false
+var direction: Vector3 = Vector3.ZERO
 var hit_position: Vector3 = Vector3.ZERO
 ## Попадания отдельных дробин выстрела в эту цель (у оружия с одной пулей пусто или одна запись).
 ## amount при этом сумма всех дробин, цель применяет урон один раз, а цифры показывает по дробинам.

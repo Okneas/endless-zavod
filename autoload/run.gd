@@ -110,4 +110,34 @@ func lose_loot(player: Player) -> int:
 		var instance: WeaponInstance = weapon.slots[slot]
 		if instance != null and not instance.is_eternal and weapon.remove_from_slot(slot) != null:
 			lost += 1
+	# Граната в слоте (№92): невечная теряется, вечная остаётся в слоте или возвращается из рюкзака, без неё выдаётся стартовая.
+	var equipped_grenade: GrenadeInstance = Inventory.grenade
+	if equipped_grenade != null and not equipped_grenade.is_eternal:
+		Inventory.grenade = null
+		lost += 1
+	if Inventory.grenade == null:
+		var kept: InventoryItem = null
+		for item: InventoryItem in Inventory.items:
+			if item.grenade != null and item.grenade.is_eternal:
+				kept = item
+		if kept != null:
+			Inventory.remove(kept)
+			Inventory.grenade = kept.grenade
+		else:
+			Inventory.reset_grenade()
+	# Щит в слоте (№93): так же, как граната.
+	var equipped_shield: ShieldInstance = Inventory.shield
+	if equipped_shield != null and not equipped_shield.is_eternal:
+		Inventory.shield = null
+		lost += 1
+	if Inventory.shield == null:
+		var kept_shield: InventoryItem = null
+		for item: InventoryItem in Inventory.items:
+			if item.shield != null and item.shield.is_eternal:
+				kept_shield = item
+		if kept_shield != null:
+			Inventory.remove(kept_shield)
+			Inventory.shield = kept_shield.shield
+		else:
+			Inventory.reset_shield()
 	return lost

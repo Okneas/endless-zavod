@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_plate_c.jpg" id="1_cbs0x"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_plate_m.jpg" id="2_qha56"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_plate_n.png" id="3_7p5ju"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_plate_r.jpg" id="4_nrsxm"]
+
+[resource]
+resource_name = "metal_plate"
+albedo_texture = ExtResource("1_cbs0x")
+metallic = 1.0
+metallic_texture = ExtResource("2_qha56")
+roughness_texture = ExtResource("4_nrsxm")
+normal_enabled = true
+normal_texture = ExtResource("3_7p5ju")
+texture_filter = 2

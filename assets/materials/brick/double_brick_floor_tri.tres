@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_c.jpg" id="1_bsu64"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_n.png" id="2_0y1ps"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_r.jpg" id="3_x7lds"]
+
+[resource]
+resource_name = "double_brick_floor_tri"
+albedo_texture = ExtResource("1_bsu64")
+roughness_texture = ExtResource("3_x7lds")
+normal_enabled = true
+normal_texture = ExtResource("2_0y1ps")
+uv1_scale = Vector3(0.6666667, 0.6666667, 0.6666667)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_c.jpg" id="1_jh1ij"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_n.png" id="2_euxup"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_r.jpg" id="3_ijchc"]
+
+[resource]
+resource_name = "rubber_004_tri"
+albedo_texture = ExtResource("1_jh1ij")
+roughness_texture = ExtResource("3_ijchc")
+normal_enabled = true
+normal_texture = ExtResource("2_euxup")
+uv1_scale = Vector3(1.6666666, 1.6666666, 1.6666666)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

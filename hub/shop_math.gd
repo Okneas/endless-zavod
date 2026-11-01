@@ -32,12 +32,15 @@ static func customer_interval(settings: ShopSettings, is_night: bool) -> float:
 
 
 ## Подходит ли предмет покупателю: оружие по типу или производителю, детали по любви к деталям или производителю, расходники только
-## любителям деталей и расходников.
+## любителям деталей и расходников, хлам любому.
 static func matches(profile: CustomerProfile, item: InventoryItem) -> bool:
 	if item.weapon != null:
 		return item.weapon.get_weapon_type() == profile.weapon_type or (profile.manufacturer != null and item.weapon.get_manufacturer() == profile.manufacturer)
 	if item.part != null:
 		return profile.likes_loose_items or (profile.manufacturer != null and item.part.part.manufacturer == profile.manufacturer)
+	# Хлам (№91) нужен любому покупателю: у него нет типа и производителя.
+	if item.get_category() == ItemDefinition.Category.JUNK:
+		return true
 	return profile.likes_loose_items
 
 

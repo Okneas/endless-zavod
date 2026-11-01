@@ -1,0 +1,1342 @@
+[
+ {
+  "id": "brick_pavement_04",
+  "group": "brick",
+  "source": "polyhaven",
+  "base": "brick_pavement_04",
+  "size": 512,
+  "maps": {
+   "c": "brick_pavement_04_c.jpg",
+   "n": "brick_pavement_04_n.png",
+   "r": "brick_pavement_04_r.jpg"
+  },
+  "avg_color": [
+   0.2845,
+   0.233,
+   0.204
+  ],
+  "rough_mean": 0.951
+ },
+ {
+  "id": "double_brick_floor",
+  "group": "brick",
+  "source": "polyhaven",
+  "base": "double_brick_floor",
+  "size": 512,
+  "maps": {
+   "c": "double_brick_floor_c.jpg",
+   "n": "double_brick_floor_n.png",
+   "r": "double_brick_floor_r.jpg"
+  },
+  "avg_color": [
+   0.4274,
+   0.2694,
+   0.1572
+  ],
+  "rough_mean": 0.815
+ },
+ {
+  "id": "factory_brick",
+  "group": "brick",
+  "source": "polyhaven",
+  "base": "factory_brick",
+  "size": 512,
+  "maps": {
+   "c": "factory_brick_c.jpg",
+   "n": "factory_brick_n.png",
+   "r": "factory_brick_r.jpg"
+  },
+  "avg_color": [
+   0.5398,
+   0.438,
+   0.353
+  ],
+  "rough_mean": 0.821
+ },
+ {
+  "id": "red_bricks_04",
+  "group": "brick",
+  "source": "polyhaven",
+  "base": "red_bricks_04",
+  "size": 512,
+  "maps": {
+   "c": "red_bricks_04_c.jpg",
+   "n": "red_bricks_04_n.png",
+   "r": "red_bricks_04_r.jpg"
+  },
+  "avg_color": [
+   0.3892,
+   0.2485,
+   0.1484
+  ],
+  "rough_mean": 0.797
+ },
+ {
+  "id": "stenciled_brick_floor",
+  "group": "brick",
+  "source": "polyhaven",
+  "base": "stenciled_brick_floor",
+  "size": 512,
+  "maps": {
+   "c": "stenciled_brick_floor_c.jpg",
+   "n": "stenciled_brick_floor_n.png",
+   "r": "stenciled_brick_floor_r.jpg"
+  },
+  "avg_color": [
+   0.487,
+   0.3544,
+   0.2722
+  ],
+  "rough_mean": 0.826
+ },
+ {
+  "id": "concrete_007",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete007",
+  "size": 512,
+  "maps": {
+   "c": "concrete_007_c.jpg",
+   "n": "concrete_007_n.png",
+   "r": "concrete_007_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.4711,
+   0.4731,
+   0.48
+  ],
+  "rough_mean": 0.529
+ },
+ {
+  "id": "concrete_023",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete023",
+  "size": 512,
+  "maps": {
+   "c": "concrete_023_c.jpg",
+   "n": "concrete_023_n.png",
+   "r": "concrete_023_r.jpg"
+  },
+  "avg_color": [
+   0.5163,
+   0.5156,
+   0.5176
+  ],
+  "rough_mean": 0.9
+ },
+ {
+  "id": "concrete_041b",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete041B",
+  "size": 512,
+  "maps": {
+   "c": "concrete_041b_c.jpg",
+   "n": "concrete_041b_n.png",
+   "r": "concrete_041b_r.jpg",
+   "m": "concrete_041b_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.3281,
+   0.3103,
+   0.2948
+  ],
+  "rough_mean": 0.692,
+  "metal_max": 0.633
+ },
+ {
+  "id": "concrete_042a",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete042A",
+  "size": 512,
+  "maps": {
+   "c": "concrete_042a_c.jpg",
+   "n": "concrete_042a_n.png",
+   "r": "concrete_042a_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.3763,
+   0.3606,
+   0.3459
+  ],
+  "rough_mean": 0.699,
+  "metal_max": 0.0
+ },
+ {
+  "id": "concrete_043a",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete043A",
+  "size": 512,
+  "maps": {
+   "c": "concrete_043a_c.jpg",
+   "n": "concrete_043a_n.png",
+   "r": "concrete_043a_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.2776,
+   0.2637,
+   0.2413
+  ],
+  "rough_mean": 0.676,
+  "metal_max": 0.0
+ },
+ {
+  "id": "concrete_044c",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "Concrete044C",
+  "size": 512,
+  "maps": {
+   "c": "concrete_044c_c.jpg",
+   "n": "concrete_044c_n.png",
+   "r": "concrete_044c_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.3536,
+   0.3366,
+   0.3173
+  ],
+  "rough_mean": 0.7,
+  "metal_max": 0.0
+ },
+ {
+  "id": "corrugated_steel_007b",
+  "group": "concrete",
+  "source": "ambientcg",
+  "base": "CorrugatedSteel007B",
+  "size": 512,
+  "maps": {
+   "c": "corrugated_steel_007b_c.jpg",
+   "n": "corrugated_steel_007b_n.png",
+   "r": "corrugated_steel_007b_r.jpg",
+   "m": "corrugated_steel_007b_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.4356,
+   0.5246,
+   0.5541
+  ],
+  "rough_mean": 0.599,
+  "metal_max": 1.0
+ },
+ {
+  "id": "concrete_floor_01",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "concrete_floor_01",
+  "size": 512,
+  "maps": {
+   "c": "concrete_floor_01_c.jpg",
+   "n": "concrete_floor_01_n.png",
+   "r": "concrete_floor_01_r.jpg"
+  },
+  "avg_color": [
+   0.4783,
+   0.4353,
+   0.3633
+  ],
+  "rough_mean": 0.525
+ },
+ {
+  "id": "concrete_floor_worn_001",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "concrete_floor_worn_001",
+  "size": 512,
+  "maps": {
+   "c": "concrete_floor_worn_001_c.jpg",
+   "n": "concrete_floor_worn_001_n.png",
+   "r": "concrete_floor_worn_001_r.jpg"
+  },
+  "avg_color": [
+   0.3376,
+   0.3394,
+   0.3302
+  ],
+  "rough_mean": 0.541
+ },
+ {
+  "id": "cracked_concrete_02",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "cracked_concrete_02",
+  "size": 512,
+  "maps": {
+   "c": "cracked_concrete_02_c.jpg",
+   "n": "cracked_concrete_02_n.png",
+   "r": "cracked_concrete_02_r.jpg"
+  },
+  "avg_color": [
+   0.3783,
+   0.3369,
+   0.2904
+  ],
+  "rough_mean": 0.947
+ },
+ {
+  "id": "dirty_concrete",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "dirty_concrete",
+  "size": 512,
+  "maps": {
+   "c": "dirty_concrete_c.jpg",
+   "n": "dirty_concrete_n.png",
+   "r": "dirty_concrete_r.jpg"
+  },
+  "avg_color": [
+   0.5417,
+   0.5203,
+   0.477
+  ],
+  "rough_mean": 0.863
+ },
+ {
+  "id": "hangar_concrete_floor",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "hangar_concrete_floor",
+  "size": 512,
+  "maps": {
+   "c": "hangar_concrete_floor_c.jpg",
+   "n": "hangar_concrete_floor_n.png",
+   "r": "hangar_concrete_floor_r.jpg"
+  },
+  "avg_color": [
+   0.2031,
+   0.1896,
+   0.1776
+  ],
+  "rough_mean": 0.772
+ },
+ {
+  "id": "painted_concrete",
+  "group": "concrete",
+  "source": "polyhaven",
+  "base": "painted_concrete",
+  "size": 512,
+  "maps": {
+   "c": "painted_concrete_c.jpg",
+   "n": "painted_concrete_n.png",
+   "r": "painted_concrete_r.jpg"
+  },
+  "avg_color": [
+   0.3145,
+   0.4306,
+   0.3282
+  ],
+  "rough_mean": 0.772
+ },
+ {
+  "id": "denim_fabric_05",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "denim_fabric_05",
+  "size": 512,
+  "maps": {
+   "c": "denim_fabric_05_c.jpg",
+   "n": "denim_fabric_05_n.png",
+   "r": "denim_fabric_05_r.jpg",
+   "m": "denim_fabric_05_m.jpg"
+  },
+  "avg_color": [
+   0.4034,
+   0.3973,
+   0.3953
+  ],
+  "rough_mean": 0.79,
+  "metal_max": 0.582
+ },
+ {
+  "id": "fabric_leather_01",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "fabric_leather_01",
+  "size": 512,
+  "maps": {
+   "c": "fabric_leather_01_c.jpg",
+   "n": "fabric_leather_01_n.png",
+   "r": "fabric_leather_01_r.jpg"
+  },
+  "avg_color": [
+   0.4961,
+   0.3331,
+   0.2381
+  ],
+  "rough_mean": 0.643
+ },
+ {
+  "id": "fabric_leather_02",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "fabric_leather_02",
+  "size": 512,
+  "maps": {
+   "c": "fabric_leather_02_c.jpg",
+   "n": "fabric_leather_02_n.png",
+   "r": "fabric_leather_02_r.jpg"
+  },
+  "avg_color": [
+   0.5085,
+   0.3101,
+   0.1096
+  ],
+  "rough_mean": 0.461
+ },
+ {
+  "id": "fabric_pattern_05",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "fabric_pattern_05",
+  "size": 512,
+  "maps": {
+   "c": "fabric_pattern_05_c.jpg",
+   "n": "fabric_pattern_05_n.png",
+   "r": "fabric_pattern_05_r.jpg"
+  },
+  "avg_color": [
+   0.5902,
+   0.5974,
+   0.5221
+  ],
+  "rough_mean": 0.824
+ },
+ {
+  "id": "hessian_230",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "hessian_230",
+  "size": 512,
+  "maps": {
+   "c": "hessian_230_c.jpg",
+   "n": "hessian_230_n.png",
+   "r": "hessian_230_r.jpg",
+   "m": "hessian_230_m.jpg"
+  },
+  "avg_color": [
+   0.5642,
+   0.4818,
+   0.3596
+  ],
+  "rough_mean": 0.584,
+  "metal_max": 0.925
+ },
+ {
+  "id": "leather_red_02",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "leather_red_02",
+  "size": 512,
+  "maps": {
+   "c": "leather_red_02_c.jpg",
+   "n": "leather_red_02_n.png",
+   "r": "leather_red_02_r.jpg"
+  },
+  "avg_color": [
+   0.3179,
+   0.1822,
+   0.1152
+  ],
+  "rough_mean": 0.508
+ },
+ {
+  "id": "worn_corrugated_iron",
+  "group": "fabric",
+  "source": "polyhaven",
+  "base": "worn_corrugated_iron",
+  "size": 512,
+  "maps": {
+   "c": "worn_corrugated_iron_c.jpg",
+   "n": "worn_corrugated_iron_n.png",
+   "r": "worn_corrugated_iron_r.jpg"
+  },
+  "avg_color": [
+   0.4769,
+   0.4708,
+   0.463
+  ],
+  "rough_mean": 0.617
+ },
+ {
+  "id": "carpet_006",
+  "group": "floor",
+  "source": "ambientcg",
+  "base": "Carpet006",
+  "size": 512,
+  "maps": {
+   "c": "carpet_006_c.jpg",
+   "n": "carpet_006_n.png",
+   "r": "carpet_006_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.0281,
+   0.1382,
+   0.211
+  ],
+  "rough_mean": 0.873
+ },
+ {
+  "id": "carpet_012",
+  "group": "floor",
+  "source": "ambientcg",
+  "base": "Carpet012",
+  "size": 512,
+  "maps": {
+   "c": "carpet_012_c.jpg",
+   "n": "carpet_012_n.png",
+   "r": "carpet_012_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.2145,
+   0.2336,
+   0.2774
+  ],
+  "rough_mean": 0.879
+ },
+ {
+  "id": "carpet_016",
+  "group": "floor",
+  "source": "ambientcg",
+  "base": "Carpet016",
+  "size": 512,
+  "maps": {
+   "c": "carpet_016_c.jpg",
+   "n": "carpet_016_n.png",
+   "r": "carpet_016_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.7214,
+   0.6777,
+   0.5676
+  ],
+  "rough_mean": 0.648
+ },
+ {
+  "id": "garage_floor",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "garage_floor",
+  "size": 512,
+  "maps": {
+   "c": "garage_floor_c.jpg",
+   "n": "garage_floor_n.png",
+   "r": "garage_floor_r.jpg"
+  },
+  "avg_color": [
+   0.4878,
+   0.4289,
+   0.3417
+  ],
+  "rough_mean": 0.533
+ },
+ {
+  "id": "old_linoleum_flooring_01",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "old_linoleum_flooring_01",
+  "size": 512,
+  "maps": {
+   "c": "old_linoleum_flooring_01_c.jpg",
+   "n": "old_linoleum_flooring_01_n.png",
+   "r": "old_linoleum_flooring_01_r.jpg"
+  },
+  "avg_color": [
+   0.6938,
+   0.5219,
+   0.3249
+  ],
+  "rough_mean": 0.31
+ },
+ {
+  "id": "raw_wooden_floor_01",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "raw_wooden_floor_01",
+  "size": 512,
+  "maps": {
+   "c": "raw_wooden_floor_01_c.jpg",
+   "n": "raw_wooden_floor_01_n.png",
+   "r": "raw_wooden_floor_01_r.jpg"
+  },
+  "avg_color": [
+   0.7056,
+   0.576,
+   0.4704
+  ],
+  "rough_mean": 0.74
+ },
+ {
+  "id": "ribbed_corduroy",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "ribbed_corduroy",
+  "size": 512,
+  "maps": {
+   "c": "ribbed_corduroy_c.jpg",
+   "n": "ribbed_corduroy_n.png",
+   "r": "ribbed_corduroy_r.jpg",
+   "m": "ribbed_corduroy_m.jpg"
+  },
+  "avg_color": [
+   0.5535,
+   0.5793,
+   0.5061
+  ],
+  "rough_mean": 0.737,
+  "metal_max": 0.782
+ },
+ {
+  "id": "rocky_terrain_02",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "rocky_terrain_02",
+  "size": 512,
+  "maps": {
+   "c": "rocky_terrain_02_c.jpg",
+   "n": "rocky_terrain_02_n.png",
+   "r": "rocky_terrain_02_r.jpg"
+  },
+  "avg_color": [
+   0.3188,
+   0.31,
+   0.1217
+  ],
+  "rough_mean": 0.959
+ },
+ {
+  "id": "square_floor_patern_01",
+  "group": "floor",
+  "source": "polyhaven",
+  "base": "square_floor_patern_01",
+  "size": 512,
+  "maps": {
+   "c": "square_floor_patern_01_c.jpg",
+   "n": "square_floor_patern_01_n.png",
+   "r": "square_floor_patern_01_r.jpg"
+  },
+  "avg_color": [
+   0.4481,
+   0.4262,
+   0.3749
+  ],
+  "rough_mean": 0.953
+ },
+ {
+  "id": "brown_mud_leaves_01",
+  "group": "ground",
+  "source": "polyhaven",
+  "base": "brown_mud_leaves_01",
+  "size": 512,
+  "maps": {
+   "c": "brown_mud_leaves_01_c.jpg",
+   "n": "brown_mud_leaves_01_n.png",
+   "r": "brown_mud_leaves_01_r.jpg"
+  },
+  "avg_color": [
+   0.4083,
+   0.3484,
+   0.2139
+  ],
+  "rough_mean": 0.92
+ },
+ {
+  "id": "dry_decay_leaves",
+  "group": "ground",
+  "source": "polyhaven",
+  "base": "dry_decay_leaves",
+  "size": 512,
+  "maps": {
+   "c": "dry_decay_leaves_c.jpg",
+   "n": "dry_decay_leaves_n.png",
+   "r": "dry_decay_leaves_r.jpg"
+  },
+  "avg_color": [
+   0.4532,
+   0.3066,
+   0.2076
+  ],
+  "rough_mean": 0.806
+ },
+ {
+  "id": "forest_leaves_03",
+  "group": "ground",
+  "source": "polyhaven",
+  "base": "forest_leaves_03",
+  "size": 512,
+  "maps": {
+   "c": "forest_leaves_03_c.jpg",
+   "n": "forest_leaves_03_n.png",
+   "r": "forest_leaves_03_r.jpg"
+  },
+  "avg_color": [
+   0.2959,
+   0.239,
+   0.147
+  ],
+  "rough_mean": 0.786
+ },
+ {
+  "id": "grass_ground",
+  "group": "ground",
+  "source": "polyhaven",
+  "base": "grass_ground",
+  "size": 512,
+  "maps": {
+   "c": "grass_ground_c.jpg",
+   "n": "grass_ground_n.png",
+   "r": "grass_ground_r.jpg"
+  },
+  "avg_color": [
+   0.4342,
+   0.3797,
+   0.2458
+  ],
+  "rough_mean": 0.937
+ },
+ {
+  "id": "leafy_grass",
+  "group": "ground",
+  "source": "polyhaven",
+  "base": "leafy_grass",
+  "size": 512,
+  "maps": {
+   "c": "leafy_grass_c.jpg",
+   "n": "leafy_grass_n.png",
+   "r": "leafy_grass_r.jpg"
+  },
+  "avg_color": [
+   0.601,
+   0.5228,
+   0.3594
+  ],
+  "rough_mean": 0.685
+ },
+ {
+  "id": "corrugated_steel_007a",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "CorrugatedSteel007A",
+  "size": 512,
+  "maps": {
+   "c": "corrugated_steel_007a_c.jpg",
+   "n": "corrugated_steel_007a_n.png",
+   "r": "corrugated_steel_007a_r.jpg",
+   "m": "corrugated_steel_007a_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.486,
+   0.6554,
+   0.7055
+  ],
+  "rough_mean": 0.398,
+  "metal_max": 1.0
+ },
+ {
+  "id": "diamond_plate_009",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "DiamondPlate009",
+  "size": 512,
+  "maps": {
+   "c": "diamond_plate_009_c.jpg",
+   "n": "diamond_plate_009_n.png",
+   "r": "diamond_plate_009_r.jpg",
+   "m": "diamond_plate_009_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.431,
+   0.3877,
+   0.3355
+  ],
+  "rough_mean": 0.555,
+  "metal_max": 0.936
+ },
+ {
+  "id": "metal_023",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "Metal023",
+  "size": 512,
+  "maps": {
+   "c": "metal_023_c.jpg",
+   "n": "metal_023_n.png",
+   "r": "metal_023_r.jpg",
+   "m": "metal_023_m.jpg"
+  },
+  "avg_color": [
+   0.4338,
+   0.3755,
+   0.3487
+  ],
+  "rough_mean": 0.663,
+  "metal_max": 1.0
+ },
+ {
+  "id": "metal_025",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "Metal025",
+  "size": 512,
+  "maps": {
+   "c": "metal_025_c.jpg",
+   "n": "metal_025_n.png",
+   "r": "metal_025_r.jpg",
+   "m": "metal_025_m.jpg"
+  },
+  "avg_color": [
+   0.332,
+   0.257,
+   0.2241
+  ],
+  "rough_mean": 0.638,
+  "metal_max": 1.0
+ },
+ {
+  "id": "metal_056c",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "Metal056C",
+  "size": 512,
+  "maps": {
+   "c": "metal_056c_c.jpg",
+   "n": "metal_056c_n.png",
+   "r": "metal_056c_r.jpg",
+   "m": "metal_056c_m.jpg"
+  },
+  "avg_color": [
+   0.5699,
+   0.4386,
+   0.3526
+  ],
+  "rough_mean": 0.704,
+  "metal_max": 1.0
+ },
+ {
+  "id": "painted_metal_004",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "PaintedMetal004",
+  "size": 512,
+  "maps": {
+   "c": "painted_metal_004_c.jpg",
+   "n": "painted_metal_004_n.png",
+   "r": "painted_metal_004_r.jpg",
+   "m": "painted_metal_004_m.jpg"
+  },
+  "avg_color": [
+   0.9703,
+   0.3014,
+   0.3
+  ],
+  "rough_mean": 0.154,
+  "metal_max": 1.0
+ },
+ {
+  "id": "painted_metal_006",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "PaintedMetal006",
+  "size": 512,
+  "maps": {
+   "c": "painted_metal_006_c.jpg",
+   "n": "painted_metal_006_n.png",
+   "r": "painted_metal_006_r.jpg",
+   "m": "painted_metal_006_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.2399,
+   0.4165,
+   0.3185
+  ],
+  "rough_mean": 0.45,
+  "metal_max": 1.0
+ },
+ {
+  "id": "painted_metal_008",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "PaintedMetal008",
+  "size": 512,
+  "maps": {
+   "c": "painted_metal_008_c.jpg",
+   "n": "painted_metal_008_n.png",
+   "r": "painted_metal_008_r.jpg",
+   "m": "painted_metal_008_m.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.8321,
+   0.416,
+   0.0308
+  ],
+  "rough_mean": 0.407,
+  "metal_max": 0.981
+ },
+ {
+  "id": "painted_metal_009",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "PaintedMetal009",
+  "size": 512,
+  "maps": {
+   "c": "painted_metal_009_c.jpg",
+   "n": "painted_metal_009_n.png",
+   "r": "painted_metal_009_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.5851,
+   0.5296,
+   0.2607
+  ],
+  "rough_mean": 0.576,
+  "metal_max": 0.01
+ },
+ {
+  "id": "sheet_metal_001",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "SheetMetal001",
+  "size": 512,
+  "maps": {
+   "c": "sheet_metal_001_c.jpg",
+   "n": "sheet_metal_001_n.png",
+   "r": "sheet_metal_001_r.jpg",
+   "m": "sheet_metal_001_m.jpg"
+  },
+  "avg_color": [
+   0.1557,
+   0.1527,
+   0.1689
+  ],
+  "rough_mean": 0.21,
+  "metal_max": 1.0
+ },
+ {
+  "id": "sheet_metal_002",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "SheetMetal002",
+  "size": 512,
+  "maps": {
+   "c": "sheet_metal_002_c.jpg",
+   "n": "sheet_metal_002_n.png",
+   "r": "sheet_metal_002_r.jpg",
+   "m": "sheet_metal_002_m.jpg"
+  },
+  "avg_color": [
+   0.8109,
+   0.8109,
+   0.8109
+  ],
+  "rough_mean": 0.215,
+  "metal_max": 1.0
+ },
+ {
+  "id": "sheet_metal_004",
+  "group": "metal",
+  "source": "ambientcg",
+  "base": "SheetMetal004",
+  "size": 512,
+  "maps": {
+   "c": "sheet_metal_004_c.jpg",
+   "n": "sheet_metal_004_n.png",
+   "r": "sheet_metal_004_r.jpg",
+   "m": "sheet_metal_004_m.jpg"
+  },
+  "avg_color": [
+   0.1345,
+   0.1313,
+   0.1488
+  ],
+  "rough_mean": 0.233,
+  "metal_max": 1.0
+ },
+ {
+  "id": "blue_metal_plate",
+  "group": "metal",
+  "source": "polyhaven",
+  "base": "blue_metal_plate",
+  "size": 512,
+  "maps": {
+   "c": "blue_metal_plate_c.jpg",
+   "n": "blue_metal_plate_n.png",
+   "r": "blue_metal_plate_r.jpg"
+  },
+  "avg_color": [
+   0.1656,
+   0.2462,
+   0.3008
+  ],
+  "rough_mean": 0.284
+ },
+ {
+  "id": "corrugated_iron",
+  "group": "metal",
+  "source": "polyhaven",
+  "base": "corrugated_iron",
+  "size": 512,
+  "maps": {
+   "c": "corrugated_iron_c.jpg",
+   "n": "corrugated_iron_n.png",
+   "r": "corrugated_iron_r.jpg",
+   "m": "corrugated_iron_m.jpg"
+  },
+  "avg_color": [
+   0.6676,
+   0.7019,
+   0.6855
+  ],
+  "rough_mean": 0.702,
+  "metal_max": 1.003
+ },
+ {
+  "id": "green_metal_rust",
+  "group": "metal",
+  "source": "polyhaven",
+  "base": "green_metal_rust",
+  "size": 512,
+  "maps": {
+   "c": "green_metal_rust_c.jpg",
+   "n": "green_metal_rust_n.png",
+   "r": "green_metal_rust_r.jpg"
+  },
+  "avg_color": [
+   0.2476,
+   0.3016,
+   0.2036
+  ],
+  "rough_mean": 0.503
+ },
+ {
+  "id": "metal_plate",
+  "group": "metal",
+  "source": "polyhaven",
+  "base": "metal_plate",
+  "size": 512,
+  "maps": {
+   "c": "metal_plate_c.jpg",
+   "n": "metal_plate_n.png",
+   "r": "metal_plate_r.jpg",
+   "m": "metal_plate_m.jpg"
+  },
+  "avg_color": [
+   0.2463,
+   0.2027,
+   0.1148
+  ],
+  "rough_mean": 0.589,
+  "metal_max": 0.952
+ },
+ {
+  "id": "rubber_004",
+  "group": "other",
+  "source": "ambientcg",
+  "base": "Rubber004",
+  "size": 512,
+  "maps": {
+   "c": "rubber_004_c.jpg",
+   "n": "rubber_004_n.png",
+   "r": "rubber_004_r.jpg"
+  },
+  "avg_color": [
+   0.1665,
+   0.1729,
+   0.1965
+  ],
+  "rough_mean": 0.591
+ },
+ {
+  "id": "painted_plaster_006",
+  "group": "plaster",
+  "source": "ambientcg",
+  "base": "PaintedPlaster006",
+  "size": 512,
+  "maps": {
+   "c": "painted_plaster_006_c.jpg",
+   "n": "painted_plaster_006_n.png",
+   "r": "painted_plaster_006_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.7713,
+   0.7648,
+   0.7494
+  ],
+  "rough_mean": 0.72
+ },
+ {
+  "id": "painted_plaster_015",
+  "group": "plaster",
+  "source": "ambientcg",
+  "base": "PaintedPlaster015",
+  "size": 512,
+  "maps": {
+   "c": "painted_plaster_015_c.jpg",
+   "n": "painted_plaster_015_n.png",
+   "r": "painted_plaster_015_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.5951,
+   0.594,
+   0.5735
+  ],
+  "rough_mean": 0.648
+ },
+ {
+  "id": "plaster_007",
+  "group": "plaster",
+  "source": "ambientcg",
+  "base": "Plaster007",
+  "size": 512,
+  "maps": {
+   "c": "plaster_007_c.jpg",
+   "n": "plaster_007_n.png",
+   "r": "plaster_007_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.7363,
+   0.7326,
+   0.7048
+  ],
+  "rough_mean": 0.499
+ },
+ {
+  "id": "blue_plaster_wall",
+  "group": "plaster",
+  "source": "polyhaven",
+  "base": "blue_plaster_wall",
+  "size": 512,
+  "maps": {
+   "c": "blue_plaster_wall_c.jpg",
+   "n": "blue_plaster_wall_n.png",
+   "r": "blue_plaster_wall_r.jpg"
+  },
+  "avg_color": [
+   0.4508,
+   0.5921,
+   0.6677
+  ],
+  "rough_mean": 0.872
+ },
+ {
+  "id": "blue_plaster_weathered",
+  "group": "plaster",
+  "source": "polyhaven",
+  "base": "blue_plaster_weathered",
+  "size": 512,
+  "maps": {
+   "c": "blue_plaster_weathered_c.jpg",
+   "n": "blue_plaster_weathered_n.png",
+   "r": "blue_plaster_weathered_r.jpg"
+  },
+  "avg_color": [
+   0.5323,
+   0.646,
+   0.6274
+  ],
+  "rough_mean": 0.879
+ },
+ {
+  "id": "red_plaster_weathered",
+  "group": "plaster",
+  "source": "polyhaven",
+  "base": "red_plaster_weathered",
+  "size": 512,
+  "maps": {
+   "c": "red_plaster_weathered_c.jpg",
+   "n": "red_plaster_weathered_n.png",
+   "r": "red_plaster_weathered_r.jpg"
+  },
+  "avg_color": [
+   0.5834,
+   0.4067,
+   0.3217
+  ],
+  "rough_mean": 0.845
+ },
+ {
+  "id": "white_rough_plaster",
+  "group": "plaster",
+  "source": "polyhaven",
+  "base": "white_rough_plaster",
+  "size": 512,
+  "maps": {
+   "c": "white_rough_plaster_c.jpg",
+   "n": "white_rough_plaster_n.png",
+   "r": "white_rough_plaster_r.jpg"
+  },
+  "avg_color": [
+   0.7333,
+   0.7298,
+   0.7055
+  ],
+  "rough_mean": 0.52
+ },
+ {
+  "id": "rust_009",
+  "group": "rust",
+  "source": "ambientcg",
+  "base": "Rust009",
+  "size": 512,
+  "maps": {
+   "c": "rust_009_c.jpg",
+   "n": "rust_009_n.png",
+   "r": "rust_009_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.536,
+   0.2926,
+   0.1535
+  ],
+  "rough_mean": 0.78
+ },
+ {
+  "id": "tiles_132c",
+  "group": "tiles",
+  "source": "ambientcg",
+  "base": "Tiles132C",
+  "size": 512,
+  "maps": {
+   "c": "tiles_132c_c.jpg",
+   "n": "tiles_132c_n.png",
+   "r": "tiles_132c_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.3134,
+   0.6377,
+   0.7235
+  ],
+  "rough_mean": 0.425
+ },
+ {
+  "id": "tiles_133d",
+  "group": "tiles",
+  "source": "ambientcg",
+  "base": "Tiles133D",
+  "size": 512,
+  "maps": {
+   "c": "tiles_133d_c.jpg",
+   "n": "tiles_133d_n.png",
+   "r": "tiles_133d_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.7148,
+   0.7352,
+   0.7269
+  ],
+  "rough_mean": 0.407
+ },
+ {
+  "id": "tiles_135c",
+  "group": "tiles",
+  "source": "ambientcg",
+  "base": "Tiles135C",
+  "size": 512,
+  "maps": {
+   "c": "tiles_135c_c.jpg",
+   "n": "tiles_135c_n.png",
+   "r": "tiles_135c_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.2951,
+   0.3272,
+   0.3609
+  ],
+  "rough_mean": 0.461
+ },
+ {
+  "id": "tiles_137c",
+  "group": "tiles",
+  "source": "ambientcg",
+  "base": "Tiles137C",
+  "size": 512,
+  "maps": {
+   "c": "tiles_137c_c.jpg",
+   "n": "tiles_137c_n.png",
+   "r": "tiles_137c_r.jpg"
+  },
+  "ao_baked": 0.6,
+  "avg_color": [
+   0.6459,
+   0.4018,
+   0.2176
+  ],
+  "rough_mean": 0.449
+ },
+ {
+  "id": "floor_tiles_09",
+  "group": "tiles",
+  "source": "polyhaven",
+  "base": "floor_tiles_09",
+  "size": 512,
+  "maps": {
+   "c": "floor_tiles_09_c.jpg",
+   "n": "floor_tiles_09_n.png",
+   "r": "floor_tiles_09_r.jpg"
+  },
+  "avg_color": [
+   0.4916,
+   0.4308,
+   0.3608
+  ],
+  "rough_mean": 0.524
+ },
+ {
+  "id": "seaworn_stone_tiles",
+  "group": "tiles",
+  "source": "polyhaven",
+  "base": "seaworn_stone_tiles",
+  "size": 512,
+  "maps": {
+   "c": "seaworn_stone_tiles_c.jpg",
+   "n": "seaworn_stone_tiles_n.png",
+   "r": "seaworn_stone_tiles_r.jpg"
+  },
+  "avg_color": [
+   0.5309,
+   0.4831,
+   0.4246
+  ],
+  "rough_mean": 0.785
+ },
+ {
+  "id": "peeling_painted_wall",
+  "group": "wall",
+  "source": "polyhaven",
+  "base": "peeling_painted_wall",
+  "size": 512,
+  "maps": {
+   "c": "peeling_painted_wall_c.jpg",
+   "n": "peeling_painted_wall_n.png",
+   "r": "peeling_painted_wall_r.jpg"
+  },
+  "avg_color": [
+   0.5886,
+   0.4242,
+   0.3643
+  ],
+  "rough_mean": 0.838
+ }
+]

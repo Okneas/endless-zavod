@@ -2,6 +2,10 @@
 
 [ext_resource type="Resource" path="res://data/content/balance/clock_settings.tres" id="1_djw0m"]
 [ext_resource type="Resource" path="res://data/content/balance/shop_settings.tres" id="shop_cfg"]
+[ext_resource type="Resource" path="res://data/content/balance/prop_settings.tres" id="props_cfg"]
+[ext_resource type="Resource" path="res://data/content/balance/grenade_settings.tres" id="grenade_cfg"]
+[ext_resource type="Resource" path="res://data/content/balance/shield_settings.tres" id="shield_cfg"]
+[ext_resource type="Resource" path="res://data/content/balance/enemy_modifier_settings.tres" id="emod_cfg"]
 [ext_resource type="Script" path="res://data/definitions/game_config.gd" id="2_nqp7i"]
 [ext_resource type="Resource" path="res://data/content/balance/element_settings.tres" id="2_wayq8"]
 [ext_resource type="Resource" path="res://data/content/balance/loot_settings.tres" id="3_5r6b5"]
@@ -27,3 +31,7 @@ menus = ExtResource("5_sqjpu")
 zones = ExtResource("3_wa3h7")
 run = ExtResource("7_kkbm1")
 shop = ExtResource("shop_cfg")
+props = ExtResource("props_cfg")
+grenades = ExtResource("grenade_cfg")
+shields = ExtResource("shield_cfg")
+enemy_modifiers = ExtResource("emod_cfg")

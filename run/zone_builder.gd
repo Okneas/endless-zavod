@@ -24,6 +24,10 @@ var player_spawn: Marker3D
 
 var _pieces_root: Node3D
 var _doors_root: Node3D
+## Бочки и ящики (№91): ставятся отдельным шагом после ожидания навигации.
+var _props_root: Node3D
+## Укрытия для врагов (№93): отдельный корень рядом с Props.
+var _cover_root: Node3D
 ## Двери комнат с боем по индексу части плана.
 var _doors_by_piece: Dictionary = {}
 
@@ -47,6 +51,8 @@ func clear() -> void:
 	plugs.clear()
 	links.clear()
 	_doors_by_piece.clear()
+	_props_root = null
+	_cover_root = null
 	navigation_region = null
 	player_spawn = null
 	layout = null
@@ -77,6 +83,35 @@ func build(zone_layout: ZoneLayout, settings: ZoneSettings) -> void:
 	player_spawn = start_markers[0] if not start_markers.is_empty() else null
 	_bake_navigation(settings)
 	built.emit()
+
+
+## Расставляет бочки и ящики в боевых комнатах и кладовых (№91). Вызывать после того, как зона построена и физика комнат есть в
+## мире (после ожидания навигации). Ставится в `Props` отдельно от комнат, в сетку навигации не попадает. Возвращает число предметов.
+func add_props(props: PropSettings) -> int:
+	if props == null or not props.enabled or layout == null:
+		return 0
+	if _props_root != null and is_instance_valid(_props_root):
+		_props_root.queue_free()
+	_props_root = Node3D.new()
+	_props_root.name = "Props"
+	add_child(_props_root)
+	# Укрытия для врагов (№93) лежат отдельно от бочек и ящиков.
+	if _cover_root != null and is_instance_valid(_cover_root):
+		_cover_root.queue_free()
+	_cover_root = Node3D.new()
+	_cover_root.name = "Cover"
+	add_child(_cover_root)
+	var damage_scale: float = ZoneMath.enemy_health_scale(Config.data.run, layout.zone_level)
+	var total: int = 0
+	for piece: PlacedPiece in layout.pieces:
+		var kind: RoomDefinition.Kind = piece.kind()
+		if kind != RoomDefinition.Kind.COMBAT and kind != RoomDefinition.Kind.LOOT:
+			continue
+		var placed: Dictionary = PropScatterer.scatter(pieces[piece.index], kind == RoomDefinition.Kind.LOOT, props, damage_scale, hash([layout.zone_seed, piece.index, 91]), _props_root, layout.zone_level)
+		total += int(placed["barrels"]) + int(placed["crates"])
+		if kind == RoomDefinition.Kind.COMBAT:
+			PropScatterer.scatter_cover(pieces[piece.index], props, hash([layout.zone_seed, piece.index, 93]), _cover_root)
+	return total
 
 
 ## Ждёт, пока карта навигации подхватит сетку этой зоны. Карта обновляется в отдельном потоке и в большой зоне

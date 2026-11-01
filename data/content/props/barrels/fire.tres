@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BarrelDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/barrel_definition.gd" id="1_barrel"]
+
+[resource]
+script = ExtResource("1_barrel")
+color = Color(1.0, 0.55, 0.1, 1)
+element = 4
+weight = 1.5
+health = 40.0
+blast_radius = 5.0
+blast_damage = 100.0
+player_damage = 35.0

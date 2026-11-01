@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_floor_worn_001_c.jpg" id="1_b2lk2"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_floor_worn_001_n.png" id="2_mtx5n"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_floor_worn_001_r.jpg" id="3_3ohl6"]
+
+[resource]
+resource_name = "concrete_floor_worn_001"
+albedo_texture = ExtResource("1_b2lk2")
+roughness_texture = ExtResource("3_3ohl6")
+normal_enabled = true
+normal_texture = ExtResource("2_mtx5n")
+texture_filter = 2

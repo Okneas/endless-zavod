@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/worn_corrugated_iron_c.jpg" id="1_yc4ak"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/worn_corrugated_iron_n.png" id="2_ljqtm"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/worn_corrugated_iron_r.jpg" id="3_dm06f"]
+
+[resource]
+resource_name = "worn_corrugated_iron_tri"
+albedo_texture = ExtResource("1_yc4ak")
+roughness_texture = ExtResource("3_dm06f")
+normal_enabled = true
+normal_texture = ExtResource("2_ljqtm")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

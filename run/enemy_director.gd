@@ -159,6 +159,11 @@ func _make_enemy(scene: PackedScene) -> Enemy:
 	enemy.level = _zone_level
 	enemy.health_scale = ZoneMath.enemy_health_scale(run_settings, _zone_level)
 	enemy.damage_scale = ZoneMath.enemy_damage_scale(run_settings, _zone_level)
+	# Префикс (№92): один, шанс растёт с зоной; у элитных и боссов его нет.
+	if enemy.settings.allows_modifier:
+		var prefix: EnemyModifier = Config.data.enemy_modifiers.roll(_rng, _zone_number)
+		if prefix != null:
+			enemy.apply_modifier(prefix)
 	enemy.always_aggro = _settings.combat_alert_all
 	room.add_child(enemy)
 	return enemy

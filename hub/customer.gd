@@ -26,6 +26,8 @@ const AWAY_SHARE: float = 0.6
 const AVOID_OFF_DISTANCE: float = 1.2
 const NAV_REACHED_DISTANCE: float = 0.35
 const REPATH_SECONDS: float = 0.5
+## Цель дальше этого от сетки навигации считается внешней (выход): к ней идём по прямой от края сетки.
+const OFF_MESH_DISTANCE: float = 0.6
 const REACTION_COLORS: Dictionary = {
 	ShopMath.Reaction.CHEAP: Color(0.5, 1.0, 0.55),
 	ShopMath.Reaction.FAIR: Color(1.0, 1.0, 1.0),
@@ -72,6 +74,8 @@ var _mood_label: Label3D
 var _body_material: StandardMaterial3D
 var _agent: NavigationAgent3D
 var _nav_target: Vector3 = Vector3(INF, INF, INF)
+## Цель за сеткой, к которой покупатель уже дошёл до края и идёт прямо.
+var _direct_point: Vector3 = Vector3(INF, INF, INF)
 var _repath_left: float = 0.0
 
 
@@ -228,7 +232,7 @@ func _arrive_at_counter() -> void:
 		_timer = _settings.inspect_time * _settings.not_mine_time_factor
 		return
 	last_matched = true
-	var actual: int = slot.item.get_price()
+	var actual: int = slot.item.get_total_price()
 	# Что не по карману, то и «слишком дорого»: покупатель не станет присматриваться к тому, чего не потянет.
 	last_chance = ShopMath.purchase_chance(slot.price, actual, profile.unwillingness) if slot.price <= profile.budget else 0.0
 	last_reaction = ShopMath.reaction(_settings, slot.price, actual, last_chance)
@@ -346,15 +350,27 @@ func _path_direction(point: Vector3, direct: Vector3, delta: float) -> Vector3:
 	var map: RID = get_world_3d().navigation_map
 	if NavigationServer3D.map_get_iteration_id(map) == 0 or NavigationServer3D.map_get_regions(map).is_empty():
 		return direct
+	# Цель за сеткой (выход за дверью зала): до края сетки по пути, дальше по прямой. Без этого у края путь то обрывался,
+	# то начинался заново, и покупатель переминался у двери, не доходя до точки выхода и не исчезая (№91).
+	if _direct_point.is_equal_approx(point):
+		return direct
+	var edge: Vector3 = NavigationServer3D.map_get_closest_point(map, point)
+	var flat_gap: float = Vector2(edge.x - point.x, edge.z - point.z).length()
+	var navigate_to: Vector3 = point
+	if flat_gap > OFF_MESH_DISTANCE:
+		if Vector2(edge.x - global_position.x, edge.z - global_position.z).length() <= OFF_MESH_DISTANCE:
+			_direct_point = point
+			return direct
+		navigate_to = edge
 	if _agent == null:
 		_agent = NavigationAgent3D.new()
 		_agent.path_desired_distance = NAV_REACHED_DISTANCE
 		_agent.target_desired_distance = NAV_REACHED_DISTANCE
 		add_child(_agent)
 	_repath_left -= delta
-	if _repath_left <= 0.0 or _nav_target.distance_to(point) > 0.3:
-		_agent.target_position = point
-		_nav_target = point
+	if _repath_left <= 0.0 or _nav_target.distance_to(navigate_to) > 0.3:
+		_agent.target_position = navigate_to
+		_nav_target = navigate_to
 		_repath_left = REPATH_SECONDS
 	if _agent.is_navigation_finished():
 		return direct

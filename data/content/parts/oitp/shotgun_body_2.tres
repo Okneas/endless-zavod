@@ -7,11 +7,11 @@
 script = ExtResource("2_i5t5p")
 name_key = "WEAPON_BODY_OITP_SHOTGUN_2"
 weapon_type = 3
-base_damage = 76.0
+base_damage = 106.4
 base_fire_rate = 1.2
 base_magazine_size = 7
 base_reload_time = 2.5
-base_spread_deg = 4.2
+base_spread_deg = 3.36
 base_range = 36.0
 base_recoil_deg = 2.8
 base_aim_time = 0.22

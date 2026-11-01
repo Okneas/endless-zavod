@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/sheet_metal_004_c.jpg" id="1_7qe1s"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/sheet_metal_004_m.jpg" id="2_r11gp"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/sheet_metal_004_n.png" id="3_st0tk"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/sheet_metal_004_r.jpg" id="4_imx2a"]
+
+[resource]
+resource_name = "sheet_metal_004_tri"
+albedo_texture = ExtResource("1_7qe1s")
+metallic = 1.0
+metallic_texture = ExtResource("2_r11gp")
+roughness_texture = ExtResource("4_imx2a")
+normal_enabled = true
+normal_texture = ExtResource("3_st0tk")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

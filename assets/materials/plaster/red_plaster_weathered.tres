@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/red_plaster_weathered_c.jpg" id="1_3qfte"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/red_plaster_weathered_n.png" id="2_q38be"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/red_plaster_weathered_r.jpg" id="3_4b1ty"]
+
+[resource]
+resource_name = "red_plaster_weathered"
+albedo_texture = ExtResource("1_3qfte")
+roughness_texture = ExtResource("3_4b1ty")
+normal_enabled = true
+normal_texture = ExtResource("2_q38be")
+texture_filter = 2

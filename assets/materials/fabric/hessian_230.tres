@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/hessian_230_c.jpg" id="1_w3ufi"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/hessian_230_m.jpg" id="2_1lcur"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/hessian_230_n.png" id="3_5juak"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/hessian_230_r.jpg" id="4_ntatx"]
+
+[resource]
+resource_name = "hessian_230"
+albedo_texture = ExtResource("1_w3ufi")
+metallic = 1.0
+metallic_texture = ExtResource("2_1lcur")
+roughness_texture = ExtResource("4_ntatx")
+normal_enabled = true
+normal_texture = ExtResource("3_5juak")
+texture_filter = 2

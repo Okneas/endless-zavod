@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_c.jpg" id="1_r3aqr"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_n.png" id="2_feou5"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_r.jpg" id="3_w61xn"]
+
+[resource]
+resource_name = "dirty_concrete_tri"
+albedo_texture = ExtResource("1_r3aqr")
+roughness_texture = ExtResource("3_w61xn")
+normal_enabled = true
+normal_texture = ExtResource("2_feou5")
+uv1_scale = Vector3(0.33333334, 0.33333334, 0.33333334)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

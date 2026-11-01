@@ -56,6 +56,8 @@ func _initialize() -> void:
 	root.add_child(_room)
 	_room.get_node("Dummies").queue_free()
 	await _frames(10)
+	# Замеры здоровья без щита: он впитывал бы урон (щиты проверяет test_shields).
+	root.get_node("Inventory").shield = null
 	_player = _room.get_node("Player")
 	await _run()
 	_release_all()

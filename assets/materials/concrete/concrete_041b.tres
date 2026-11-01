@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_041b_c.jpg" id="1_tea8l"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_041b_m.jpg" id="2_vjqno"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_041b_n.png" id="3_bn2dg"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/concrete_041b_r.jpg" id="4_6p7q3"]
+
+[resource]
+resource_name = "concrete_041b"
+albedo_texture = ExtResource("1_tea8l")
+metallic = 1.0
+metallic_texture = ExtResource("2_vjqno")
+roughness_texture = ExtResource("4_6p7q3")
+normal_enabled = true
+normal_texture = ExtResource("3_bn2dg")
+texture_filter = 2

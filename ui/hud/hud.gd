@@ -17,6 +17,8 @@ var _last_level: int = 0
 
 @onready var _hp_bar: ProgressBar = %HpBar
 @onready var _hp_value: Label = %HpValue
+@onready var _shield_row: Control = $Root/Status/Column/ArmorRow
+@onready var _shield_bar: ProgressBar = $Root/Status/Column/ArmorRow/ArmorBar
 @onready var _crosshair: Control = $Root/Crosshair
 @onready var _ammo_arc: Control = $Root/Crosshair/AmmoArc
 @onready var _ammo_counter: Label = %AmmoCounter
@@ -37,6 +39,8 @@ var _zone_label: Label
 var _clock_label: Label
 var _focused: Node3D
 var _pause_menu: PauseMenu
+var _shield_value: Label
+var _shield_flash_tween: Tween
 
 
 func _ready() -> void:
@@ -62,6 +66,10 @@ func _ready() -> void:
 	_player.died.connect(_on_player_died)
 	# Игрок мог уже выставить здоровье до нашего _ready, поэтому читаем текущее значение.
 	_on_health_changed(_player.health, _player.max_health)
+	_make_shield_bar()
+	_player.get_shield().changed.connect(_on_shield_changed)
+	_player.shield_damaged.connect(_on_shield_damaged)
+	_on_shield_changed(_player.get_shield().current, _player.get_shield().maximum)
 	_weapon = _player.get_weapon()
 	_weapon.hit_confirmed.connect(_on_hit_confirmed)
 	_slot_panel.call(&"bind", _weapon, Config.data.inventory)
@@ -72,6 +80,7 @@ func _ready() -> void:
 	_interactor = _player.get_node("Interactor") as PlayerInteractor
 	_interactor.focus_changed.connect(_on_focus_changed)
 	_make_dash_indicator()
+	_make_grenade_indicator()
 	_make_target_panel()
 	Inventory.rejected.connect(func(_item: InventoryItem) -> void: show_pickup(tr("HUD_INVENTORY_FULL"), Color(1.0, 0.3, 0.3)))
 
@@ -88,6 +97,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta: float) -> void:
 	_update_clock()
+	_update_shield_warning()
 	if _player != null and _player.is_dead and shows_death_screen and Input.is_action_just_pressed(&"interact"):
 		_restart()
 		# Перезагрузка сцены убирает HUD из дерева сразу: дальше рисовать нечего.
@@ -144,6 +154,20 @@ func _make_dash_indicator() -> void:
 	indicator.offset_top = DASH_INDICATOR_OFFSET
 	indicator.offset_bottom = DASH_INDICATOR_OFFSET + indicator.size.y
 	indicator.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	$Root.add_child(indicator)
+
+
+# Значок гранаты (№92): справа внизу над счётчиком патронов.
+func _make_grenade_indicator() -> void:
+	var indicator: GrenadeIndicator = GrenadeIndicator.new()
+	indicator.name = "GrenadeIndicator"
+	indicator.set_anchors_preset(Control.PRESET_BOTTOM_RIGHT)
+	indicator.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	indicator.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	indicator.offset_right = -36.0
+	indicator.offset_left = -36.0 - GrenadeIndicator.SIZE
+	indicator.offset_bottom = -104.0
+	indicator.offset_top = -104.0 - (GrenadeIndicator.SIZE + 24.0)
 	$Root.add_child(indicator)
 
 
@@ -228,6 +252,53 @@ func _on_health_changed(current: int, maximum: int) -> void:
 	_hp_bar.max_value = maximum
 	_hp_bar.value = current
 	_hp_value.text = str(current)
+
+
+# Полоса щита (№93) стоит над здоровьем в зарезервированной строке (ArmorRow): синяя, исчезает, если щита в слоте нет. Пока щита
+# меньше low_warning_share, полоса мигает.
+func _make_shield_bar() -> void:
+	var back: StyleBoxFlat = StyleBoxFlat.new()
+	back.bg_color = Color(0.08, 0.08, 0.1, 0.75)
+	back.set_corner_radius_all(3)
+	var fill: StyleBoxFlat = StyleBoxFlat.new()
+	fill.bg_color = Color(0.3, 0.6, 1.0)
+	fill.set_corner_radius_all(3)
+	_shield_bar.add_theme_stylebox_override("background", back)
+	_shield_bar.add_theme_stylebox_override("fill", fill)
+	_shield_value = Label.new()
+	_shield_value.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_shield_value.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	_shield_value.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	_shield_value.add_theme_color_override("font_outline_color", Color.BLACK)
+	_shield_value.add_theme_constant_override("outline_size", 4)
+	_shield_bar.add_child(_shield_value)
+
+
+func _on_shield_changed(current: float, maximum: float) -> void:
+	_shield_row.visible = maximum > 0.0
+	_shield_bar.max_value = maxf(maximum, 1.0)
+	_shield_bar.value = current
+	_shield_value.text = str(ceili(current))
+
+
+func _on_shield_damaged(_amount: float, _from_position: Vector3) -> void:
+	if _shield_flash_tween != null and _shield_flash_tween.is_valid():
+		_shield_flash_tween.kill()
+	_shield_bar.modulate = Color(2.2, 2.2, 2.2)
+	_shield_flash_tween = create_tween()
+	_shield_flash_tween.tween_property(_shield_bar, "modulate", Color.WHITE, 0.25)
+
+
+func _update_shield_warning() -> void:
+	# Предупреждение о низком щите: полоса мигает.
+	if _player == null or not _shield_row.visible:
+		return
+	var shield: PlayerShield = _player.get_shield()
+	var low: bool = shield.get_ratio() <= Config.data.shields.low_warning_share and shield.current < shield.maximum
+	if low and (_shield_flash_tween == null or not _shield_flash_tween.is_running()):
+		_shield_bar.modulate.a = 0.55 + 0.45 * sin(Time.get_ticks_msec() * 0.012)
+	elif not low and (_shield_flash_tween == null or not _shield_flash_tween.is_running()):
+		_shield_bar.modulate.a = 1.0
 
 
 func _on_money_changed(amount: int) -> void:

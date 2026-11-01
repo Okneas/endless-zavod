@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_a0w76"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_uv2cf"]
+
+[resource]
+script = ExtResource("2_uv2cf")
+name_key = "WEAPON_BODY_BAZA_PISTOL_2"
+base_damage = 22.0
+base_fire_rate = 6.0
+base_magazine_size = 12
+base_reload_time = 1.3
+base_spread_deg = 1.7
+base_range = 75.0
+base_recoil_deg = 0.8
+base_aim_time = 0.14
+aim_zoom = 1.4
+manufacturer = ExtResource("1_a0w76")
+weapon_types = Array[int]([0])
+base_price = 130
+gender = 1
+model_size = Vector3(0.06, 0.09, 0.26)
+aim_anchor_position = Vector3(0, 0.062, 0.11)
+optic_aim_anchor_position = Vector3(0, 0.085, 0.02)
+optic_aim_zoom = 1.9
+mount_barrel = Vector3(0, 0.02, -0.13)
+mount_grip = Vector3(0, -0.09, 0.09)
+mount_magazine = Vector3(0, -0.17, 0.09)
+mount_accessory = Vector3(0, -0.03, -0.1)

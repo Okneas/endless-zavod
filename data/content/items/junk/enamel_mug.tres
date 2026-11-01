@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/item_definition.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+name_key = "ITEM_JUNK_ENAMEL_MUG"
+description_key = "ITEM_JUNK_ENAMEL_MUG_DESC"
+category = 4
+max_stack = 10
+base_price = 25
+icon_color = Color(0.9, 0.9, 0.85, 1)
+drop_weight = 3.5

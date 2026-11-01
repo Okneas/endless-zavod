@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/brick_pavement_04_c.jpg" id="1_tyosm"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/brick_pavement_04_n.png" id="2_x0isf"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/brick_pavement_04_r.jpg" id="3_bqnm5"]
+
+[resource]
+resource_name = "brick_pavement_04"
+albedo_texture = ExtResource("1_tyosm")
+roughness_texture = ExtResource("3_bqnm5")
+normal_enabled = true
+normal_texture = ExtResource("2_x0isf")
+texture_filter = 2

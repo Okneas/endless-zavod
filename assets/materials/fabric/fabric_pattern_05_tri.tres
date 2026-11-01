@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_c.jpg" id="1_pohqm"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_n.png" id="2_dom5w"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_r.jpg" id="3_lr6mb"]
+
+[resource]
+resource_name = "fabric_pattern_05_tri"
+albedo_texture = ExtResource("1_pohqm")
+roughness_texture = ExtResource("3_lr6mb")
+normal_enabled = true
+normal_texture = ExtResource("2_dom5w")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

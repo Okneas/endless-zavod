@@ -7,7 +7,7 @@
 script = ExtResource("2_72w86")
 name_key = "WEAPON_BODY_OITP_SEMI_2"
 weapon_type = 5
-base_damage = 28.0
+base_damage = 30.8
 base_fire_rate = 4.5
 base_magazine_size = 20
 base_reload_time = 2.0

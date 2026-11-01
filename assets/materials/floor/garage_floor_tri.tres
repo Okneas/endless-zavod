@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/garage_floor_c.jpg" id="1_v5mce"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/garage_floor_n.png" id="2_roujk"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/garage_floor_r.jpg" id="3_kp7kj"]
+
+[resource]
+resource_name = "garage_floor_tri"
+albedo_texture = ExtResource("1_v5mce")
+roughness_texture = ExtResource("3_kp7kj")
+normal_enabled = true
+normal_texture = ExtResource("2_roujk")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

@@ -177,7 +177,13 @@ func _trader() -> void:
 	_progress.reset()
 	_inventory.clear()
 	_shop.reset()
-	_check(_shop.refresh_trader(1) and _shop.trader_stock.size() == _settings.trader_stock_size, "первая раскладка: %d оружий" % _shop.trader_stock.size())
+	var grenade_count: int = root.get_node("Config").data.grenades.trader_count
+	_check(_shop.refresh_trader(1) and _shop.trader_stock.size() == _settings.trader_stock_size + grenade_count + root.get_node("Config").data.shields.trader_count, "первая раскладка: %d позиций (оружие, гранаты и щиты)" % _shop.trader_stock.size())
+	var grenades_on_sale: int = 0
+	for slot: ShopSlot in _shop.trader_stock:
+		if slot.item.is_grenade():
+			grenades_on_sale += 1
+	_check(grenades_on_sale == grenade_count, "из них гранат %d (GrenadeSettings.trader_count)" % grenades_on_sale)
 	var levels_ok: bool = true
 	var prices_ok: bool = true
 	for slot: ShopSlot in _shop.trader_stock:

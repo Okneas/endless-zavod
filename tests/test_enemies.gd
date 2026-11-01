@@ -133,6 +133,8 @@ func _initialize() -> void:
 	_player.died.connect(func() -> void: _ev["died"] += 1)
 	physics_frame.connect(func() -> void: _tick += 1)
 	_progress.reset()
+	# Замеры здоровья без щита: он впитывал бы урон (щиты проверяет test_shields).
+	root.get_node("Inventory").shield = null
 	await _run()
 	_release_all()
 	print("=== FAILS: ", _fails)
@@ -144,6 +146,7 @@ func _run() -> void:
 	await _test_vulnerability()
 	await _test_elements()
 	await _test_chaser()
+	await _test_no_blocking()
 	await _test_flyer()
 	await _test_turret()
 	await _test_support()
@@ -393,6 +396,22 @@ func _test_chaser() -> void:
 	_clear()
 
 
+# --- Враги не держат игрока: зажатый толпой игрок не мог сдвинуться и погибал.
+func _test_no_blocking() -> void:
+	print("--- Тела врагов не блокируют игрока")
+	_reset_player(PLAYER_POS)
+	for i: int in 6:
+		var angle: float = TAU * float(i) / 6.0
+		_spawn_idle("res://enemies/chaser.tscn", PLAYER_POS + Vector3(sin(angle), 0.0, cos(angle)) * 1.1)
+	await _frames(5)
+	Input.action_press("move_forward")
+	await _secs(1.0)
+	_release_all()
+	_check(_player.global_position.z < PLAYER_POS.z - 3.0, "кольцо врагов вплотную: игрок прошёл сквозь них (сдвиг %.1f м)" % (PLAYER_POS.z - _player.global_position.z))
+	_check(_player.collision_mask & 4 == 0, "маска игрока не содержит слой врагов")
+	_clear()
+
+
 # --- Летающий.
 func _test_flyer() -> void:
 	print("--- Летающий")
@@ -564,10 +583,30 @@ func _test_turret() -> void:
 func _test_support() -> void:
 	print("--- Саппорт (небольшой летающий)")
 	_reset_player(PLAYER_POS)
-	var lonely = _spawn("res://enemies/support.tscn", FAR + Vector3(0.0, 2.0, 0.0))
+	# Вне радиуса нападения без союзников висит на месте и не падает.
+	var idle = _spawn("res://enemies/support.tscn", FAR + Vector3(0.0, 2.0, 0.0))
+	idle.settings = idle.settings.duplicate()
+	idle.settings.aggro_range = 5.0
 	await _secs(0.5)
-	_check(lonely.ally == null and not lonely.get("_beam").visible, "без союзников никого не лечит, луча нет")
-	_check(lonely.motion_mode == CharacterBody3D.MOTION_MODE_FLOATING and not lonely.is_on_floor() and absf(lonely.global_position.y - 2.0) < 0.05, "летает: без союзников висит на месте и не падает")
+	_check(idle.ally == null and not idle.get("_beam").visible, "без союзников никого не лечит, луча нет")
+	_check(idle.motion_mode == CharacterBody3D.MOTION_MODE_FLOATING and not idle.is_on_floor() and absf(idle.global_position.y - 2.0) < 0.05, "летает: вне радиуса нападения висит на месте и не падает")
+	_clear()
+	# №91: без союзника лекарь нападает на игрока: подлетает и бьёт в ближнем бою.
+	var lonely = _spawn("res://enemies/support.tscn", FAR + Vector3(0.0, 2.0, 0.0))
+	var before: float = lonely.global_position.distance_to(_player.global_position)
+	await _secs(1.5)
+	_check(lonely.ally == null and lonely.global_position.distance_to(_player.global_position) < before - 5.0, "без союзников летит к игроку: %.1f -> %.1f м" % [before, lonely.global_position.distance_to(_player.global_position)])
+	lonely.global_position = _player.global_position + Vector3(0.6, 1.0, 0.0)
+	_player.set_health(_player.max_health)
+	await _secs(2.0)
+	_check(_player.health < _player.max_health and not lonely.get("_beam").visible, "добравшись, бьёт игрока в ближнем бою (здоровье %d из %d), луча нет" % [_player.health, _player.max_health])
+	# Появился союзник: возвращается к лечению и перестаёт бить.
+	var buddy = _spawn_idle("res://enemies/chaser.tscn", _player.global_position + Vector3(6.0, 0.0, 0.0))
+	await _secs(1.0)
+	_player.set_health(_player.max_health)
+	_check(lonely.ally == buddy, "появился союзник: лекарь привязался к нему")
+	await _secs(2.0)
+	_check(_player.health == _player.max_health, "с союзником игрока не бьёт")
 	_clear()
 
 	var s: EnemySettings = (load("res://data/content/enemies/support.tres") as EnemySettings)

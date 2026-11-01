@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_c.jpg" id="1_gjqid"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_n.png" id="2_vl3fl"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/dirty_concrete_r.jpg" id="3_t8idb"]
+
+[resource]
+resource_name = "dirty_concrete"
+albedo_texture = ExtResource("1_gjqid")
+roughness_texture = ExtResource("3_t8idb")
+normal_enabled = true
+normal_texture = ExtResource("2_vl3fl")
+texture_filter = 2

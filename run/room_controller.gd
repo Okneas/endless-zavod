@@ -130,6 +130,17 @@ func _spawn_loot() -> void:
 			if rolled != null:
 				ItemPickup.spawn(room, InventoryItem.from_part(rolled, Config.data.weapons), at, Vector3.ZERO)
 		else:
-			Pickup.spawn(room, at, Pickup.Kind.MONEY, float(_rng.randi_range(_settings.loot_money_min, maxi(_settings.loot_money_min, _settings.loot_money_max))))
+			# Последние точки: деньги, а иногда хлам для продажи (№91).
+			var junk: InventoryItem = JunkLoot.roll(_rng, Config.data.props) if _rng.randf() < Config.data.props.loot_junk_chance else null
+			if _rng.randf() < Config.data.grenades.loot_point_chance:
+				var grenades: GrenadeGenerator = GrenadeGenerator.new(Config.data.grenades, Config.data.weapons.quality_scale)
+				ItemPickup.spawn(room, InventoryItem.from_grenade(grenades.generate(_rng, _zone_level)), at, Vector3.ZERO)
+			elif _rng.randf() < Config.data.shields.loot_point_chance:
+				var shields: ShieldGenerator = ShieldGenerator.new(Config.data.shields, Config.data.weapons.quality_scale)
+				ItemPickup.spawn(room, InventoryItem.from_shield(shields.generate(_rng, _zone_level)), at, Vector3.ZERO)
+			elif junk != null:
+				ItemPickup.spawn(room, junk, at, Vector3.ZERO)
+			else:
+				Pickup.spawn(room, at, Pickup.Kind.MONEY, float(_rng.randi_range(_settings.loot_money_min, maxi(_settings.loot_money_min, _settings.loot_money_max))))
 	state = State.DONE
 	loot_spawned.emit()

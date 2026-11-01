@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/corrugated_iron_c.jpg" id="1_ut8xd"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/corrugated_iron_m.jpg" id="2_6m85x"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/corrugated_iron_n.png" id="3_pkgoo"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/corrugated_iron_r.jpg" id="4_6yeos"]
+
+[resource]
+resource_name = "corrugated_iron"
+albedo_texture = ExtResource("1_ut8xd")
+metallic = 1.0
+metallic_texture = ExtResource("2_6m85x")
+roughness_texture = ExtResource("4_6yeos")
+normal_enabled = true
+normal_texture = ExtResource("3_pkgoo")
+texture_filter = 2

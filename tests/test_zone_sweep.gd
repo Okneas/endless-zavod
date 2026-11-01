@@ -65,6 +65,8 @@ func _initialize() -> void:
 	var challenges_run: int = 0
 	var enemies_spawned: int = 0
 	var enemy_kinds: Dictionary = {}
+	var modified_seen: int = 0
+	var modified_forbidden: PackedStringArray = []
 	var walks: int = 0
 	var jumps: int = 0
 	var walked_distance: float = 0.0
@@ -122,6 +124,10 @@ func _initialize() -> void:
 					enemies_spawned += 1
 					var kind: String = enemy.get_script().get_global_name()
 					enemy_kinds[kind] = int(enemy_kinds.get(kind, 0)) + 1
+					if enemy.modifier != null:
+						modified_seen += 1
+						if not enemy.settings.allows_modifier:
+							modified_forbidden.append("%s: %s" % [controller.room.name, kind])
 					var flying: bool = enemy.is_flier()
 					if enemy.test_move(enemy.global_transform.translated(Vector3(0.0, 0.15, 0.0)), Vector3.ZERO, null, 0.001, true):
 						_add(combat_problems, "%s: %s внутри геометрии" % [controller.room.name, kind])
@@ -147,6 +153,10 @@ func _initialize() -> void:
 					_add(combat_problems, "%s: испытание не дало врагов" % title)
 				for enemy in challenge.director.enemies:
 					var kind: String = enemy.get_script().get_global_name()
+					if enemy.modifier != null:
+						modified_seen += 1
+						if not enemy.settings.allows_modifier:
+							modified_forbidden.append("%s: %s" % [title, kind])
 					if enemy.test_move(enemy.global_transform.translated(Vector3(0.0, 0.15, 0.0)), Vector3.ZERO, null, 0.001, true):
 						_add(combat_problems, "%s: %s внутри геометрии" % [title, kind])
 				for round_index: int in 12:
@@ -179,6 +189,7 @@ func _initialize() -> void:
 	_check(nav_problems.is_empty(), "%d зон, %d стыков комнат друг над другом, %d точек комнат: от старта по навигации достижимы все %s" % [zones, joints, points, str(nav_problems)])
 	_check(vertical_locked > 0 and vertical_open_in_fight == 0, "вертикальные стыки комнат с боем закрываются плитой на время боя: закрыто %d плит, непроходимых %d" % [vertical_locked, vertical_locked - vertical_open_in_fight])
 	_check(combat_problems.is_empty() and rooms_fought > 0, "бой в %d комнатах: %d врагов (%s) стоят на свободной земле у сетки навигации, после гибели всех бой закончен и двери открыты %s" % [rooms_fought, enemies_spawned, str(enemy_kinds), str(combat_problems)])
+	_check(modified_seen > 0 and modified_forbidden.is_empty(), "префиксы врагов (№92): среди %d врагов в боях и испытаниях у %d есть префикс, у элитных и боссов его нет %s" % [enemies_spawned, modified_seen, str(modified_forbidden)])
 	_run_settings.wave_pause = _wave_pause_before
 	_check(challenges_run > 0, "испытания пройдены в %d комнатах (шлюзы, эвакуация, босс): враги на местах, двери и портал открываются" % challenges_run)
 	_check(walk_problems.is_empty() and walks > 0, "капсула игрока физически дошла до самой дальней комнаты в %d зонах (около %.0f м пути) %s" % [walks, walked_distance, str(walk_problems)])

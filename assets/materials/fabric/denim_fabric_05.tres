@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_c.jpg" id="1_gcbml"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_m.jpg" id="2_0sptw"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_n.png" id="3_oqgn1"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/denim_fabric_05_r.jpg" id="4_433xp"]
+
+[resource]
+resource_name = "denim_fabric_05"
+albedo_texture = ExtResource("1_gcbml")
+metallic = 1.0
+metallic_texture = ExtResource("2_0sptw")
+roughness_texture = ExtResource("4_433xp")
+normal_enabled = true
+normal_texture = ExtResource("3_oqgn1")
+texture_filter = 2

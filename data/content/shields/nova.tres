@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ShieldDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/shield_definition.gd" id="1_shield"]
+
+[resource]
+script = ExtResource("1_shield")
+name_key = "SHIELD_NOVA"
+name_lower_key = "SHIELD_NOVA_L"
+description_key = "SHIELD_NOVA_DESC"
+kind = 1
+color = Color(0.55, 0.8, 1, 1)
+weight = 1.2
+base_capacity = 48.0
+recharge_delay = 3.5
+recharge_rate = 20.0
+base_price = 160
+effect_damage = 130.0
+effect_radius = 6.0
+effect_cooldown = 0
+effect_element = 2
+effect_chance = 0
+effect_restore = 0

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/item_definition.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+name_key = "ITEM_JUNK_CANNED_STEW"
+description_key = "ITEM_JUNK_CANNED_STEW_DESC"
+category = 4
+max_stack = 10
+base_price = 50
+icon_color = Color(0.7, 0.5, 0.35, 1)
+drop_weight = 2.8

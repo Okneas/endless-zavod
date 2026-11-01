@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/dry_decay_leaves_c.jpg" id="1_6mqov"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/dry_decay_leaves_n.png" id="2_1pif5"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/dry_decay_leaves_r.jpg" id="3_1w3x8"]
+
+[resource]
+resource_name = "dry_decay_leaves"
+albedo_texture = ExtResource("1_6mqov")
+roughness_texture = ExtResource("3_1w3x8")
+normal_enabled = true
+normal_texture = ExtResource("2_1pif5")
+texture_filter = 2

@@ -118,7 +118,7 @@ func _stage_first_run() -> void:
 	await _switch(HUB_PATH)
 	var hub = _scene
 	_check(not _run.active and hub.get_node("Player").get_weapon().instance.is_eternal, "старт в хабе: забега нет, в руках стартовый пистолет")
-	_check(_shop.trader_stock.size() == _shop_settings.trader_stock_size, "торговец разложил товар (%d)" % _shop.trader_stock.size())
+	_check(_shop.trader_stock.size() == _shop_settings.trader_stock_size + _config.data.grenades.trader_count + _config.data.shields.trader_count, "торговец разложил товар: оружие, гранаты и щиты (%d)" % _shop.trader_stock.size())
 	_recorded.clear()
 	hub.enter_run()
 	_check(_recorded == [RUN_PATH], "дверь в забег: смена сцены на забег")
@@ -142,7 +142,7 @@ func _stage_first_run() -> void:
 	result._on_to_shop()
 	_check(_recorded == [HUB_PATH] and not paused, "«Вернуться в магазин»: смена сцены на хаб, пауза снята")
 	await _switch(HUB_PATH)
-	_check(_inventory.items.size() == 3 and _shop.trader_stock.size() == _shop_settings.trader_stock_size, "в хабе лут в рюкзаке, состояние магазина сохранилось")
+	_check(_inventory.items.size() == 3 and _shop.trader_stock.size() == _shop_settings.trader_stock_size + _config.data.grenades.trader_count + _config.data.shields.trader_count, "в хабе лут в рюкзаке, состояние магазина сохранилось")
 
 
 # 2. Продажа покупателю и трата у торговца.

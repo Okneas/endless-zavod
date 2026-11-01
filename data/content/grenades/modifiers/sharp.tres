@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GrenadeModifier" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/grenade_modifier.gd" id="1_mod"]
+
+[resource]
+script = ExtResource("1_mod")
+name_key = "GRENADE_MOD_SHARP"
+stat = 3
+min_value = -0.35
+max_value = -0.15
+kinds = Array[int]([])

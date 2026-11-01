@@ -433,7 +433,7 @@ func _test_screen() -> void:
 	_check(_screen.is_open() and _screen.visible, "по Tab инвентарь открылся")
 	_check(paused == _config.data.pause_in_run and not paused_before, "игра на паузе (флаг pause_in_run = %s)" % str(_config.data.pause_in_run))
 	_check(grid.get_child_count() == _inventory.get_capacity() and grid.columns == _config.data.inventory.columns, "в сетке %d ячеек в %d колонки" % [grid.get_child_count(), grid.columns])
-	_check(_screen.get_node("%EquipmentRows").get_child_count() == 5, "в колонке экипировки пять строк (четыре слота оружия и слот гранат)")
+	_check(_screen.get_node("%EquipmentRows").get_child_count() == 6, "в колонке экипировки шесть строк (четыре слота оружия, слот гранат и слот щита)")
 	_check(_screen.get_node("%CapacityLabel").text == "0/%d" % _inventory.get_capacity(), "счётчик вместимости: «%s»" % _screen.get_node("%CapacityLabel").text)
 	_check(_screen.get_node("%EmptyLabel").visible, "пустой инвентарь подписан")
 	_test_layout()
@@ -739,12 +739,12 @@ func _test_layout() -> void:
 	_check(block.position.y >= title_bottom - 1.0 and block.end.y <= hint_top + 1.0, "блок между заголовком и подсказкой внизу (%.0f - %.0f при %.0f - %.0f)" % [block.position.y, block.end.y, title_bottom, hint_top])
 	var rows: Array = _screen.get_node("%EquipmentRows").get_children()
 	var panel_rect: Rect2 = panels[1].get_global_rect()
-	var rows_ok: bool = rows.size() == 5
+	var rows_ok: bool = rows.size() == 6
 	for row: Control in rows:
 		var row_rect: Rect2 = row.get_global_rect()
 		if absf(row_rect.size.y - rows[0].size.y) > 1.0 or row_rect.position.y < panel_rect.position.y or row_rect.end.y > panel_rect.end.y or row_rect.position.x < panel_rect.position.x or row_rect.end.x > panel_rect.end.x:
 			rows_ok = false
-	_check(rows_ok, "пять строк экипировки одной высоты (%.0f) внутри панели" % rows[0].size.y)
+	_check(rows_ok, "шесть строк экипировки одной высоты (%.0f) внутри панели" % rows[0].size.y)
 	var grid: Control = _screen.get_node("%Grid")
 	var grid_panel_rect: Rect2 = panels[2].get_global_rect()
 	var cells_ok: bool = true

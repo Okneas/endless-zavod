@@ -7,12 +7,12 @@
 script = ExtResource("2_icbt2")
 name_key = "WEAPON_BODY_BAZA_SHOTGUN_2"
 weapon_type = 3
-base_damage = 28.0
+base_damage = 36.4
 base_fire_rate = 4.2
 automatic = true
 base_magazine_size = 12
 base_reload_time = 2.4
-base_spread_deg = 5.2
+base_spread_deg = 4.16
 base_range = 25.0
 base_recoil_deg = 1.5
 base_aim_time = 0.22

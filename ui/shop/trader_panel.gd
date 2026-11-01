@@ -31,7 +31,14 @@ func _build() -> void:
 	for i: int in Shop.trader_stock.size():
 		var slot: ShopSlot = Shop.trader_stock[i]
 		var affordable: bool = Progress.money >= slot.price
-		var subtitle: String = "%s · %s · DPS %d" % [slot.item.get_type_text(), ShopUi.tr_level(slot.item), roundi(slot.item.weapon.get_dps())]
+		var subtitle: String
+		if slot.item.is_shield():
+			subtitle = "%s · %s · %s" % [slot.item.get_type_text(), ShopUi.tr_level(slot.item), tr("CARD_SHIELD_CAPACITY").format({"value": roundi(slot.item.shield.compute_stats().capacity)})]
+		elif slot.item.is_grenade():
+			var grenade_stats: GrenadeInstance.Stats = slot.item.grenade.compute_stats()
+			subtitle = "%s · %s · %s" % [slot.item.get_type_text(), ShopUi.tr_level(slot.item), tr("CARD_GRENADE_COOLDOWN").format({"seconds": "%.0f" % grenade_stats.cooldown})]
+		else:
+			subtitle = "%s · %s · DPS %d" % [slot.item.get_type_text(), ShopUi.tr_level(slot.item), roundi(slot.item.weapon.get_dps())]
 		list.add_child(ShopUi.item_row(slot.item, subtitle, str(slot.price), tr("TRADER_BUY"), _buy.bind(i), affordable))
 	if Inventory.is_full():
 		add_line(tr("HUB_BACKPACK_FULL"), Color(1.0, 0.5, 0.45))

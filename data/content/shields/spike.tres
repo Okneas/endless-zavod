@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ShieldDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/shield_definition.gd" id="1_shield"]
+
+[resource]
+script = ExtResource("1_shield")
+name_key = "SHIELD_SPIKE"
+name_lower_key = "SHIELD_SPIKE_L"
+description_key = "SHIELD_SPIKE_DESC"
+kind = 2
+color = Color(0.85, 0.6, 1, 1)
+weight = 1.2
+base_capacity = 48.0
+recharge_delay = 3.5
+recharge_rate = 20.0
+base_price = 150
+effect_damage = 45.0
+effect_radius = 3.5
+effect_cooldown = 0.4
+effect_element = 0
+effect_chance = 0
+effect_restore = 0

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/red_bricks_04_c.jpg" id="1_d3g2v"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/red_bricks_04_n.png" id="2_0l61k"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/red_bricks_04_r.jpg" id="3_mh5o8"]
+
+[resource]
+resource_name = "red_bricks_04_tri"
+albedo_texture = ExtResource("1_d3g2v")
+roughness_texture = ExtResource("3_mh5o8")
+normal_enabled = true
+normal_texture = ExtResource("2_0l61k")
+uv1_scale = Vector3(0.6666667, 0.6666667, 0.6666667)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

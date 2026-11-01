@@ -70,7 +70,7 @@ static func scroll_list(width: float, height: float) -> VBoxContainer:
 
 ## Подпись предмета в строках: тип и уровень (у оружия), тип детали и производитель (у деталей).
 static func describe(item: InventoryItem) -> String:
-	if item.weapon != null:
+	if item.weapon != null or item.grenade != null or item.shield != null:
 		return "%s · %s" % [item.get_type_text(), tr_level(item)]
 	if item.part != null:
 		return "%s · %s" % [item.get_type_text(), item.get_maker_text()]

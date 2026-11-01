@@ -308,7 +308,7 @@ ITEM_MEDKIT,Аптечка
 ITEM_MEDKIT_DESC,Восстанавливает здоровье. Применяется из инвентаря.
 INV_TITLE,Инвентарь
 INV_EQUIPMENT,Экипировка
-INV_GRENADE_SLOT,Граната (после прототипа)
+INV_GRENADE_SLOT,Нет гранаты
 INV_EMPTY_SLOT,Пусто
 INV_EMPTY_GRID,В инвентаре пусто
 INV_CAPACITY,{used}/{max}
@@ -504,3 +504,129 @@ DBG_LEVEL_UP,+1 уровень персонажа
 DBG_WORLD,Уровень мира
 DBG_SEED,Сид зон (0 — случайный)
 DBG_NOTE,"Панель отладки, только для разработки: в финальную сборку не попадает"
+ITEM_CATEGORY_JUNK,Хлам
+ITEM_CATEGORY_GRENADE,Гранаты
+ITEM_JUNK_CONDENSED_MILK,Банка сгущёнки
+ITEM_JUNK_CONDENSED_MILK_DESC,"Сгущённое молоко с синей этикеткой. В заводской столовой его не видели с прошлой пятилетки."
+ITEM_JUNK_MICROCHIP,Микросхема К155ЛА3
+ITEM_JUNK_MICROCHIP_DESC,"Четыре логических вентиля в керамическом корпусе. Коллекционеры платят за позолоченные ножки."
+ITEM_JUNK_RADIO_TUBE,Радиолампа 6Н2П
+ITEM_JUNK_RADIO_TUBE_DESC,"Двойной триод в стеклянной колбе. Светится, пока в цехе ещё есть напряжение."
+ITEM_JUNK_COPPER_COIL,Катушка медного провода
+ITEM_JUNK_COPPER_COIL_DESC,"Эмалированный провод в бумажной обмотке. Тяжёлая и почти нетронутая."
+ITEM_JUNK_ENAMEL_MUG,Эмалированная кружка
+ITEM_JUNK_ENAMEL_MUG_DESC,"С отколотым краем и надписью «Цех №4». Всё ещё хранит чьё-то тепло."
+ITEM_JUNK_SHOCK_WORKER_BADGE,Значок «Ударник труда»
+ITEM_JUNK_SHOCK_WORKER_BADGE_DESC,"Красная эмаль, латунная булавка. Такие дают за перевыполнение плана."
+ITEM_JUNK_TAPE_REEL,Бобина магнитной ленты
+ITEM_JUNK_TAPE_REEL_DESC,"Запись смены диспетчера: треск, гудки и чей-то кашель. Сохранилась лучше людей."
+ITEM_JUNK_WRISTWATCH,Часы «Полёт»
+ITEM_JUNK_WRISTWATCH_DESC,"Механические, на двадцать три камня. Идут с точностью до минуты в сутки, ремешок потёрт."
+ITEM_JUNK_THERMOS,Термос с рисунком
+ITEM_JUNK_THERMOS_DESC,"Металлическая колба и крышка-стакан. Утренний чай в нём до сих пор бы не остыл."
+ITEM_JUNK_PHOTO_FILM,Фотоплёнка «Свема»
+ITEM_JUNK_PHOTO_FILM_DESC,"Неиспользованная катушка. Срок годности вышел при прошлом директоре."
+ITEM_JUNK_TRANSISTOR_RADIO,Приёмник «Спидола»
+ITEM_JUNK_TRANSISTOR_RADIO_DESC,"Транзисторный, три диапазона. Ловит только помехи и гимн."
+ITEM_JUNK_CANNED_STEW,Банка тушёнки
+ITEM_JUNK_CANNED_STEW_DESC,"Говяжья, ГОСТ на крышке. Вздутые банки здесь не редкость, эта целая."
+ITEM_JUNK_CAPACITOR,Конденсатор К50-6
+ITEM_JUNK_CAPACITOR_DESC,"Электролитический, в алюминиевом стакане. Ёмкость уже не проверить."
+ITEM_JUNK_BRASS_GEAR,Латунная шестерня
+ITEM_JUNK_BRASS_GEAR_DESC,"Из механизма какого-то автомата. Зубья почти не стёрты."
+ITEM_JUNK_ELEPHANT_TEA,Пачка чая «Со слоном»
+ITEM_JUNK_ELEPHANT_TEA_DESC,"Индийский байховый. Чай давно потерял запах, а упаковка нет."
+ITEM_JUNK_PENNANT,Вымпел победителя соцсоревнования
+ITEM_JUNK_PENNANT_DESC,"Красный бархат и золотая бахрома. Висел над конвейером, пока конвейер не встал."
+GRENADE_FRAG,Осколочная граната
+GRENADE_FRAG_L,осколочная граната
+GRENADE_FRAG_DESC,"Отскакивает от поверхностей и взрывается по запалу. Урон по площади."
+GRENADE_ACID,Кислотная граната
+GRENADE_ACID_L,кислотная граната
+GRENADE_ACID_DESC,"Взрывается от касания врага или по запалу и накладывает кислоту: враги получают больше урона."
+GRENADE_ELECTRIC,Электрическая граната
+GRENADE_ELECTRIC_L,электрическая граната
+GRENADE_ELECTRIC_DESC,"Взрывается от касания врага или по запалу и накладывает ток: урон со временем, сильнее у скопления врагов."
+GRENADE_FROST,Морозная граната
+GRENADE_FROST_L,морозная граната
+GRENADE_FROST_DESC,"Взрывается от касания врага или по запалу и замедляет врагов."
+GRENADE_FIRE,Огненная граната
+GRENADE_FIRE_L,огненная граната
+GRENADE_FIRE_DESC,"Взрывается от касания врага или по запалу и поджигает врагов (огонь пока без урона со временем)."
+GRENADE_STICKY,Липкая граната
+GRENADE_STICKY_L,липкая граната
+GRENADE_STICKY_DESC,"Прилипает к врагу или поверхности и взрывается через запал."
+GRENADE_CLUSTER,Кассетная граната
+GRENADE_CLUSTER_L,кассетная граната
+GRENADE_CLUSTER_DESC,"При первом ударе разлетается на малые гранаты, каждая взрывается сама."
+GRENADE_SINGULARITY,Граната-сингулярность
+GRENADE_SINGULARITY_L,граната-сингулярность
+GRENADE_SINGULARITY_DESC,"При падении стягивает врагов к центру, а потом взрывается."
+GRENADE_MOD_POWERFUL,Мощная
+GRENADE_MOD_WIDE,Широкая
+GRENADE_MOD_SWIFT,Скорая
+GRENADE_MOD_SHARP,Резкая
+GRENADE_MOD_MULTI,Многозарядная
+GRENADE_MOD_LINGERING,Затяжная
+GRENADE_STAT_DAMAGE,урон
+GRENADE_STAT_RADIUS,радиус
+GRENADE_STAT_COOLDOWN,перезарядка
+GRENADE_STAT_FUSE,запал
+GRENADE_STAT_BOMBLETS,малые гранаты
+GRENADE_STAT_PULL,стягивание
+ENEMY_MOD_BRUTE,Громила
+ENEMY_MOD_RUNNER,Скороход
+ENEMY_MOD_IRONCLAD,Броненосец
+ENEMY_MOD_BERSERK,Берсерк
+ENEMY_MOD_REGENERATOR,Регенератор
+ENEMY_MOD_BOMBER,Подрывник
+ENEMY_MODIFIED_NAME,"{prefix} {name}"
+CARD_GRENADE_TYPE,Граната
+CARD_GRENADE_DAMAGE,"Урон: {value}"
+CARD_GRENADE_RADIUS,"Радиус: {value} м"
+CARD_GRENADE_COOLDOWN,"Перезарядка {seconds} с"
+CARD_GRENADE_FUSE,"Запал: {value} с"
+CARD_GRENADE_BOMBLETS,"Малых гранат: {value}"
+CARD_GRENADE_PULL,"Стягивание: {value} с"
+CARD_GRENADE_ELEMENT,"Стихия: {name}"
+CARD_GRENADE_MODIFIER,"{name}: {stat} {value}"
+DBG_GIVE_GRENADE,Выдать гранату
+SHIELD_STANDARD,Стандартный щит
+SHIELD_STANDARD_L,стандартный щит
+SHIELD_STANDARD_DESC,"Обычный щит: впитывает урон первым и сам восстанавливается, если какое-то время не получать урон."
+SHIELD_HEAVY,Тяжёлый щит
+SHIELD_HEAVY_L,тяжёлый щит
+SHIELD_HEAVY_DESC,"Большая ёмкость, но восстанавливается медленно и после долгой паузы."
+SHIELD_LIGHT,Лёгкий щит
+SHIELD_LIGHT_L,лёгкий щит
+SHIELD_LIGHT_DESC,"Небольшая ёмкость, зато быстро возвращается к бою."
+SHIELD_NOVA,Щит-нова
+SHIELD_NOVA_L,щит-нова
+SHIELD_NOVA_DESC,"Когда щит падает до нуля, вокруг вас взрыв, который ранит врагов."
+SHIELD_SPIKE,Щит-шип
+SHIELD_SPIKE_L,щит-шип
+SHIELD_SPIKE_DESC,"Каждое попадание, которое впитал щит, ранит врагов вплотную."
+SHIELD_ABSORB,Щит-поглотитель
+SHIELD_ABSORB_L,щит-поглотитель
+SHIELD_ABSORB_DESC,Иногда полностью поглощает попадание и возвращает щиту часть урона.
+SHIELD_MOD_CAPACIOUS,Ёмкий
+SHIELD_MOD_SWIFT,Быстрый
+SHIELD_MOD_RESPONSIVE,Отзывчивый
+SHIELD_MOD_POTENT,Мощный
+SHIELD_STAT_CAPACITY,ёмкость
+SHIELD_STAT_RATE,скорость восстановления
+SHIELD_STAT_DELAY,задержка восстановления
+SHIELD_STAT_EFFECT,особенность
+CARD_SHIELD_TYPE,Щит
+CARD_SHIELD_CAPACITY,Ёмкость: {value}
+CARD_SHIELD_DELAY,Восстановление через {seconds} с
+CARD_SHIELD_RATE,Восстановление: {value} в секунду
+CARD_SHIELD_NOVA,"Нова: {value} урона в радиусе {radius} м, когда щит упал"
+CARD_SHIELD_SPIKE,Шипы: {value} урона врагам в радиусе {radius} м при каждом попадании
+CARD_SHIELD_ABSORB,Поглощение: шанс {value}% свести попадание на нет
+CARD_SHIELD_MODIFIER,{name}: {stat} {value}
+INV_SHIELD_SLOT,Нет щита
+ITEM_CATEGORY_SHIELD,Щиты
+DBG_GIVE_SHIELD,Выдать щит
+ENEMY_MOD_SHIELDED,Щитоносный
+HUD_SHIELD,Щит

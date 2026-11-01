@@ -7,11 +7,11 @@
 script = ExtResource("2_31ag3")
 name_key = "WEAPON_BODY_OITP_SNIPER_1"
 weapon_type = 7
-base_damage = 130.0
+base_damage = 136.5
 base_fire_rate = 0.9
 base_magazine_size = 5
 base_reload_time = 2.8
-base_spread_deg = 0.35
+base_spread_deg = 0.49
 base_range = 300.0
 base_recoil_deg = 4.0
 base_aim_time = 0.38

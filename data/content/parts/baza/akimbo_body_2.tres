@@ -7,12 +7,12 @@
 script = ExtResource("2_l2mty")
 name_key = "WEAPON_BODY_BAZA_AKIMBO_2"
 weapon_type = 2
-base_damage = 11.0
+base_damage = 12.3
 base_fire_rate = 11.0
 automatic = true
 base_magazine_size = 36
 base_reload_time = 2.2
-base_spread_deg = 3.0
+base_spread_deg = 2.01
 base_range = 45.0
 base_recoil_deg = 0.4
 base_aim_time = 0.18

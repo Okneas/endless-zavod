@@ -6,11 +6,11 @@
 [resource]
 script = ExtResource("2_dldct")
 name_key = "WEAPON_BODY_SELHOZ_PISTOL_3"
-base_damage = 48.0
+base_damage = 63.8
 base_fire_rate = 1.8
 base_magazine_size = 4
 base_reload_time = 2.0
-base_spread_deg = 4.0
+base_spread_deg = 3.2
 base_range = 22.0
 base_recoil_deg = 2.4
 base_aim_time = 0.16

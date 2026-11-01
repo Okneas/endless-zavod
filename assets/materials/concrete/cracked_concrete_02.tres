@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/cracked_concrete_02_c.jpg" id="1_yg8xl"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/cracked_concrete_02_n.png" id="2_e5ujl"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/cracked_concrete_02_r.jpg" id="3_4upr5"]
+
+[resource]
+resource_name = "cracked_concrete_02"
+albedo_texture = ExtResource("1_yg8xl")
+roughness_texture = ExtResource("3_4upr5")
+normal_enabled = true
+normal_texture = ExtResource("2_e5ujl")
+texture_filter = 2

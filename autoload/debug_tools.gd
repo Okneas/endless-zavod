@@ -67,6 +67,20 @@ func give_item() -> bool:
 	return true
 
 
+## Случайная граната уровня персонажа в рюкзак (№92).
+func give_grenade() -> bool:
+	var generator: GrenadeGenerator = GrenadeGenerator.new(Config.data.grenades, Config.data.weapons.quality_scale)
+	Inventory.add(InventoryItem.from_grenade(generator.generate(_rng, Progress.level)))
+	return true
+
+
+## Случайный щит уровня персонажа в рюкзак (№93).
+func give_shield() -> bool:
+	var generator: ShieldGenerator = ShieldGenerator.new(Config.data.shields, Config.data.weapons.quality_scale)
+	Inventory.add(InventoryItem.from_shield(generator.generate(_rng, Progress.level)))
+	return true
+
+
 func give_money(amount: int) -> void:
 	Progress.add_money(amount)
 

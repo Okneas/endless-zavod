@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="GrenadeDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/grenade_definition.gd" id="1_grenade"]
+
+[resource]
+script = ExtResource("1_grenade")
+name_key = "GRENADE_SINGULARITY"
+name_lower_key = "GRENADE_SINGULARITY_L"
+description_key = "GRENADE_SINGULARITY_DESC"
+kind = 3
+element = 0
+color = Color(0.6, 0.35, 0.95, 1)
+weight = 1.2
+base_damage = 150.0
+blast_radius = 7.0
+fuse_time = 2.0
+explodes_on_enemy = false
+cooldown = 18.0
+base_price = 200
+bounciness = 0.2
+bomblets = 0
+bomblet_damage_share = 0
+bomblet_speed = 0
+pull_time = 2.5
+pull_speed = 6.0

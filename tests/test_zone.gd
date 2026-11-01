@@ -182,7 +182,11 @@ func _test_build() -> void:
 	_check(labels == layout.room_count(), "у каждой комнаты пометка типа (%d)" % labels)
 	var spawn: Marker3D = _builder.player_spawn
 	_check(spawn != null and _player.global_position.distance_to(spawn.global_position) < 1.0, "игрок поставлен на старт")
-	await _frames(30)
+	# Игрок появляется чуть над полом и приземляется за 30-40 кадров: ждём приземления, но не дольше секунды.
+	for i: int in 120:
+		if i >= 30 and _player.is_on_floor():
+			break
+		await physics_frame
 	_check(_player.is_on_floor(), "игрок стоит на полу стартовой комнаты")
 	_check(not _scene.get_node("Loading").visible and _scene.get_node("Status/Label").text.contains(str(layout.zone_seed)), "экран загрузки убран, в строке состояния сид %d" % layout.zone_seed)
 	_check(layout.zone_level == ZoneMath.zone_level(_settings, _settings.world_level_start, 1), "уровень зоны %d по формуле" % layout.zone_level)
@@ -439,13 +443,17 @@ func _test_loot() -> void:
 			level_ok = false
 	_check(level_ok, "уровень оружия равен уровню зоны %d" % _builder.layout.zone_level)
 	var money: int = 0
+	var junk: int = 0
 	var gained: int = root.get_node("Progress").money - money_before
 	for child: Node in _builder.pieces[piece.index].get_children():
 		if child.get_script() != null and child.get_script().get_global_name() == "Pickup":
 			money += 1
+		# Хлам (№91) иногда лежит вместо монет на точке денег.
+		elif child.get_script() != null and child.get_script().get_global_name() == "ItemPickup" and child.item.definition != null and child.item.definition.category == ItemDefinition.Category.JUNK:
+			junk += 1
 	# Часть монет игрок успевает подобрать сам (магнит), поэтому смотрим и остаток на полу, и прирост денег.
 	var money_points: int = maxi(markers - weapons.size() - parts.size(), 0)
-	_check(money <= money_points and (money_points == 0 or money > 0 or gained >= _settings.loot_money_min), "остальные точки награды (%d) дают деньги: на полу %d, подобрано %d" % [money_points, money, gained])
+	_check(money + junk <= money_points and (money_points == 0 or money + junk > 0 or gained >= _settings.loot_money_min), "остальные точки награды (%d) дают деньги или хлам: монет на полу %d, хлама %d, подобрано денег %d" % [money_points, money, junk, gained])
 	_player.global_position = _builder.player_spawn.global_position
 	await _frames(10)
 	var again: int = get_nodes_in_group(&"item_pickups").size()

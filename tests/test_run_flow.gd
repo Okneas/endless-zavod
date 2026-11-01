@@ -152,6 +152,19 @@ func _test_start() -> void:
 	_check(not _hud._death_screen.visible and not _hud.shows_death_screen, "собственный экран смерти HUD выключен: его заменяет экран итогов")
 	_check(_hud._zone_label.visible and _hud._zone_label.text.contains("1/%d" % _settings.zones_in_department), "в HUD видна зона: «%s»" % _hud._zone_label.text.strip_edges())
 	_check(_has_kind(_scene.layout, RoomDefinition.Kind.GATE) and _scene.layout.count(RoomDefinition.Kind.GATE) == 1, "в зоне 1 есть ровно один шлюз")
+	# Бочки и ящики (№91): только в боевых комнатах и кладовых, в стартовой, шлюзе, эвакуации, боссе и магазине их нет.
+	var props_root: Node = _builder.get_node_or_null("Props")
+	var props_total: int = props_root.get_child_count() if props_root != null else 0
+	var misplaced: int = 0
+	for prop: Node3D in props_root.get_children() if props_root != null else []:
+		var inside_allowed: bool = false
+		for piece: PlacedPiece in _scene.layout.pieces:
+			var room: RoomPiece = _builder.pieces[piece.index]
+			if room.get_bounds().has_point(room.to_local(prop.global_position)) and (piece.kind() == RoomDefinition.Kind.COMBAT or piece.kind() == RoomDefinition.Kind.LOOT):
+				inside_allowed = true
+		if not inside_allowed:
+			misplaced += 1
+	_check(props_total > 0 and misplaced == 0, "в зоне расставлены бочки и ящики (%d), все в боевых комнатах и кладовых" % props_total)
 
 
 # --- Шлюз с волнами.

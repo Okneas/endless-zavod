@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/plaster_007_c.jpg" id="1_dphwb"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/plaster_007_n.png" id="2_ajjbd"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/plaster_007_r.jpg" id="3_36ko6"]
+
+[resource]
+resource_name = "plaster_007_tri"
+albedo_texture = ExtResource("1_dphwb")
+roughness_texture = ExtResource("3_36ko6")
+normal_enabled = true
+normal_texture = ExtResource("2_ajjbd")
+uv1_scale = Vector3(0.33333334, 0.33333334, 0.33333334)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

@@ -7,11 +7,11 @@
 script = ExtResource("2_ioyrr")
 name_key = "WEAPON_BODY_UDARNIK_SHOTGUN_1"
 weapon_type = 3
-base_damage = 110.0
+base_damage = 99.0
 base_fire_rate = 2.5
 base_magazine_size = 2
 base_reload_time = 2.4
-base_spread_deg = 5.5
+base_spread_deg = 4.4
 base_range = 25.0
 base_recoil_deg = 4.0
 base_aim_time = 0.26

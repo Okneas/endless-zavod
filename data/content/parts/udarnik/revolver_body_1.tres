@@ -7,10 +7,10 @@
 script = ExtResource("2_ie1hp")
 name_key = "WEAPON_BODY_UDARNIK_REVOLVER_1"
 weapon_type = 1
-base_damage = 55.0
+base_damage = 74.2
 base_fire_rate = 2.0
 base_magazine_size = 6
-base_reload_time = 2.6
+base_reload_time = 2.08
 base_spread_deg = 1.0
 base_range = 90.0
 base_recoil_deg = 2.2

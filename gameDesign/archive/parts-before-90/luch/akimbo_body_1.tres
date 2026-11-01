@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_64qkh"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_4o1oh"]
+
+[resource]
+script = ExtResource("2_4o1oh")
+name_key = "WEAPON_BODY_LUCH_AKIMBO_1"
+weapon_type = 2
+base_damage = 13.0
+base_fire_rate = 9.0
+automatic = true
+base_magazine_size = 28
+base_reload_time = 2.4
+base_spread_deg = 2.6
+base_range = 50.0
+base_recoil_deg = 0.5
+base_aim_time = 0.2
+aim_zoom = 1.3
+manufacturer = ExtResource("1_64qkh")
+weapon_types = Array[int]([2])
+base_price = 120
+gender = 1
+model_size = Vector3(0.06, 0.09, 0.26)
+aim_anchor_position = Vector3(0, 0.062, 0.11)
+second_model_offset = Vector3(-0.4, 0, 0)
+second_aim_offset = Vector3(-0.26, 0, 0)
+dual_aim_tilt_deg = 10.0
+mount_barrel = Vector3(0, 0.02, -0.13)
+mount_grip = Vector3(0, -0.09, 0.09)
+mount_magazine = Vector3(0, -0.17, 0.09)
+mount_accessory = Vector3(0, -0.03, -0.1)

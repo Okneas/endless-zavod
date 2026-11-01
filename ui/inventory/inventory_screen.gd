@@ -72,7 +72,7 @@ func _ready() -> void:
 		cell.mouse_exited.connect(_clear_hover.bind(cell))
 		_grid.add_child(cell)
 		_cells.append(cell)
-	for i: int in 5:
+	for i: int in 6:
 		var row: EquipmentRow = EquipmentRow.new()
 		row.size_flags_vertical = Control.SIZE_EXPAND_FILL
 		row.mouse_entered.connect(_set_hover.bind(row))
@@ -89,6 +89,8 @@ func _ready() -> void:
 	_filter_option.item_selected.connect(_on_filter_selected)
 	_direction_button.pressed.connect(_on_direction_pressed)
 	Inventory.changed.connect(_refresh)
+	Inventory.grenade_changed.connect(_refresh)
+	Inventory.shield_changed.connect(_refresh)
 	_make_payment_box()
 	# Карточка поверх всего, в том числе подсказки внизу и панели оплаты (её добавляем выше, до подъёма).
 	_card.get_parent().move_child(_card, -1)
@@ -269,7 +271,10 @@ func _refresh() -> void:
 		row.setup(i, weapon.slots[i], level, tr("INV_EMPTY_SLOT"))
 		row.active = i == weapon.active_slot
 		row.selected = i == _target_slot or (shows_target and i == target)
-	_rows[4].setup(4, null, level, tr("INV_GRENADE_SLOT"), true)
+	_rows[4].setup_grenade(Inventory.grenade, level, tr("INV_GRENADE_SLOT"))
+	_rows[4].selected = false
+	_rows[5].setup_shield(Inventory.shield, level, tr("INV_SHIELD_SLOT"))
+	_rows[5].selected = false
 	_preview.show_weapon(weapon.instance)
 	_show_card()
 
@@ -297,7 +302,19 @@ func _show_card() -> void:
 		context["can_equip"] = InventoryActions.can_equip(item)
 		context["can_drop"] = not item.is_eternal()
 		context["can_use"] = item.definition != null and item.definition.heal_amount > 0.0 and _player.health < _player.max_health
-	elif row != null and not row.locked and weapon.slots[row.slot] != null:
+	elif row != null and row.is_shield_row and Inventory.shield != null:
+		if _equipped_wrapper == null or _equipped_wrapper.shield != Inventory.shield:
+			_equipped_wrapper = InventoryItem.from_shield(Inventory.shield)
+		item = _equipped_wrapper
+		context["equipped"] = true
+		context["can_unequip"] = not Inventory.is_full()
+	elif row != null and row.is_grenade_row and Inventory.grenade != null:
+		if _equipped_wrapper == null or _equipped_wrapper.grenade != Inventory.grenade:
+			_equipped_wrapper = InventoryItem.from_grenade(Inventory.grenade)
+		item = _equipped_wrapper
+		context["equipped"] = true
+		context["can_unequip"] = not Inventory.is_full()
+	elif row != null and not row.locked and not row.is_grenade_row and not row.is_shield_row and weapon.slots[row.slot] != null:
 		if _equipped_wrapper == null or _equipped_wrapper.weapon != weapon.slots[row.slot]:
 			_equipped_wrapper = InventoryItem.from_weapon(weapon.slots[row.slot])
 		item = _equipped_wrapper
@@ -388,12 +405,16 @@ func _on_equip_pressed() -> void:
 		return
 	if cell != null and cell.item != null:
 		var item: InventoryItem = cell.item
-		if item.is_weapon():
+		if item.is_shield():
+			InventoryActions.equip_shield(_player, item)
+		elif item.is_grenade():
+			InventoryActions.equip_grenade(_player, item)
+		elif item.is_weapon():
 			if InventoryActions.equip(_player, item, _effective_target()):
 				_target_slot = -1
 		elif InventoryActions.use(_player, item):
 			get_tree().call_group(&"hud", &"show_pickup", tr("HUD_ITEM_USED").format({"name": item.get_display_name()}), Color.WHITE)
-	elif row != null and not row.locked:
+	elif row != null and not row.locked and not row.is_grenade_row and not row.is_shield_row:
 		_target_slot = -1 if _target_slot == row.slot else row.slot
 	_refresh()
 
@@ -411,7 +432,11 @@ func _on_unequip_pressed() -> void:
 	if _payment:
 		return
 	var row: EquipmentRow = _hover as EquipmentRow
-	if row != null and not row.locked and row.weapon != null:
+	if row != null and row.is_shield_row:
+		InventoryActions.unequip_shield()
+	elif row != null and row.is_grenade_row:
+		InventoryActions.unequip_grenade()
+	elif row != null and not row.locked and row.weapon != null:
 		InventoryActions.unequip(_player, row.slot)
 	_refresh()
 
@@ -442,4 +467,7 @@ func _fill_options() -> void:
 	_filter_option.add_item(tr("ITEM_CATEGORY_CONSUMABLE"), InventoryView.Filter.CONSUMABLE)
 	_filter_option.add_item(tr("ITEM_CATEGORY_MATERIAL"), InventoryView.Filter.MATERIAL)
 	_filter_option.add_item(tr("ITEM_CATEGORY_PART"), InventoryView.Filter.PART)
+	_filter_option.add_item(tr("ITEM_CATEGORY_JUNK"), InventoryView.Filter.JUNK)
+	_filter_option.add_item(tr("ITEM_CATEGORY_GRENADE"), InventoryView.Filter.GRENADE)
+	_filter_option.add_item(tr("ITEM_CATEGORY_SHIELD"), InventoryView.Filter.SHIELD)
 	_direction_button.text = tr("INV_ASCENDING")

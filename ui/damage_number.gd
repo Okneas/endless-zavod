@@ -8,6 +8,8 @@ const RISE_HEIGHT: float = 0.9
 const LIFETIME: float = 0.75
 const COLOR_DEFAULT: Color = Color(1.0, 1.0, 1.0)
 const COLOR_CRIT: Color = Color(1.0, 0.85, 0.2)
+## Цифра урона, который целиком впитал щит врага (№93).
+const COLOR_SHIELD: Color = Color(0.45, 0.65, 1.0)
 ## Размер цифр дробин относительно обычной цифры и их разброс по высоте.
 const PELLET_SCALE: float = 0.7
 const PELLET_SPREAD: float = 0.35
@@ -21,13 +23,14 @@ const ELEMENT_COLORS: Dictionary = {
 
 ## Цифры попадания: одна на цель, а у выстрела с несколькими дробинами по цифре на каждую дробину.
 ## final_amount: итоговый урон по цели после уязвимости и стихий, он делится между дробинами пропорционально.
-static func spawn_hit(parent: Node, info: DamageInfo, final_amount: float) -> void:
+## on_shield: весь урон впитал щит цели, цифры синие.
+static func spawn_hit(parent: Node, info: DamageInfo, final_amount: float, on_shield: bool = false) -> void:
 	if info.pellets.size() <= 1:
-		spawn(parent, info.hit_position, final_amount, info.is_crit, info.element)
+		spawn(parent, info.hit_position, final_amount, info.is_crit, info.element, 1.0, on_shield)
 		return
 	var shown: Array[int] = _split_whole(info.pellets, final_amount)
 	for i: int in info.pellets.size():
-		spawn(parent, info.pellets[i].point, float(shown[i]), info.pellets[i].is_crit, info.element, PELLET_SCALE)
+		spawn(parent, info.pellets[i].point, float(shown[i]), info.pellets[i].is_crit, info.element, PELLET_SCALE, on_shield)
 
 
 # Урон по дробинам целыми числами так, чтобы цифры в сумме давали округлённый урон по цели (метод наибольших остатков).
@@ -55,7 +58,7 @@ static func _split_whole(pellets: Array[PelletHit], final_amount: float) -> Arra
 	return whole
 
 
-static func spawn(parent: Node, position: Vector3, amount: float, is_crit: bool, element: CombatEnums.Element, size_scale: float = 1.0) -> DamageNumber:
+static func spawn(parent: Node, position: Vector3, amount: float, is_crit: bool, element: CombatEnums.Element, size_scale: float = 1.0, on_shield: bool = false) -> DamageNumber:
 	if parent == null or not parent.is_inside_tree():
 		return null
 	var number: DamageNumber = DamageNumber.new()
@@ -69,6 +72,8 @@ static func spawn(parent: Node, position: Vector3, amount: float, is_crit: bool,
 	number.outline_render_priority = 9
 	if is_crit:
 		number.modulate = COLOR_CRIT
+	elif on_shield:
+		number.modulate = COLOR_SHIELD
 	else:
 		number.modulate = ELEMENT_COLORS.get(element, COLOR_DEFAULT)
 	parent.add_child(number)

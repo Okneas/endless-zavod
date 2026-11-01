@@ -26,3 +26,6 @@ desktop.ini
 gameDesign/.obsidian/workspace.json
 gameDesign/.obsidian/workspace-mobile.json
 gameDesign/.obsidian/cache
+
+# Резервные копии Blender
+*.blend1

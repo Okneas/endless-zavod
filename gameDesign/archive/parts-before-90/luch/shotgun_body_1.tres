@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_yrpoa"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_pw7jl"]
+
+[resource]
+script = ExtResource("2_pw7jl")
+name_key = "WEAPON_BODY_LUCH_SHOTGUN_1"
+weapon_type = 3
+base_damage = 34.0
+base_fire_rate = 3.6
+automatic = true
+base_magazine_size = 10
+base_reload_time = 2.6
+base_spread_deg = 4.8
+base_range = 28.0
+base_recoil_deg = 1.8
+base_aim_time = 0.24
+aim_zoom = 1.2
+base_pellets = 6
+manufacturer = ExtResource("1_yrpoa")
+weapon_types = Array[int]([3])
+base_price = 120
+gender = 1
+family_key = "FAMILY_SHOTGUN_AUTO"
+model_size = Vector3(0.07, 0.1, 0.4)
+aim_anchor_position = Vector3(0, 0.072, 0.12)
+optic_aim_anchor_position = Vector3(0, 0.095, 0.04)
+optic_aim_zoom = 1.6
+mount_barrel = Vector3(0, 0.025, -0.2)
+mount_grip = Vector3(0, -0.1, 0.1)
+mount_magazine = Vector3(0, -0.03, -0.2)
+mount_stock = Vector3(0, 0, 0.2)
+mount_accessory = Vector3(0, -0.07, -0.1)

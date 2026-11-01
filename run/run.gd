@@ -99,6 +99,7 @@ func generate(number: int) -> void:
 	_player.process_mode = Node.PROCESS_MODE_DISABLED
 	var navigation_ready: bool = await _builder.wait_for_navigation()
 	_player.process_mode = previous_mode
+	_builder.add_props(Config.data.props)
 	if not navigation_ready:
 		push_warning("Карта навигации не подхватила зону за отведённое время: враги пойдут напрямую")
 	_loading.visible = false

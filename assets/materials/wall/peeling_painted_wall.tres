@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/wall/peeling_painted_wall_c.jpg" id="1_xy5w0"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/wall/peeling_painted_wall_n.png" id="2_boqtn"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/wall/peeling_painted_wall_r.jpg" id="3_o6jtk"]
+
+[resource]
+resource_name = "peeling_painted_wall"
+albedo_texture = ExtResource("1_xy5w0")
+roughness_texture = ExtResource("3_o6jtk")
+normal_enabled = true
+normal_texture = ExtResource("2_boqtn")
+texture_filter = 2

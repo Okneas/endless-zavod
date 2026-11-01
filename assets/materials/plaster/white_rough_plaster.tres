@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/white_rough_plaster_c.jpg" id="1_2i2ys"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/white_rough_plaster_n.png" id="2_fehx2"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/white_rough_plaster_r.jpg" id="3_12nk0"]
+
+[resource]
+resource_name = "white_rough_plaster"
+albedo_texture = ExtResource("1_2i2ys")
+roughness_texture = ExtResource("3_12nk0")
+normal_enabled = true
+normal_texture = ExtResource("2_fehx2")
+texture_filter = 2

@@ -180,6 +180,7 @@ func _test_death_loss() -> void:
 
 # --- Множители врагов по уровню зоны.
 func _test_enemy_scaling() -> void:
+	_inventory.shield = null
 	print("--- Враги растут с уровнем зоны")
 	var scene: PackedScene = load("res://enemies/chaser.tscn")
 	var base_enemy = scene.instantiate()
@@ -222,6 +223,7 @@ func _floor_at(center: Vector3) -> StaticBody3D:
 
 # --- Босс отдела.
 func _test_boss() -> void:
+	_inventory.shield = null
 	print("--- Босс отдела")
 	var ground: StaticBody3D = _floor_at(Vector3(900.0, -0.5, 900.0))
 	await _frames(3)

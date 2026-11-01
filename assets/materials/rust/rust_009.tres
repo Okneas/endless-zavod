@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/rust/rust_009_c.jpg" id="1_6fa5g"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/rust/rust_009_n.png" id="2_3mo81"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/rust/rust_009_r.jpg" id="3_4ubge"]
+
+[resource]
+resource_name = "rust_009"
+albedo_texture = ExtResource("1_6fa5g")
+roughness_texture = ExtResource("3_4ubge")
+normal_enabled = true
+normal_texture = ExtResource("2_3mo81")
+texture_filter = 2

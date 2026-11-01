@@ -132,7 +132,7 @@ func _run() -> void:
 			before_pickups.append(pickup)
 			if pickup.item.is_part():
 				parts_dropped += 1
-			else:
+			elif pickup.item.is_weapon():
 				weapons_dropped += 1
 		enemy.free()
 	var expected: float = float(kills) * chaser_settings.part_chance

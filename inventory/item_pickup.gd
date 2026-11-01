@@ -31,6 +31,13 @@ static func spawn(parent: Node, p_item: InventoryItem, at: Vector3, p_velocity: 
 	return pickup
 
 
+## Выпавший предмет (из врага, ящика): подбрасывается вверх и разлетается в стороны (LootSettings).
+static func spawn_tossed(parent: Node, p_item: InventoryItem, at: Vector3, rng: RandomNumberGenerator) -> ItemPickup:
+	var loot: LootSettings = Config.data.loot
+	var toss: Vector3 = Vector3(rng.randf_range(-1.0, 1.0) * loot.scatter_speed, loot.toss_speed, rng.randf_range(-1.0, 1.0) * loot.scatter_speed)
+	return spawn(parent, p_item, at, toss)
+
+
 func _ready() -> void:
 	add_to_group(&"item_pickups")
 	add_to_group(&"interactables")

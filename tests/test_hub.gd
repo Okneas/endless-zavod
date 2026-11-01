@@ -82,6 +82,7 @@ func _initialize() -> void:
 	await _browsing()
 	await _register_side()
 	await _avoid_player()
+	await _exit_door()
 	await _closing()
 	await _traffic()
 	await _stations()
@@ -128,7 +129,7 @@ func _layout() -> void:
 	kinds.sort()
 	_check(kinds == [0, 1, 2, 3, 4], "есть сундук, справочник, вывеска, дверь в забег и торговец: %s" % str(kinds))
 	_check(_player.global_position.distance_to(_hub.get_node("PlayerSpawn").global_position) < 0.5 and _hub.get_node("Hud") != null, "игрок стоит на старте, интерфейс на месте")
-	_check(not _shop.is_open and _shop.trader_stock.size() == _settings.trader_stock_size, "магазин закрыт, торговец разложил товар (%d)" % _shop.trader_stock.size())
+	_check(not _shop.is_open and _shop.trader_stock.size() == _settings.trader_stock_size + root.get_node("Config").data.grenades.trader_count + root.get_node("Config").data.shields.trader_count, "магазин закрыт, торговец разложил товар: оружие, гранаты и щиты (%d)" % _shop.trader_stock.size())
 	_check(_hub.is_navigation_ready(), "сетка навигации зала запечена и подхвачена картой")
 	var clock_label: Label = _hub.get_node("Hud/Root/MoneyRow/ClockLabel")
 	await _frames(3)
@@ -394,6 +395,58 @@ func _avoid_player() -> void:
 	_shop.reset()
 
 
+func _exit_door() -> void:
+	print("--- Выход покупателей (№91)")
+	_progress.reset()
+	_inventory.clear()
+	_shop.reset()
+	_hub.toggle_shop()
+	_clear_customers()
+	# Темп ходьбы близкий к настоящему: на ускоренных 12 м/с шаги по 10 см за кадр сами дают рябь у толпы, и «переминание» не измерить.
+	var speed_before: float = _settings.walk_speed
+	_settings.walk_speed = 3.0
+	# Пустой зал: покупатели заходят, оглядываются и все вместе идут к выходу за дверью зала.
+	var crowd: Array = []
+	for i: int in 4:
+		var profile: CustomerProfile = CustomerProfile.new()
+		profile.budget = 1000
+		profile.unwillingness = 1.0
+		crowd.append(_hub.floor_node.spawn_customer(profile))
+	var last_z: Dictionary = {}
+	var last_dir: Dictionary = {}
+	var reversals: int = 0
+	var frames: int = 0
+	for i: int in 6000:
+		await physics_frame
+		frames = i
+		var alive: int = 0
+		for customer in crowd:
+			if not is_instance_valid(customer):
+				continue
+			alive += 1
+			if customer.state != S_LEAVE:
+				continue
+			var z: float = customer.global_position.z
+			if last_z.has(customer):
+				var dir: float = signf(z - float(last_z[customer])) if absf(z - float(last_z[customer])) > 0.001 else 0.0
+				if dir != 0.0:
+					if last_dir.has(customer) and dir != float(last_dir[customer]) and z > 12.0:
+						reversals += 1
+					last_dir[customer] = dir
+			last_z[customer] = z
+		if alive == 0:
+			break
+	var left: int = 0
+	for customer in crowd:
+		if is_instance_valid(customer):
+			left += 1
+	_check(left == 0 and _hub.floor_node.customers.is_empty(), "все покупатели дошли до выхода и исчезли (за %.1f с, осталось %d)" % [float(frames) / 120.0, left])
+	_check(reversals <= 2, "у двери нет переминания на месте: разворотов %d" % reversals)
+	_settings.walk_speed = speed_before
+	_clear_customers()
+	_shop.reset()
+
+
 func _closing() -> void:
 	print("--- Терпение у кассы и закрытие магазина")
 	_progress.reset()
@@ -483,7 +536,7 @@ func _stations() -> void:
 	var offer: ShopSlot = _shop.trader_stock[0]
 	_progress.add_money(offer.price)
 	_hub.trader_panel._buy(0)
-	_check(_inventory.items.has(offer.item) and _progress.money == 0 and _shop.trader_stock.size() == _settings.trader_stock_size - 1, "покупка у торговца через окно: оружие в рюкзаке, деньги списаны")
+	_check(_inventory.items.has(offer.item) and _progress.money == 0 and _shop.trader_stock.size() == _settings.trader_stock_size + root.get_node("Config").data.grenades.trader_count + root.get_node("Config").data.shields.trader_count - 1, "покупка у торговца через окно: оружие в рюкзаке, деньги списаны")
 	_hub.trader_panel.close()
 	await _frames(3)
 	_check(not paused, "окна закрыты: игра снова идёт")

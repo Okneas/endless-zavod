@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/corrugated_steel_007b_c.jpg" id="1_l8x3y"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/corrugated_steel_007b_m.jpg" id="2_by3fb"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/corrugated_steel_007b_n.png" id="3_dtpf4"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/corrugated_steel_007b_r.jpg" id="4_3s1m8"]
+
+[resource]
+resource_name = "corrugated_steel_007b"
+albedo_texture = ExtResource("1_l8x3y")
+metallic = 1.0
+metallic_texture = ExtResource("2_by3fb")
+roughness_texture = ExtResource("4_3s1m8")
+normal_enabled = true
+normal_texture = ExtResource("3_dtpf4")
+texture_filter = 2

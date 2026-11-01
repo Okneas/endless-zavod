@@ -23,7 +23,7 @@ height = 0.03
 
 [node name="Warden" type="CharacterBody3D" unique_id=24870554]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_n4xf5")
 settings = ExtResource("2_73r2q")

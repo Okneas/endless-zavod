@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_056c_c.jpg" id="1_d5l8m"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_056c_m.jpg" id="2_gn821"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_056c_n.png" id="3_ungnw"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/metal_056c_r.jpg" id="4_u6ocn"]
+
+[resource]
+resource_name = "metal_056c"
+albedo_texture = ExtResource("1_d5l8m")
+metallic = 1.0
+metallic_texture = ExtResource("2_gn821")
+roughness_texture = ExtResource("4_u6ocn")
+normal_enabled = true
+normal_texture = ExtResource("3_ungnw")
+texture_filter = 2

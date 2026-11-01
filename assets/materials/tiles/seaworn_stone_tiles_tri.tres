@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/seaworn_stone_tiles_c.jpg" id="1_2oka1"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/seaworn_stone_tiles_n.png" id="2_7mtlp"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/tiles/seaworn_stone_tiles_r.jpg" id="3_uwvu2"]
+
+[resource]
+resource_name = "seaworn_stone_tiles_tri"
+albedo_texture = ExtResource("1_2oka1")
+roughness_texture = ExtResource("3_uwvu2")
+normal_enabled = true
+normal_texture = ExtResource("2_7mtlp")
+uv1_scale = Vector3(0.6666667, 0.6666667, 0.6666667)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

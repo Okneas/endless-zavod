@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_c.jpg" id="1_lrceg"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_n.png" id="2_sty5q"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/fabric/fabric_pattern_05_r.jpg" id="3_g7w3c"]
+
+[resource]
+resource_name = "fabric_pattern_05"
+albedo_texture = ExtResource("1_lrceg")
+roughness_texture = ExtResource("3_g7w3c")
+normal_enabled = true
+normal_texture = ExtResource("2_sty5q")
+texture_filter = 2

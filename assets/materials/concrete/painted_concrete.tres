@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/painted_concrete_c.jpg" id="1_jurhf"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/painted_concrete_n.png" id="2_fb0uq"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/concrete/painted_concrete_r.jpg" id="3_2v8l6"]
+
+[resource]
+resource_name = "painted_concrete"
+albedo_texture = ExtResource("1_jurhf")
+roughness_texture = ExtResource("3_2v8l6")
+normal_enabled = true
+normal_texture = ExtResource("2_fb0uq")
+texture_filter = 2

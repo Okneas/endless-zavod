@@ -20,12 +20,16 @@ const FILL_COLOR: Color = Color(0.88, 0.26, 0.22)
 ## Враг под барьером щитовика: полоска фиолетовая, сразу видно, что урон по нему почти не идёт.
 const WARD_COLOR: Color = Color(0.62, 0.52, 1.0)
 const BACK_COLOR: Color = Color(0.04, 0.04, 0.05, 0.85)
+## Щит врага (№93): тонкая синяя полоса над полоской здоровья.
+const SHIELD_COLOR: Color = Color(0.4, 0.7, 1.0)
+const SHIELD_BAR_HEIGHT: float = 6.0
 const BRACKET_COLOR: Color = Color(1.0, 1.0, 1.0, 0.9)
 
 var _player: Player
 var _target: Enemy
 var _linger_left: float = 0.0
 var _shown_ratio: float = 1.0
+var _shown_shield_ratio: float = 0.0
 var _warded: bool = false
 var _level_label: Label
 var _name_label: Label
@@ -64,6 +68,7 @@ func _process(delta: float) -> void:
 		if aimed != _target:
 			_target = aimed
 			_shown_ratio = _health_ratio(aimed)
+			_shown_shield_ratio = _shield_ratio(aimed)
 			_name_label.text = aimed.get_display_name()
 			_level_label.text = str(aimed.level)
 			_level_label.add_theme_color_override("font_color", _level_color(aimed.level))
@@ -76,6 +81,7 @@ func _process(delta: float) -> void:
 	if not visible:
 		return
 	_shown_ratio = lerpf(_shown_ratio, _health_ratio(_target), 1.0 - exp(-FILL_SPEED * delta))
+	_shown_shield_ratio = lerpf(_shown_shield_ratio, _shield_ratio(_target), 1.0 - exp(-FILL_SPEED * delta))
 	_warded = _target.get_damage_taken_multiplier() < 1.0
 	queue_redraw()
 
@@ -85,6 +91,10 @@ func _draw() -> void:
 	draw_rect(bar, BACK_COLOR)
 	var fill: Rect2 = Rect2(bar.position + Vector2(2.0, 2.0), Vector2((bar.size.x - 4.0) * clampf(_shown_ratio, 0.0, 1.0), bar.size.y - 4.0))
 	draw_rect(fill, WARD_COLOR if _warded else FILL_COLOR)
+	if _target != null and is_instance_valid(_target) and _target.max_shield > 0.0:
+		var shield_rect: Rect2 = Rect2(bar.position + Vector2(0.0, -SHIELD_BAR_HEIGHT - 3.0), Vector2(bar.size.x, SHIELD_BAR_HEIGHT))
+		draw_rect(shield_rect, BACK_COLOR)
+		draw_rect(Rect2(shield_rect.position + Vector2(1.0, 1.0), Vector2((shield_rect.size.x - 2.0) * clampf(_shown_shield_ratio, 0.0, 1.0), shield_rect.size.y - 2.0)), SHIELD_COLOR)
 	# Скобки по краям полоски, как на референсе.
 	var notch: float = 5.0
 	var left: float = bar.position.x - 3.0
@@ -113,6 +123,11 @@ func get_level_text() -> String:
 ## Заполнение полоски 0..1, как оно сейчас нарисовано.
 func get_fill_ratio() -> float:
 	return _shown_ratio
+
+
+## Заполнение полосы щита 0..1 (0, если щита у цели нет).
+func get_shield_fill_ratio() -> float:
+	return _shown_shield_ratio
 
 
 func _bar_rect() -> Rect2:
@@ -145,6 +160,10 @@ func _aimed_enemy() -> Enemy:
 
 func _health_ratio(enemy: Enemy) -> float:
 	return clampf(enemy.health / maxf(enemy.get_max_health(), 0.001), 0.0, 1.0)
+
+
+func _shield_ratio(enemy: Enemy) -> float:
+	return clampf(enemy.shield / enemy.max_shield, 0.0, 1.0) if enemy.max_shield > 0.0 else 0.0
 
 
 # Белый: не выше уровня игрока, жёлтый: на 1-2 выше, красный: на 3 и больше.

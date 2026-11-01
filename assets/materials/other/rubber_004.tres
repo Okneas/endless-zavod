@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_c.jpg" id="1_ag1hw"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_n.png" id="2_cmsrh"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/other/rubber_004_r.jpg" id="3_h1tfn"]
+
+[resource]
+resource_name = "rubber_004"
+albedo_texture = ExtResource("1_ag1hw")
+roughness_texture = ExtResource("3_h1tfn")
+normal_enabled = true
+normal_texture = ExtResource("2_cmsrh")
+texture_filter = 2

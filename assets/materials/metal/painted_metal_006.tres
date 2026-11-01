@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/painted_metal_006_c.jpg" id="1_g8i6b"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/painted_metal_006_m.jpg" id="2_sqhjm"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/painted_metal_006_n.png" id="3_r4o5h"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/metal/painted_metal_006_r.jpg" id="4_7re2m"]
+
+[resource]
+resource_name = "painted_metal_006"
+albedo_texture = ExtResource("1_g8i6b")
+metallic = 1.0
+metallic_texture = ExtResource("2_sqhjm")
+roughness_texture = ExtResource("4_7re2m")
+normal_enabled = true
+normal_texture = ExtResource("3_r4o5h")
+texture_filter = 2

@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_006_c.jpg" id="1_364of"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_006_n.png" id="2_4y8lp"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/floor/carpet_006_r.jpg" id="3_7tg0o"]
+
+[resource]
+resource_name = "carpet_006_tri"
+albedo_texture = ExtResource("1_364of")
+roughness_texture = ExtResource("3_7tg0o")
+normal_enabled = true
+normal_texture = ExtResource("2_4y8lp")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 2

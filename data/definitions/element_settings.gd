@@ -20,6 +20,8 @@ extends Resource
 @export_range(0.0, 3.0, 0.05) var electric_chain_bonus: float = 0.0
 ## Сколько соседей учитывается максимум.
 @export_range(0, 20, 1) var electric_chain_max_neighbors: int = 0
+## Во сколько раз попадание тока сильнее съедает щит врага (№93, как в Borderlands). Остальные стихии щит не усиливают.
+@export_range(1.0, 5.0, 0.05, "suffix:x") var electric_shield_multiplier: float = 1.0
 
 @export_group("Мороз")
 @export_range(0.0, 30.0, 0.1, "suffix:с") var frost_duration: float = 0.0

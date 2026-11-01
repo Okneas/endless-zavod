@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_0jv4r"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_icbt2"]
+
+[resource]
+script = ExtResource("2_icbt2")
+name_key = "WEAPON_BODY_BAZA_SHOTGUN_2"
+weapon_type = 3
+base_damage = 28.0
+base_fire_rate = 4.2
+automatic = true
+base_magazine_size = 12
+base_reload_time = 2.4
+base_spread_deg = 5.2
+base_range = 25.0
+base_recoil_deg = 1.5
+base_aim_time = 0.22
+aim_zoom = 1.2
+base_pellets = 6
+manufacturer = ExtResource("1_0jv4r")
+weapon_types = Array[int]([3])
+base_price = 130
+gender = 1
+family_key = "FAMILY_SHOTGUN_AUTO"
+model_size = Vector3(0.07, 0.1, 0.4)
+aim_anchor_position = Vector3(0, 0.072, 0.12)
+optic_aim_anchor_position = Vector3(0, 0.095, 0.04)
+optic_aim_zoom = 1.6
+mount_barrel = Vector3(0, 0.025, -0.2)
+mount_grip = Vector3(0, -0.1, 0.1)
+mount_magazine = Vector3(0, -0.03, -0.2)
+mount_stock = Vector3(0, 0, 0.2)
+mount_accessory = Vector3(0, -0.07, -0.1)

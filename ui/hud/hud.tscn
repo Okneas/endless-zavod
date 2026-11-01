@@ -70,7 +70,7 @@ layout_mode = 2
 
 [node name="ArmorLabel" type="Label" parent="Root/Status/Column/ArmorRow" unique_id=1521150100]
 layout_mode = 2
-text = "HUD_ARMOR"
+text = "HUD_SHIELD"
 
 [node name="ArmorBar" type="ProgressBar" parent="Root/Status/Column/ArmorRow" unique_id=450718749]
 custom_minimum_size = Vector2(280, 26)

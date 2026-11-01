@@ -7,11 +7,11 @@
 script = ExtResource("2_gwguk")
 name_key = "WEAPON_BODY_SELHOZ_SHOTGUN_1"
 weapon_type = 3
-base_damage = 90.0
+base_damage = 126.0
 base_fire_rate = 0.9
 base_magazine_size = 6
 base_reload_time = 2.8
-base_spread_deg = 3.8
+base_spread_deg = 3.04
 base_range = 40.0
 base_recoil_deg = 3.2
 base_aim_time = 0.25

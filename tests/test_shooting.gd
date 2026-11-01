@@ -214,7 +214,7 @@ func _run() -> void:
 	_check(_shots.back()["hit"] and effects.get_child_count() > children_before, "выстрел в стену: попадание, трассер и метка появились (z=%.1f)" % _shots.back()["end"].z)
 	await _frames(40)
 
-	print("--- Разброс: конус, движение, воздух, прицеливание, нарастание")
+	print("--- Разброс: конус, движение, воздух, прицеливание, раскрытие (№90)")
 	_reset_weapon()
 	var base: float = _weapon.stats.spread_deg
 	_check(is_equal_approx(_weapon.get_current_spread(), base), "в покое: %.2f° (база дула)" % _weapon.get_current_spread())
@@ -227,7 +227,11 @@ func _run() -> void:
 	_check(is_equal_approx(_weapon.get_current_spread(), base * _weapon.shooting.air_spread_factor), "в воздухе: %.2f° (x%.1f)" % [_weapon.get_current_spread(), _weapon.shooting.air_spread_factor])
 	_weapon.airborne = false
 	_weapon.aim_amount = 1.0
-	_check(is_equal_approx(_weapon.get_current_spread(), base * _weapon.shooting.aim_spread_multiplier), "при полном прицеливании: %.2f° (x%.1f)" % [_weapon.get_current_spread(), _weapon.shooting.aim_spread_multiplier])
+	_check(is_equal_approx(_weapon.get_current_spread(), base * _weapon.shooting.aim_spread_multiplier), "при полном прицеливании: %.2f° (x%.2f)" % [_weapon.get_current_spread(), _weapon.shooting.aim_spread_multiplier])
+	# Картечь (несколько дробин) в прицеливании сужается слабее, чтобы дробины не слипались в точку.
+	_weapon.stats.pellets = 6
+	_check(is_equal_approx(_weapon.get_current_spread(), base * _weapon.shooting.pellet_aim_spread_multiplier) and _weapon.shooting.pellet_aim_spread_multiplier > _weapon.shooting.aim_spread_multiplier, "дробовик при полном прицеливании: %.2f° (x%.2f, слабее обычного x%.2f)" % [_weapon.get_current_spread(), _weapon.shooting.pellet_aim_spread_multiplier, _weapon.shooting.aim_spread_multiplier])
+	_weapon.stats.pellets = 1
 	_weapon.aim_amount = 0.0
 	# Конус: направления выстрелов лежат внутри угла разброса и покрывают его.
 	var worst: float = 0.0
@@ -240,21 +244,48 @@ func _run() -> void:
 		sum_angle += angle
 	_check(worst <= base + 0.001 and worst > base * 0.95, "2000 направлений лежат внутри конуса %.2f° (максимум %.3f°)" % [base, worst])
 	var mean_angle: float = sum_angle / 2000.0
-	_check(absf(mean_angle - base * 2.0 / 3.0) < 0.05, "равномерно по площади круга: среднее отклонение %.3f° (ждём %.3f°)" % [mean_angle, base * 2.0 / 3.0])
-	# Нарастание от выстрелов и возврат.
+	var bias: float = _weapon.shooting.spread_center_bias
+	var expected_mean: float = base / (bias + 1.0)
+	_check(absf(mean_angle - expected_mean) < maxf(0.05, base * 0.05), "пули по степени %.2f от центра: среднее отклонение %.3f° (ждём %.3f°, равномерно по площади было бы %.3f°)" % [bias, mean_angle, expected_mean, base * 2.0 / 3.0])
+	_check(bias <= 0.5 or mean_angle < base * 2.0 / 3.0 - 0.01, "пули тяготеют к центру конуса сильнее, чем при равномерном распределении")
+	# Раскрытие при очереди (№90): прибавка в долях кучности, быстрое оружие раскрывается до потолка, медленное не раскрывается.
 	_reset_weapon()
 	await _place(Vector3(0, 0.05, 12), 8.0)
 	_reset_weapon()
+	var saved_rate: float = _weapon.stats.fire_rate
+	var saved_auto: bool = _weapon.stats.automatic
+	var saved_mag: int = _weapon.stats.magazine_size
 	var spread_start: float = _weapon.get_current_spread()
+	var per_shot: float = _weapon.shooting.bloom_per_shot
+	var cap: float = _weapon.shooting.bloom_max
+	# Одиночный выстрел раскрывает на долю кучности.
 	await _tap("fire")
 	var spread_after_1: float = _weapon.get_current_spread()
-	await _frames(int(cooldown * 120.0) + 4)
-	await _tap("fire")
-	var spread_after_2: float = _weapon.get_current_spread()
-	var per_shot: float = _weapon.shooting.bloom_per_shot
-	_check(spread_after_1 > spread_start + per_shot * 0.8 and spread_after_2 >= spread_start + per_shot * 0.9, "выстрелы накапливают разброс: %.2f° -> %.2f° -> %.2f°" % [spread_start, spread_after_1, spread_after_2])
-	await _frames(int(_weapon.shooting.bloom_max / maxf(_weapon.shooting.bloom_recovery, 0.1) * 120.0) + 30)
+	_check(spread_after_1 > spread_start * (1.0 + per_shot * 0.8) and spread_after_1 <= spread_start * (1.0 + per_shot) + 0.0001, "выстрел раскрывает разброс на долю кучности: %.2f° -> %.2f° (+%.0f%%)" % [spread_start, spread_after_1, per_shot * 100.0])
+	# Очередь быстрее темпа восстановления доходит до потолка и не выше.
+	_reset_weapon()
+	_weapon.stats.automatic = true
+	_weapon.stats.magazine_size = 200
+	_weapon.ammo = 200
+	_weapon.stats.fire_rate = maxf(per_shot * 30.0, 12.0) if per_shot > 0.0 else 12.0
+	var fast_enough: bool = _weapon.stats.fire_rate * per_shot > _weapon.shooting.bloom_recovery
+	Input.action_press("fire")
+	await _frames(int(cap / maxf(_weapon.stats.fire_rate * per_shot - _weapon.shooting.bloom_recovery, 0.01) * 120.0) + 120)
+	var spread_burst: float = _weapon.get_current_spread()
+	Input.action_release("fire")
+	_check(fast_enough and absf(spread_burst - spread_start * (1.0 + cap)) < spread_start * 0.05, "длинная очередь раскрывает разброс до потолка: %.2f° (кучность %.2f° x %.2f)" % [spread_burst, spread_start, 1.0 + cap])
+	await _frames(int(cap / maxf(_weapon.shooting.bloom_recovery, 0.05) * 120.0) + 30)
 	_check(is_equal_approx(_weapon.get_current_spread(), spread_start), "без стрельбы разброс возвращается к %.2f°" % spread_start)
+	# Раскрытие зависит от кучности: у точного оружия градусов меньше, у неточного больше (в тех же долях).
+	_reset_weapon()
+	_weapon.stats.spread_deg = _real_spread * 2.0
+	_weapon.set("_bloom", cap)
+	_check(is_equal_approx(_weapon.get_current_spread(), _real_spread * 2.0 * (1.0 + cap)), "раскрытие пропорционально кучности: вдвое неточнее оружие, вдвое больше градусов")
+	_weapon.stats.fire_rate = saved_rate
+	_weapon.stats.automatic = saved_auto
+	_weapon.stats.magazine_size = saved_mag
+	_reset_weapon()
+	_weapon.set("_bloom", 0.0)
 	# Фактические выстрелы тоже не выходят за конус (проверка по сигналу).
 	_reset_weapon()
 	_shots.clear()
@@ -407,7 +438,7 @@ func _run() -> void:
 	await physics_frame
 	_check(killed and dummy.is_dead and not dummy.visible and dummy.collision_layer == 0, "мишень уничтожена: скрыта и не принимает выстрелы")
 	await _frames(int(dummy.settings.respawn_time * 120.0) + 20)
-	_check(not dummy.is_dead and dummy.visible and dummy.collision_layer == 4 and is_equal_approx(dummy.health, dummy_max), "через %.0f с мишень вернулась с полным здоровьем" % dummy.settings.respawn_time)
+	_check(not dummy.is_dead and dummy.visible and dummy.collision_layer == 20 and is_equal_approx(dummy.health, dummy_max), "через %.0f с мишень вернулась с полным здоровьем" % dummy.settings.respawn_time)
 
 	print("--- Игрок и мишени, хук")
 	await _place(Vector3(0, 0.05, 8), 0.0)

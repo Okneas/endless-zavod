@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="GrenadeDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/grenade_definition.gd" id="1_grenade"]
+
+[resource]
+script = ExtResource("1_grenade")
+name_key = "GRENADE_ACID"
+name_lower_key = "GRENADE_ACID_L"
+description_key = "GRENADE_ACID_DESC"
+kind = 0
+element = 1
+color = Color(0.45, 0.9, 0.2, 1)
+weight = 1.5
+base_damage = 90.0
+blast_radius = 5.0
+fuse_time = 1.4
+explodes_on_enemy = true
+cooldown = 10.0
+base_price = 110
+bounciness = 0.25
+bomblets = 0
+bomblet_damage_share = 0
+bomblet_speed = 0
+pull_time = 0
+pull_speed = 0

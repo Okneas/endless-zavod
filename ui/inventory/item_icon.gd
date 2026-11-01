@@ -4,7 +4,42 @@ extends RefCounted
 ## (у лечащих белый крест). Рисуется кодом.
 
 
+## Граната (№92): шар цветом типа с кольцом цвета качества и колпачком.
+static func draw_grenade(canvas: CanvasItem, rect: Rect2, grenade: GrenadeInstance, alpha: float = 1.0) -> void:
+	var color: Color = grenade.definition.color
+	color.a *= alpha
+	var edge: Color = grenade.get_quality_color()
+	edge.a *= alpha
+	var c: Vector2 = rect.get_center() + Vector2(0.0, rect.size.y * 0.06)
+	var r: float = minf(rect.size.x, rect.size.y) * 0.3
+	canvas.draw_circle(c, r, color)
+	canvas.draw_arc(c, r, 0.0, TAU, 28, edge, 3.0)
+	canvas.draw_rect(Rect2(c + Vector2(-r * 0.32, -r * 1.28), Vector2(r * 0.64, r * 0.4)), edge)
+	canvas.draw_circle(c + Vector2(-r * 0.3, -r * 0.3), r * 0.22, Color(1.0, 1.0, 1.0, 0.35 * alpha))
+
+
+## Щит (№93): геральдический щит цветом типа с рамкой цвета качества.
+static func draw_shield(canvas: CanvasItem, rect: Rect2, shield: ShieldInstance, alpha: float = 1.0) -> void:
+	var color: Color = shield.definition.color
+	color.a *= alpha
+	var edge: Color = shield.get_quality_color()
+	edge.a *= alpha
+	var c: Vector2 = rect.get_center()
+	var w: float = rect.size.x * 0.32
+	var h: float = rect.size.y * 0.38
+	var outline: PackedVector2Array = PackedVector2Array([c + Vector2(-w, -h), c + Vector2(w, -h), c + Vector2(w, h * 0.15), c + Vector2(0.0, h), c + Vector2(-w, h * 0.15), c + Vector2(-w, -h)])
+	canvas.draw_colored_polygon(outline.slice(0, 5), color)
+	canvas.draw_polyline(outline, edge, 3.0)
+	canvas.draw_line(c + Vector2(0.0, -h), c + Vector2(0.0, h), Color(1.0, 1.0, 1.0, 0.25 * alpha), 2.0)
+
+
 static func draw(canvas: CanvasItem, rect: Rect2, item: InventoryItem, alpha: float = 1.0) -> void:
+	if item.shield != null:
+		draw_shield(canvas, rect, item.shield, alpha)
+		return
+	if item.grenade != null:
+		draw_grenade(canvas, rect, item.grenade, alpha)
+		return
 	if item.weapon != null:
 		WeaponIcon.draw(canvas, rect, item.weapon, alpha)
 		return

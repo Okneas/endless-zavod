@@ -67,7 +67,7 @@ material = SubResource("StandardMaterial3D_2ieo8")
 
 [node name="Player" type="CharacterBody3D" unique_id=1557432025]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 17
 script = ExtResource("1_qjkh3")
 settings = ExtResource("2_g6k8r")
 movement = ExtResource("3_boad6")

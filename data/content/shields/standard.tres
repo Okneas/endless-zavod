@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ShieldDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/shield_definition.gd" id="1_shield"]
+
+[resource]
+script = ExtResource("1_shield")
+name_key = "SHIELD_STANDARD"
+name_lower_key = "SHIELD_STANDARD_L"
+description_key = "SHIELD_STANDARD_DESC"
+kind = 0
+color = Color(0.35, 0.6, 1, 1)
+weight = 4.0
+base_capacity = 55.0
+recharge_delay = 3.5
+recharge_rate = 22.0
+base_price = 80
+effect_damage = 0
+effect_radius = 0
+effect_cooldown = 0
+effect_element = 0
+effect_chance = 0
+effect_restore = 0

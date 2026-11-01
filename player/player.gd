@@ -4,8 +4,10 @@ extends CharacterBody3D
 ## Числа лежат в Resource, а не в коде, и видны в Inspector прямо у этого узла.
 
 signal health_changed(current: int, maximum: int)
-## Игрок получил урон: сколько и откуда (для вспышки на экране).
+## Игрок получил урон в здоровье: сколько и откуда (для вспышки на экране).
 signal damaged(amount: float, from_position: Vector3)
+## Щит принял удар (№93): сколько урона он впитал и откуда (синяя вспышка).
+signal shield_damaged(amount: float, from_position: Vector3)
 signal died
 ## Рывок начался: куда (горизонтальное направление).
 signal dashed(direction: Vector3)
@@ -59,6 +61,8 @@ var _recoil_target: float = 0.0
 @onready var _weapon: Weapon = $Head/Camera3D/Weapon
 @onready var _melee: PlayerMelee = $Melee
 @onready var _interactor: PlayerInteractor = $Interactor
+var _grenades: GrenadeThrower
+var _shield: PlayerShield
 
 
 # Группа нужна до чьего-либо _ready, чтобы HUD и отладочная надпись могли найти игрока.
@@ -80,6 +84,14 @@ func _ready() -> void:
 	_weapon.fired.connect(_on_weapon_fired)
 	_melee.setup(self, _camera, _weapon)
 	_interactor.setup(self, _camera)
+	_grenades = GrenadeThrower.new()
+	_grenades.name = "Grenades"
+	add_child(_grenades)
+	_grenades.setup(self, _camera)
+	_shield = PlayerShield.new()
+	_shield.name = "Shield"
+	add_child(_shield)
+	_shield.setup(self)
 	max_health = settings.max_health
 	set_health(max_health)
 	dash_charges = movement.dash_charges_max
@@ -153,12 +165,18 @@ func set_health(value: int) -> void:
 	health_changed.emit(health, max_health)
 
 
-## Получить урон от врага. from_position нужен для вспышки на экране. При нуле здоровья игрок гибнет.
+## Получить урон от врага. from_position нужен для вспышки на экране. Урон сначала впитывает щит (№93), остаток идёт в здоровье.
+## При нуле здоровья игрок гибнет.
 func take_damage(amount: float, from_position: Vector3 = Vector3.ZERO) -> void:
 	if is_dead or amount <= 0.0 or _invulnerable_left > 0.0:
 		return
-	set_health(health - ceili(amount))
-	damaged.emit(amount, from_position)
+	var through: float = _shield.absorb(amount)
+	if through < amount:
+		shield_damaged.emit(amount - through, from_position)
+	if through <= 0.0:
+		return
+	set_health(health - ceili(through))
+	damaged.emit(through, from_position)
 	if health <= 0:
 		_die()
 
@@ -198,6 +216,7 @@ func _die() -> void:
 	# Оружие и ближний бой выключаются целиком: они читают ввод сами.
 	_weapon.process_mode = Node.PROCESS_MODE_DISABLED
 	_melee.process_mode = Node.PROCESS_MODE_DISABLED
+	_grenades.process_mode = Node.PROCESS_MODE_DISABLED
 	died.emit()
 
 
@@ -210,7 +229,9 @@ func respawn(at: Vector3, yaw: float) -> void:
 	state = State.AIR
 	_weapon.process_mode = Node.PROCESS_MODE_INHERIT
 	_melee.process_mode = Node.PROCESS_MODE_INHERIT
+	_grenades.process_mode = Node.PROCESS_MODE_INHERIT
 	set_health(max_health)
+	_shield.refresh(true)
 	dash_charges = movement.dash_charges_max
 	_dash_recharge_left = 0.0
 	_dash_time_left = 0.0
@@ -224,6 +245,14 @@ func _update_crit_bonus() -> void:
 
 func get_horizontal_speed() -> float:
 	return Vector2(velocity.x, velocity.z).length()
+
+
+func get_grenades() -> GrenadeThrower:
+	return _grenades
+
+
+func get_shield() -> PlayerShield:
+	return _shield
 
 
 func get_weapon() -> Weapon:

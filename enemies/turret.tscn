@@ -9,6 +9,9 @@ size = Vector3(0.9, 1, 0.9)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgaaa"]
 albedo_color = Color(0.55, 0.2, 0.22, 1)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_head93"]
+radius = 0.4
+
 [sub_resource type="BoxMesh" id="BoxMesh_wcuar"]
 material = SubResource("StandardMaterial3D_wgaaa")
 size = Vector3(0.9, 1, 0.9)
@@ -30,7 +33,7 @@ size = Vector3(0.14, 0.14, 0.7)
 
 [node name="Turret" type="CharacterBody3D" unique_id=2026378834]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_ni5yt")
 settings = ExtResource("2_6kck2")
 
@@ -41,6 +44,10 @@ shape = SubResource("BoxShape3D_l4b7k")
 [node name="Body" type="MeshInstance3D" parent="." unique_id=267689966]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 mesh = SubResource("BoxMesh_wcuar")
+
+[node name="HeadShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("SphereShape3D_head93")
 
 [node name="Head" type="Node3D" parent="." unique_id=2130304313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)

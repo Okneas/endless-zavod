@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_c.jpg" id="1_sw7je"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_n.png" id="2_6x425"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/double_brick_floor_r.jpg" id="3_cp1v7"]
+
+[resource]
+resource_name = "double_brick_floor"
+albedo_texture = ExtResource("1_sw7je")
+roughness_texture = ExtResource("3_cp1v7")
+normal_enabled = true
+normal_texture = ExtResource("2_6x425")
+texture_filter = 2

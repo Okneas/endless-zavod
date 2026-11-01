@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/leafy_grass_c.jpg" id="1_f2kw3"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/leafy_grass_n.png" id="2_r1743"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/ground/leafy_grass_r.jpg" id="3_54qqs"]
+
+[resource]
+resource_name = "leafy_grass"
+albedo_texture = ExtResource("1_f2kw3")
+roughness_texture = ExtResource("3_54qqs")
+normal_enabled = true
+normal_texture = ExtResource("2_r1743")
+texture_filter = 2

@@ -5,7 +5,7 @@ extends RefCounted
 
 enum SortKey { NONE, LEVEL, QUALITY, TYPE, MAKER, PRICE }
 ## Фильтр: все предметы или одна категория (значения после ALL совпадают с ItemDefinition.Category).
-enum Filter { ALL, WEAPON, CONSUMABLE, MATERIAL, PART }
+enum Filter { ALL, WEAPON, CONSUMABLE, MATERIAL, PART, JUNK, GRENADE, SHIELD }
 
 
 ## Отфильтрованная и отсортированная копия. Равные по ключу предметы остаются в исходном порядке.

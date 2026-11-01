@@ -42,7 +42,8 @@ func reset() -> void:
 
 ## Фактическая цена предмета по формуле (05-shop-economy, №18, №29): от неё считается шанс покупки.
 func actual_price(item: InventoryItem) -> int:
-	return item.get_price()
+	# Стопка продаётся целиком: цена штуки на число штук (хлам и расходники лежат стопками, №91).
+	return item.get_total_price()
 
 
 ## Можно ли выставить предмет на продажу: вечное оружие (стартовый пистолет) продавать нельзя (04-extraction).
@@ -164,6 +165,20 @@ func refresh_trader(day: int, force: bool = false) -> bool:
 		slot.item = InventoryItem.from_weapon(weapon)
 		slot.price = ShopMath.trader_price(settings, slot.item)
 		trader_stock.append(slot)
+	# Гранаты у торговца (№92): уровня персонажа плюс разброс, как у оружия.
+	var grenade_generator: GrenadeGenerator = GrenadeGenerator.new(Config.data.grenades, Config.data.weapons.quality_scale)
+	for i: int in Config.data.grenades.trader_count:
+		var grenade_slot: ShopSlot = ShopSlot.new()
+		grenade_slot.item = InventoryItem.from_grenade(grenade_generator.generate(_rng, Progress.level + _rng.randi_range(0, settings.trader_level_spread)))
+		grenade_slot.price = ShopMath.trader_price(settings, grenade_slot.item)
+		trader_stock.append(grenade_slot)
+	# Щиты у торговца (№93): так же, как гранаты.
+	var shield_generator: ShieldGenerator = ShieldGenerator.new(Config.data.shields, Config.data.weapons.quality_scale)
+	for i: int in Config.data.shields.trader_count:
+		var shield_slot: ShopSlot = ShopSlot.new()
+		shield_slot.item = InventoryItem.from_shield(shield_generator.generate(_rng, Progress.level + _rng.randi_range(0, settings.trader_level_spread)))
+		shield_slot.price = ShopMath.trader_price(settings, shield_slot.item)
+		trader_stock.append(shield_slot)
 	trader_refreshed_day = day
 	changed.emit()
 	return true

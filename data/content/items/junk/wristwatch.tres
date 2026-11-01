@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/item_definition.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+name_key = "ITEM_JUNK_WRISTWATCH"
+description_key = "ITEM_JUNK_WRISTWATCH_DESC"
+category = 4
+max_stack = 3
+base_price = 220
+icon_color = Color(0.8, 0.75, 0.45, 1)
+drop_weight = 0.7

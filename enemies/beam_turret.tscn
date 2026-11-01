@@ -23,7 +23,7 @@ height = 0.7
 
 [node name="BeamTurret" type="CharacterBody3D" unique_id=1872618860]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_dnbq7")
 settings = ExtResource("2_skhxi")
 

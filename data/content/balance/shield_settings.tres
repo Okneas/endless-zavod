@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="ShieldSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/shield_settings.gd" id="1_ss"]
+[ext_resource type="Script" path="res://data/definitions/shield_definition.gd" id="2_sd"]
+[ext_resource type="Script" path="res://data/definitions/shield_modifier.gd" id="3_sm"]
+[ext_resource type="Resource" path="res://data/content/shields/standard.tres" id="t_standard"]
+[ext_resource type="Resource" path="res://data/content/shields/heavy.tres" id="t_heavy"]
+[ext_resource type="Resource" path="res://data/content/shields/light.tres" id="t_light"]
+[ext_resource type="Resource" path="res://data/content/shields/nova.tres" id="t_nova"]
+[ext_resource type="Resource" path="res://data/content/shields/spike.tres" id="t_spike"]
+[ext_resource type="Resource" path="res://data/content/shields/absorb.tres" id="t_absorb"]
+[ext_resource type="Resource" path="res://data/content/shields/modifiers/capacious.tres" id="m_capacious"]
+[ext_resource type="Resource" path="res://data/content/shields/modifiers/swift.tres" id="m_swift"]
+[ext_resource type="Resource" path="res://data/content/shields/modifiers/responsive.tres" id="m_responsive"]
+[ext_resource type="Resource" path="res://data/content/shields/modifiers/potent.tres" id="m_potent"]
+
+[resource]
+script = ExtResource("1_ss")
+types = Array[ExtResource("2_sd")]([ExtResource("t_standard"), ExtResource("t_heavy"), ExtResource("t_light"), ExtResource("t_nova"), ExtResource("t_spike"), ExtResource("t_absorb")])
+modifiers = Array[ExtResource("3_sm")]([ExtResource("m_capacious"), ExtResource("m_swift"), ExtResource("m_responsive"), ExtResource("m_potent")])
+starter = ExtResource("t_standard")
+capacity_per_level = 0.06
+price_per_level = 0.1
+modifier_price = 20
+low_warning_share = 0.25
+absorb_chance_cap = 0.6
+effect_edge_share = 0.5
+loot_point_chance = 0.15
+trader_count = 2

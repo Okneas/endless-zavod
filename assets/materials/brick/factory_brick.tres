@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/factory_brick_c.jpg" id="1_qr32r"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/factory_brick_n.png" id="2_os56q"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/brick/factory_brick_r.jpg" id="3_005pr"]
+
+[resource]
+resource_name = "factory_brick"
+albedo_texture = ExtResource("1_qr32r")
+roughness_texture = ExtResource("3_005pr")
+normal_enabled = true
+normal_texture = ExtResource("2_os56q")
+texture_filter = 2

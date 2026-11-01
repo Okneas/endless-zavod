@@ -309,7 +309,8 @@ func get_reload_progress() -> float:
 	return clampf(1.0 - _reload_left / maxf(stats.reload_time, 0.01), 0.0, 1.0)
 
 
-## Текущая половина угла разброса, градусы: база дула, движение, воздух, прицеливание, накопленная прибавка.
+## Текущая половина угла разброса, градусы (№90, кучность как в Borderlands): кучность оружия, движение, воздух, раскрытие при
+## стрельбе (в долях кучности), прицеливание. Это максимальный угол конуса: пули чаще ложатся ближе к центру (spread_center_bias).
 func get_current_spread() -> float:
 	var spread: float = stats.spread_deg
 	var speed_ratio: float = clampf(motion_speed / shooting.full_spread_speed, 0.0, 1.0)
@@ -317,8 +318,9 @@ func get_current_spread() -> float:
 	spread *= 1.0 + shooting.movement_spread_factor * speed_ratio * stats.movement_spread_mult
 	if airborne:
 		spread *= shooting.air_spread_factor
-	spread += _bloom
-	return spread * lerpf(1.0, shooting.aim_spread_multiplier, aim_amount)
+	spread *= 1.0 + _bloom
+	var aim_multiplier: float = shooting.aim_spread_multiplier if stats.pellets <= 1 else shooting.pellet_aim_spread_multiplier
+	return spread * lerpf(1.0, aim_multiplier, aim_amount)
 
 
 ## Взмах оружия при ударе в ближнем бою (только визуально).
@@ -388,21 +390,36 @@ func _apply_hit(collider: Object, point: Vector3, pellet_points: Array = []) -> 
 		situational += stats.air_damage_bonus
 	var info: DamageInfo = DamageInfo.create(0.0, false, point)
 	for pellet_point: Vector3 in points:
-		var is_crit: bool = rng.randf() < crit_chance
-		var amount: float = share * situational * (shooting.crit_multiplier if is_crit else 1.0)
-		info.pellets.append(PelletHit.create(amount, is_crit, pellet_point))
+		# Слабое место врага (№93): попадание всегда крит, а множитель берётся у врага вместо обычного множителя крита.
+		var weak_multiplier: float = _weak_point_multiplier(collider, pellet_point)
+		var is_weak: bool = weak_multiplier > 1.0
+		var is_crit: bool = is_weak or rng.randf() < crit_chance
+		var amount: float = share * situational * (weak_multiplier if is_weak else (shooting.crit_multiplier if is_crit else 1.0))
+		var pellet: PelletHit = PelletHit.create(amount, is_crit, pellet_point)
+		pellet.is_weak_point = is_weak
+		info.pellets.append(pellet)
 		info.amount += amount
 		info.is_crit = info.is_crit or is_crit
+		info.is_weak_point = info.is_weak_point or is_weak
 	info.element = stats.element
 	info.weapon_type = stats.weapon_type
 	var killed: bool = collider.call(&"take_hit", info)
 	hit_confirmed.emit(info.is_crit, killed)
 
-# Случайная точка внутри конуса: равномерно по площади круга (корень из случайного числа).
+
+# Множитель слабого места цели в точке попадания (1, если у цели слабого места нет или выстрел мимо него).
+func _weak_point_multiplier(collider: Object, point: Vector3) -> float:
+	if collider.has_method(&"get_weak_point_multiplier_at"):
+		return collider.call(&"get_weak_point_multiplier_at", point)
+	return 1.0
+
+
+# Случайная точка внутри конуса: расстояние от центра равно доле конуса в степени spread_center_bias (0.5 даёт равномерность по
+# площади круга, 1.0 и больше смещают пули к центру, №90).
 func _spread_direction(spread_deg: float) -> Vector3:
 	var basis: Basis = _camera.global_basis
 	var angle: float = rng.randf() * TAU
-	var radius: float = tan(deg_to_rad(spread_deg)) * sqrt(rng.randf())
+	var radius: float = tan(deg_to_rad(spread_deg)) * pow(rng.randf(), shooting.spread_center_bias)
 	return (-basis.z + basis.x * (cos(angle) * radius) + basis.y * (sin(angle) * radius)).normalized()
 
 

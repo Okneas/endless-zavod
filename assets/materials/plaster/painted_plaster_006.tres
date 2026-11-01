@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/painted_plaster_006_c.jpg" id="1_s3125"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/painted_plaster_006_n.png" id="2_v7818"]
+[ext_resource type="Texture2D" path="res://assets/textures/lib/plaster/painted_plaster_006_r.jpg" id="3_72f2r"]
+
+[resource]
+resource_name = "painted_plaster_006"
+albedo_texture = ExtResource("1_s3125")
+roughness_texture = ExtResource("3_72f2r")
+normal_enabled = true
+normal_texture = ExtResource("2_v7818")
+texture_filter = 2

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EnemyModifier" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_modifier.gd" id="1_em"]
+
+[resource]
+script = ExtResource("1_em")
+name_key = "ENEMY_MOD_SHIELDED"
+model_scale = 1.05
+tint = Color(0.4, 0.7, 1, 1)
+tint_amount = 0.3
+weight = 2.5
+min_zone = 2
+health_mult = 1.0
+damage_mult = 1.0
+speed_mult = 1.0
+damage_taken_mult = 1.0
+reward_mult = 1.5
+drop_mult = 1.5
+shield_share = 0.8
+regen_per_second = 0.0
+regen_delay = 0.0
+enrage_below = 0.0
+enrage_damage_mult = 1.0
+enrage_speed_mult = 1.0
+death_blast_radius = 0.0
+death_blast_damage = 0.0
