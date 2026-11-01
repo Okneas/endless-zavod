@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3]
+
+[ext_resource type="PackedScene" path="res://rooms/pieces/shop_a.tscn" id="1_3he23"]
+[ext_resource type="Script" path="res://data/definitions/room_definition.gd" id="2_0h5pe"]
+
+[resource]
+script = ExtResource("2_0h5pe")
+scene = ExtResource("1_3he23")
+kind = 3

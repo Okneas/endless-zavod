@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_0jfpu"]
+
+[resource]
+script = ExtResource("1_0jfpu")
+name_key = "ENEMY_BEAM_TURRET"
+enemy_class = 2
+max_health = 120.0
+health_bar_height = 2.2
+xp_reward = 18
+money_min = 10
+money_max = 22
+part_chance = 0.04
+medkit_chance = 0.1
+medkit_heal = 30.0
+beam_count = 4
+beam_length = 10.0
+beam_thickness = 0.25
+beam_height = 0.9
+spin_speed = 70.0
+beam_damage = 14.0
+beam_tick_interval = 0.45

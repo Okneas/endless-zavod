@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_chaser.gd" id="1_v2jwp"]
+[ext_resource type="Resource" path="res://data/content/enemies/elite.tres" id="2_n7sjn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iomky"]
+radius = 0.7
+height = 2.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p17vc"]
+albedo_color = Color(0.55, 0.22, 0.7, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_cld7c"]
+material = SubResource("StandardMaterial3D_p17vc")
+radius = 0.7
+height = 2.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vejht"]
+albedo_color = Color(0.1, 0.05, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jibq4"]
+material = SubResource("StandardMaterial3D_vejht")
+size = Vector3(0.7, 0.16, 0.16)
+
+[node name="Elite" type="CharacterBody3D" unique_id=739211489]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_v2jwp")
+settings = ExtResource("2_n7sjn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=239221729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+shape = SubResource("CapsuleShape3D_iomky")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1192670199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.35, 0)
+mesh = SubResource("CapsuleMesh_cld7c")
+
+[node name="Eye" type="MeshInstance3D" parent="." unique_id=544062010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.106, -0.651)
+mesh = SubResource("BoxMesh_jibq4")

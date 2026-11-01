@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="LootSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/loot_settings.gd" id="1_sufhf"]
+
+[resource]
+script = ExtResource("1_sufhf")
+magnet_radius = 5.0
+magnet_speed = 14.0
+collect_radius = 0.9
+lifetime = 60.0
+toss_speed = 4.5
+scatter_speed = 3.0
+gravity = 28.0

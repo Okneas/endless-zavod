@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HookSettings" format=3 uid="uid://dfhjtlpkxgvwu"]
+
+[ext_resource type="Script" uid="uid://5mhvbp5bbbuv" path="res://data/definitions/hook_settings.gd" id="1_xsy3i"]
+
+[resource]
+script = ExtResource("1_xsy3i")
+max_range = 55.0
+surface_offset = 0.6
+pull_speed = 32.0
+pull_acceleration = 40.0
+acceleration_ramp_time = 0.35
+arrival_distance = 0.3
+arrival_kick_speed = 7.0
+spring_stiffness = 25.0
+spring_damping_ratio = 0.2
+blocked_timeout = 0.2
+rope_thickness = 0.02

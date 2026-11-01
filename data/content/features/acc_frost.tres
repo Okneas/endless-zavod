@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_q4f4r"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_rdxtd"]
+
+[resource]
+script = ExtResource("1_q4f4r")
+name_key = "FEATURE_FROST"
+description_key = "FEATURE_FROST_DESC"
+kind = 1
+element = 3

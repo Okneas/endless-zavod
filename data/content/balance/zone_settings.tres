@@ -1,0 +1,100 @@
+[gd_resource type="Resource" script_class="ZoneSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_pool_entry.gd" id="1_hbluv"]
+[ext_resource type="PackedScene" path="res://enemies/chaser.tscn" id="2_pajxa"]
+[ext_resource type="PackedScene" path="res://enemies/flyer.tscn" id="3_tkrun"]
+[ext_resource type="PackedScene" path="res://enemies/turret.tscn" id="4_j5k1m"]
+[ext_resource type="PackedScene" path="res://enemies/support.tscn" id="5_gl44m"]
+[ext_resource type="Script" path="res://data/definitions/zone_settings.gd" id="6_2v8xn"]
+[ext_resource type="PackedScene" path="res://rooms/pieces/vertical_link.tscn" id="7_pajxa"]
+[ext_resource type="PackedScene" path="res://enemies/gunner.tscn" id="gunner_v1"]
+[ext_resource type="PackedScene" path="res://enemies/fly_shooter.tscn" id="flysh_v1"]
+[ext_resource type="PackedScene" path="res://enemies/bomber.tscn" id="bomber_v1"]
+[ext_resource type="PackedScene" path="res://enemies/beam_turret.tscn" id="beamt_v1"]
+[ext_resource type="PackedScene" path="res://enemies/warden.tscn" id="warden_v1"]
+
+[sub_resource type="Resource" id="Resource_b47gc"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("2_pajxa")
+weight = 3.0
+
+[sub_resource type="Resource" id="Resource_8k30g"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("3_tkrun")
+weight = 2.0
+
+[sub_resource type="Resource" id="Resource_87k8j"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("4_j5k1m")
+min_zone = 1
+
+[sub_resource type="Resource" id="Resource_jj32j"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("5_gl44m")
+min_zone = 3
+
+[sub_resource type="Resource" id="Resource_gunner_v1"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("gunner_v1")
+weight = 2.5
+min_zone = 1
+
+[sub_resource type="Resource" id="Resource_flysh_v1"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("flysh_v1")
+weight = 1.5
+min_zone = 1
+
+[sub_resource type="Resource" id="Resource_bomber_v1"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("bomber_v1")
+weight = 1.5
+min_zone = 3
+
+[sub_resource type="Resource" id="Resource_beamt_v1"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("beamt_v1")
+weight = 1.0
+min_zone = 4
+
+[sub_resource type="Resource" id="Resource_warden_v1"]
+script = ExtResource("1_hbluv")
+scene = ExtResource("warden_v1")
+weight = 1.0
+min_zone = 5
+
+[resource]
+script = ExtResource("6_2v8xn")
+zones_in_department = 10
+world_level_start = 20
+evacuation_every = 3
+rooms_base = 6
+rooms_per_zone = 1.0
+rooms_max = 15
+loot_rooms_base = 1
+loot_rooms_per_zone = 0.25
+shop_chance = 0.5
+deep_bias = 0.5
+attempts_per_room = 40
+overlap_margin = 0.3
+vertical_chance = 0.45
+vertical_link = ExtResource("7_pajxa")
+enemies_base = 13
+enemies_per_zone = 1.5
+enemies_max = 48
+combat_alert_all = true
+enemy_pool = Array[ExtResource("1_hbluv")]([SubResource("Resource_b47gc"), SubResource("Resource_8k30g"), SubResource("Resource_87k8j"), SubResource("Resource_jj32j"), SubResource("Resource_gunner_v1"), SubResource("Resource_flysh_v1"), SubResource("Resource_bomber_v1"), SubResource("Resource_beamt_v1"), SubResource("Resource_warden_v1")])
+loot_weapons = 2
+loot_money_min = 20
+loot_money_max = 60
+nav_cell_height = 0.15
+nav_agent_max_climb = 0.45
+spawn_scatter = 4.0
+spawn_spacing = 1.6
+spawn_attempts = 40
+flyer_spawn_height = 2.5
+watchdog_interval = 0.5
+fall_margin = 8.0
+loot_parts = 1
+level_curve_exponent = 1.5
+loot_weapon_chance = 0.45

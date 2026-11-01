@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_tfgdn"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_hjp6n"]
+
+[resource]
+script = ExtResource("1_tfgdn")
+name_key = "FEATURE_MELEE"
+description_key = "FEATURE_MELEE_DESC"
+kind = 4
+value = 0.5

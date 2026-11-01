@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_x8uno"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_kbdqr"]
+
+[resource]
+script = ExtResource("1_x8uno")
+name_key = "FEATURE_OPTIC"
+description_key = "FEATURE_OPTIC_DESC"

@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/selhoz.tres" id="1_onqbk"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_8s6q3"]
+
+[resource]
+script = ExtResource("2_8s6q3")
+name_key = "WEAPON_BODY_SELHOZ_PISTOL_4"
+base_damage = 40.0
+base_fire_rate = 2.4
+base_magazine_size = 5
+base_reload_time = 1.8
+base_spread_deg = 4.6
+base_range = 18.0
+base_recoil_deg = 2.0
+base_aim_time = 0.14
+aim_zoom = 1.4
+base_pellets = 5
+manufacturer = ExtResource("1_onqbk")
+weapon_types = Array[int]([0])
+base_price = 135
+gender = 1
+family_key = "FAMILY_PISTOL_SHOTGUN"
+model_size = Vector3(0.06, 0.09, 0.26)
+aim_anchor_position = Vector3(0, 0.062, 0.11)
+optic_aim_anchor_position = Vector3(0, 0.085, 0.02)
+optic_aim_zoom = 1.8
+mount_barrel = Vector3(0, 0.02, -0.13)
+mount_grip = Vector3(0, -0.09, 0.09)
+mount_magazine = Vector3(0, -0.17, 0.09)
+mount_accessory = Vector3(0, -0.03, -0.1)

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_dadoh"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_ws4or"]
+
+[resource]
+script = ExtResource("2_ws4or")
+part_type = 1
+name_key = "PART_BARREL_LONG"
+spread_mult = 0.9
+range_mult = 1.2
+aim_time_mult = 1.12
+manufacturer = ExtResource("1_dadoh")
+weapon_types = Array[int]([4])
+base_price = 35
+name_words = Array[String](["NAME_ADJ_LONGBARREL", "NAME_ADJ_FARSHOT"])
+model_size = Vector3(0.035, 0.035, 0.3)
+model_offset = Vector3(0, 0, -0.15)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/udarnik.tres" id="1_uypp7"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_3l2fq"]
+
+[resource]
+script = ExtResource("2_3l2fq")
+part_type = 5
+name_key = "PART_ACCESSORY_MODULE"
+manufacturer = ExtResource("1_uypp7")
+base_price = 45
+name_words = Array[String](["NAME_ADJ_MODULAR", "NAME_ADJ_ATTACHED"])
+model_size = Vector3(0.03, 0.03, 0.07)

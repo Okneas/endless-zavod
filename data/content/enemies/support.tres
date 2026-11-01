@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_2vyro"]
+
+[resource]
+script = ExtResource("1_2vyro")
+name_key = "ENEMY_SUPPORT"
+enemy_class = 1
+max_health = 55.0
+health_bar_height = 0.7
+xp_reward = 14
+money_min = 6
+money_max = 14
+medkit_chance = 0.1
+medkit_heal = 30.0
+move_speed = 10.6
+heal_per_second = 10.0
+heal_range = 12.0
+search_range = 25.0
+hover_height = 0.5
+part_chance = 0.025

@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_4jpql"]
+
+[resource]
+script = ExtResource("1_4jpql")
+name_key = "ENEMY_WARDEN"
+enemy_class = 1
+max_health = 50.0
+health_bar_height = 0.7
+xp_reward = 16
+money_min = 6
+money_max = 14
+part_chance = 0.03
+medkit_chance = 0.1
+medkit_heal = 30.0
+move_speed = 10.6
+ward_damage_taken = 0.03
+ward_range = 14.0
+hover_height = 0.5
+search_range = 25.0

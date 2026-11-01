@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_1qvxy"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_7n8yg"]
+[ext_resource type="Resource" path="res://data/content/features/sig_oitp_module.tres" id="3_68q1n"]
+
+[resource]
+script = ExtResource("2_7n8yg")
+part_type = 1
+name_key = "PART_BARREL_LONG"
+spread_mult = 0.9
+range_mult = 1.2
+aim_time_mult = 1.12
+manufacturer = ExtResource("1_1qvxy")
+weapon_types = Array[int]([5])
+base_price = 35
+name_words = Array[String](["NAME_ADJ_LONGBARREL", "NAME_ADJ_FARSHOT"])
+signature = ExtResource("3_68q1n")
+model_size = Vector3(0.035, 0.035, 0.28)
+model_offset = Vector3(0, 0, -0.14)

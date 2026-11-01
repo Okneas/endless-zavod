@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TargetDummySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/target_dummy_settings.gd" id="1_o4nx0"]
+
+[resource]
+script = ExtResource("1_o4nx0")
+max_health = 500.0
+respawn_time = 3.0

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_w8uh1"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_7478x"]
+[ext_resource type="Resource" path="res://data/content/features/sig_luch_lens.tres" id="3_wqs3q"]
+
+[resource]
+script = ExtResource("2_7478x")
+part_type = 1
+name_key = "PART_BARREL_SHORT"
+spread_mult = 1.12
+range_mult = 0.85
+aim_time_mult = 0.9
+manufacturer = ExtResource("1_w8uh1")
+weapon_types = Array[int]([7])
+base_price = 30
+name_words = Array[String](["NAME_ADJ_SNUB", "NAME_ADJ_SAWED"])
+signature = ExtResource("3_wqs3q")
+model_size = Vector3(0.03, 0.03, 0.34)
+model_offset = Vector3(0, 0, -0.17)

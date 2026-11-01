@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WeaponGenerationSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_4jiav"]
+[ext_resource type="Resource" path="res://data/content/features/acc_acid.tres" id="2_14b26"]
+[ext_resource type="Resource" path="res://data/content/features/acc_electric.tres" id="3_3igby"]
+[ext_resource type="Resource" path="res://data/content/features/acc_frost.tres" id="4_mavlk"]
+[ext_resource type="Resource" path="res://data/content/features/acc_slide.tres" id="5_ccku0"]
+[ext_resource type="Resource" path="res://data/content/features/acc_air.tres" id="6_nng1a"]
+[ext_resource type="Resource" path="res://data/content/features/acc_melee.tres" id="7_k5wef"]
+[ext_resource type="Script" path="res://data/definitions/manufacturer.gd" id="8_lsba3"]
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="9_w2dnf"]
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="10_w5rlj"]
+[ext_resource type="Resource" path="res://data/content/manufacturers/udarnik.tres" id="11_bfs82"]
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="12_vs56p"]
+[ext_resource type="Resource" path="res://data/content/manufacturers/selhoz.tres" id="13_l5xyf"]
+[ext_resource type="Resource" path="res://data/content/features/optic.tres" id="14_14b26"]
+[ext_resource type="Resource" path="res://data/content/balance/quality_scale.tres" id="14_lny7v"]
+[ext_resource type="Script" path="res://data/definitions/weapon_generation_settings.gd" id="15_4y2vs"]
+
+[resource]
+script = ExtResource("15_4y2vs")
+parts_directory = "res://data/content/parts/"
+manufacturers = Array[ExtResource("8_lsba3")]([ExtResource("9_w2dnf"), ExtResource("10_w5rlj"), ExtResource("11_bfs82"), ExtResource("12_vs56p"), ExtResource("13_l5xyf")])
+weapon_types = Array[int]([0, 1, 2, 6, 3, 4, 5, 7])
+stock_types = Array[int]([6, 3, 4, 5, 7])
+damage_per_level = 0.06
+slot_count = 4
+quality_scale = ExtResource("14_lny7v")
+starter_quality = 1
+department_manufacturer_chance = 0.6
+optic_chance = 0.2
+optic_feature = ExtResource("14_14b26")
+accessory_chance = 0.85
+accessory_features = Array[ExtResource("1_4jiav")]([ExtResource("2_14b26"), ExtResource("3_3igby"), ExtResource("4_mavlk"), ExtResource("5_ccku0"), ExtResource("6_nng1a"), ExtResource("7_k5wef")])
+preferred_feature_weight = 4.0
+prefix_chance = 0.4
+part_word_chance = 0.35
+max_part_words = 2
+prefix_keys = Array[String](["NAME_PREFIX_FURIOUS", "NAME_PREFIX_RUSTY", "NAME_PREFIX_FACTORY", "NAME_PREFIX_SHOCK", "NAME_PREFIX_GUARDS", "NAME_PREFIX_CAST", "NAME_PREFIX_MODEL", "NAME_PREFIX_COLLECTIVE", "NAME_PREFIX_STAKHANOV", "NAME_PREFIX_SECRET", "NAME_PREFIX_NIGHT", "NAME_PREFIX_TROPHY"])
+price_per_level = 0.1
+modifier_price = 8

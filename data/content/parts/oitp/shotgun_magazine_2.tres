@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_2hq1v"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_tv2a5"]
+
+[resource]
+script = ExtResource("2_tv2a5")
+part_type = 3
+name_key = "PART_MAGAZINE_FAST"
+magazine_size_mult = 0.8
+reload_time_mult = 0.8
+manufacturer = ExtResource("1_2hq1v")
+weapon_types = Array[int]([3])
+base_price = 28
+name_words = Array[String](["NAME_ADJ_BRISK"])
+model_size = Vector3(0.04, 0.04, 0.17)
+model_offset = Vector3(0, 0, -0.085)

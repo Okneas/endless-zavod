@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_8pqge"]
+
+[resource]
+script = ExtResource("1_8pqge")
+name_key = "ENEMY_TURRET"
+enemy_class = 3
+max_health = 70.0
+health_bar_height = 2.0
+xp_reward = 15
+money_min = 8
+money_max = 18
+medkit_chance = 0.1
+medkit_heal = 30.0
+shoot_range = 100.0
+view_angle = 120.0
+aim_time = 0.7
+shoot_interval = 1.2
+turn_speed = 120.0
+projectile_damage = 15.0
+projectile_speed = 23.0
+projectile_lifetime = 4.5
+burst_shot_interval = 0.15
+lose_sight_time = 1.5
+burst_count = 3
+awareness_radius = 26.0
+part_chance = 0.03

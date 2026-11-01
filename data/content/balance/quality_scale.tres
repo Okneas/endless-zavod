@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="QualityScale" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/quality_scale.gd" id="1_w82sx"]
+[ext_resource type="Script" path="res://data/definitions/quality_tier.gd" id="2_8c5cj"]
+
+[sub_resource type="Resource" id="Resource_vgvnn"]
+script = ExtResource("2_8c5cj")
+name_key = "QUALITY_JUNK"
+color = Color(0.6, 0.6, 0.62, 1)
+accessory_feature_count = 1
+drop_weight = 30.0
+price_multiplier = 0.5
+
+[sub_resource type="Resource" id="Resource_hknw5"]
+script = ExtResource("2_8c5cj")
+name_key = "QUALITY_SERIAL"
+color = Color(0.95, 0.95, 0.95, 1)
+modifier_count = 1
+accessory_feature_count = 1
+drop_weight = 35.0
+
+[sub_resource type="Resource" id="Resource_7ylhs"]
+script = ExtResource("2_8c5cj")
+name_key = "QUALITY_PILOT"
+color = Color(0.35, 0.8, 0.4, 1)
+modifier_count = 2
+accessory_feature_count = 1
+drop_weight = 20.0
+price_multiplier = 1.6
+
+[sub_resource type="Resource" id="Resource_b6upt"]
+script = ExtResource("2_8c5cj")
+name_key = "QUALITY_EXPERIMENTAL"
+color = Color(0.4, 0.55, 1, 1)
+modifier_count = 3
+accessory_feature_count = 2
+drop_weight = 10.0
+price_multiplier = 2.6
+
+[sub_resource type="Resource" id="Resource_ljibt"]
+script = ExtResource("2_8c5cj")
+name_key = "QUALITY_PROTOTYPE"
+color = Color(1, 0.6, 0.15, 1)
+modifier_count = 4
+accessory_feature_count = 2
+drop_weight = 5.0
+price_multiplier = 4.0
+
+[resource]
+script = ExtResource("1_w82sx")
+tiers = Array[ExtResource("2_8c5cj")]([SubResource("Resource_vgvnn"), SubResource("Resource_hknw5"), SubResource("Resource_7ylhs"), SubResource("Resource_b6upt"), SubResource("Resource_ljibt")])

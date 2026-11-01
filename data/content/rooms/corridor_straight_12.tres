@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3]
+
+[ext_resource type="PackedScene" path="res://rooms/pieces/corridor_straight_12.tscn" id="1_4vsl0"]
+[ext_resource type="Script" path="res://data/definitions/room_definition.gd" id="2_tv6x7"]
+
+[resource]
+script = ExtResource("2_tv6x7")
+scene = ExtResource("1_4vsl0")
+kind = 6

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="GameConfig" format=3]
+
+[ext_resource type="Resource" path="res://data/content/balance/clock_settings.tres" id="1_djw0m"]
+[ext_resource type="Resource" path="res://data/content/balance/shop_settings.tres" id="shop_cfg"]
+[ext_resource type="Script" path="res://data/definitions/game_config.gd" id="2_nqp7i"]
+[ext_resource type="Resource" path="res://data/content/balance/element_settings.tres" id="2_wayq8"]
+[ext_resource type="Resource" path="res://data/content/balance/loot_settings.tres" id="3_5r6b5"]
+[ext_resource type="Resource" path="res://data/content/balance/inventory_settings.tres" id="3_baf66"]
+[ext_resource type="Resource" path="res://data/content/balance/zone_settings.tres" id="3_wa3h7"]
+[ext_resource type="Resource" path="res://data/content/balance/progression_settings.tres" id="4_baf66"]
+[ext_resource type="Resource" path="res://data/content/balance/menu_settings.tres" id="5_sqjpu"]
+[ext_resource type="Resource" path="res://data/content/balance/vulnerability_table.tres" id="6_sqjpu"]
+[ext_resource type="Resource" path="res://data/content/balance/weapon_generation.tres" id="7_5r6b5"]
+[ext_resource type="Resource" path="res://data/content/balance/run_settings.tres" id="7_kkbm1"]
+
+[resource]
+script = ExtResource("2_nqp7i")
+pause_in_run = true
+clock = ExtResource("1_djw0m")
+vulnerabilities = ExtResource("6_sqjpu")
+elements = ExtResource("2_wayq8")
+progression = ExtResource("4_baf66")
+loot = ExtResource("3_5r6b5")
+weapons = ExtResource("7_5r6b5")
+inventory = ExtResource("3_baf66")
+menus = ExtResource("5_sqjpu")
+zones = ExtResource("3_wa3h7")
+run = ExtResource("7_kkbm1")
+shop = ExtResource("shop_cfg")

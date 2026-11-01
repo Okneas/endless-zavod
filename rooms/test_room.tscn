@@ -1,0 +1,226 @@
+[gd_scene format=3]
+
+[ext_resource type="Shader" path="res://assets/placeholders/greybox_grid.gdshader" id="1_8kare"]
+[ext_resource type="PackedScene" path="res://player/player.tscn" id="2_8hq8k"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="3_asw7d"]
+[ext_resource type="PackedScene" path="res://ui/debug_overlay.tscn" id="4_dy7v5"]
+[ext_resource type="PackedScene" path="res://enemies/target_dummy.tscn" id="5_8hq8k"]
+[ext_resource type="Script" path="res://enemies/enemy_spawner.gd" id="6_y3r25"]
+[ext_resource type="PackedScene" path="res://enemies/chaser.tscn" id="7_a2udy"]
+[ext_resource type="PackedScene" path="res://enemies/flyer.tscn" id="8_vtpby"]
+[ext_resource type="PackedScene" path="res://enemies/turret.tscn" id="9_urg16"]
+[ext_resource type="PackedScene" path="res://enemies/support.tscn" id="10_gyee5"]
+
+[sub_resource type="Environment" id="Environment_bsfal"]
+background_mode = 1
+background_color = Color(0.1, 0.1, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.7, 0.75, 1)
+ambient_light_energy = 0.55
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jf4ma"]
+render_priority = 0
+shader = ExtResource("1_8kare")
+shader_parameter/base_color = Color(0.3, 0.3, 0.32, 1)
+shader_parameter/line_color = Color(0.19500001, 0.19500001, 0.20799999, 1)
+shader_parameter/cell_size = 2.0
+shader_parameter/line_width = 0.06
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y3r25"]
+render_priority = 0
+shader = ExtResource("1_8kare")
+shader_parameter/base_color = Color(0.42, 0.42, 0.45, 1)
+shader_parameter/line_color = Color(0.27299997, 0.27299997, 0.2925, 1)
+shader_parameter/cell_size = 2.0
+shader_parameter/line_width = 0.06
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a2udy"]
+render_priority = 0
+shader = ExtResource("1_8kare")
+shader_parameter/base_color = Color(0.55, 0.55, 0.58, 1)
+shader_parameter/line_color = Color(0.3575, 0.3575, 0.37699997, 1)
+shader_parameter/cell_size = 2.0
+shader_parameter/line_width = 0.06
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vtpby"]
+render_priority = 0
+shader = ExtResource("1_8kare")
+shader_parameter/base_color = Color(0.62, 0.58, 0.5, 1)
+shader_parameter/line_color = Color(0.403, 0.37699997, 0.325, 1)
+shader_parameter/cell_size = 2.0
+shader_parameter/line_width = 0.06
+
+[node name="TestRoom" type="Node3D" unique_id=584243435]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1397183580]
+environment = SubResource("Environment_bsfal")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=446968591]
+transform = Transform3D(0.81915206, -0.5318108, 0.21486555, 0, 0.37460664, 0.92718387, -0.57357645, -0.75950456, 0.3068598, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Geometry" type="CSGCombiner3D" parent="." unique_id=523286765]
+use_collision = true
+
+[node name="Floor" type="CSGBox3D" parent="Geometry" unique_id=659967235]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(40, 1, 40)
+material = SubResource("ShaderMaterial_jf4ma")
+
+[node name="WallNorth" type="CSGBox3D" parent="Geometry" unique_id=446325027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, -20.5)
+size = Vector3(42, 18, 1)
+material = SubResource("ShaderMaterial_y3r25")
+
+[node name="WallSouth" type="CSGBox3D" parent="Geometry" unique_id=1304809255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.5, 20.5)
+size = Vector3(42, 18, 1)
+material = SubResource("ShaderMaterial_y3r25")
+
+[node name="WallWest" type="CSGBox3D" parent="Geometry" unique_id=1945728548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.5, 8.5, 0)
+size = Vector3(1, 18, 40)
+material = SubResource("ShaderMaterial_y3r25")
+
+[node name="WallEast" type="CSGBox3D" parent="Geometry" unique_id=338524607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5, 8.5, 0)
+size = Vector3(1, 18, 40)
+material = SubResource("ShaderMaterial_y3r25")
+
+[node name="Tower3m" type="CSGBox3D" parent="Geometry" unique_id=1193223808]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 1.5, -12)
+size = Vector3(6, 3, 6)
+material = SubResource("ShaderMaterial_a2udy")
+
+[node name="Tower6m" type="CSGBox3D" parent="Geometry" unique_id=725158199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3, -14)
+size = Vector3(6, 6, 6)
+material = SubResource("ShaderMaterial_a2udy")
+
+[node name="Tower9m" type="CSGBox3D" parent="Geometry" unique_id=658525096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, -12)
+size = Vector3(6, 9, 6)
+material = SubResource("ShaderMaterial_a2udy")
+
+[node name="Tower12m" type="CSGBox3D" parent="Geometry" unique_id=1392423135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 6, -14)
+size = Vector3(6, 12, 6)
+material = SubResource("ShaderMaterial_a2udy")
+
+[node name="Pillar15m" type="CSGBox3D" parent="Geometry" unique_id=151024248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 7.5, 4)
+size = Vector3(2, 15, 2)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="FloatingSlab" type="CSGBox3D" parent="Geometry" unique_id=298833815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 8, 8)
+size = Vector3(8, 0.6, 8)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="Step1m" type="CSGBox3D" parent="Geometry" unique_id=876983526]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0.5, 14)
+size = Vector3(3, 1, 3)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="Step2m" type="CSGBox3D" parent="Geometry" unique_id=223103254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, 14)
+size = Vector3(3, 2, 3)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="Step3m" type="CSGBox3D" parent="Geometry" unique_id=515552849]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1.5, 11)
+size = Vector3(3, 3, 3)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="BeamPostWest" type="CSGBox3D" parent="Geometry" unique_id=1220382932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5, 0.65, 10)
+size = Vector3(1, 1.3, 4)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="BeamPostEast" type="CSGBox3D" parent="Geometry" unique_id=1908573638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0.65, 10)
+size = Vector3(1, 1.3, 4)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="BeamSlab" type="CSGBox3D" parent="Geometry" unique_id=406329553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.8, 10)
+size = Vector3(8, 1, 4)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="Ramp" type="CSGBox3D" parent="Geometry" unique_id=1796230549]
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 8, 1.3, 0)
+size = Vector3(6, 0.5, 12)
+material = SubResource("ShaderMaterial_vtpby")
+
+[node name="Player" parent="." unique_id=153629678 instance=ExtResource("2_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 13)
+
+[node name="Hud" parent="." unique_id=1521349255 instance=ExtResource("3_asw7d")]
+
+[node name="DebugOverlay" parent="." unique_id=35475875 instance=ExtResource("4_dy7v5")]
+
+[node name="Dummies" type="Node3D" parent="." unique_id=1587819806]
+
+[node name="TargetDummy1" parent="Dummies" unique_id=1685017547 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 6)
+enemy_class = 0
+
+[node name="TargetDummy2" parent="Dummies" unique_id=198721669 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+enemy_class = 1
+
+[node name="TargetDummy3" parent="Dummies" unique_id=113754527 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, -4)
+
+[node name="TargetDummy4" parent="Dummies" unique_id=1814645447 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+enemy_class = 3
+
+[node name="TargetDummy5" parent="Dummies" unique_id=1695718702 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6)
+enemy_class = 0
+
+[node name="TargetDummy6" parent="Dummies" unique_id=742039575 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -6)
+enemy_class = 1
+
+[node name="TargetDummy7" parent="Dummies" unique_id=1213700197 instance=ExtResource("5_8hq8k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0, -2)
+
+[node name="Enemies" type="Node3D" parent="." unique_id=13403447]
+
+[node name="SpawnChaser1" type="Node3D" parent="Enemies" unique_id=137496999]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, -8)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("7_a2udy")
+respawn_time = 8.0
+
+[node name="SpawnChaser2" type="Node3D" parent="Enemies" unique_id=1684121986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, -8)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("7_a2udy")
+respawn_time = 8.0
+
+[node name="SpawnFlyer1" type="Node3D" parent="Enemies" unique_id=232042067]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 2.5, -7)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("8_vtpby")
+respawn_time = 8.0
+
+[node name="SpawnFlyer2" type="Node3D" parent="Enemies" unique_id=1463246483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.5, -6)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("8_vtpby")
+respawn_time = 8.0
+
+[node name="SpawnTurret" type="Node3D" parent="Enemies" unique_id=813890236]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 18, 0, -4)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("9_urg16")
+respawn_time = 8.0
+
+[node name="SpawnSupport" type="Node3D" parent="Enemies" unique_id=947016860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2, -7)
+script = ExtResource("6_y3r25")
+enemy_scene = ExtResource("10_gyee5")
+respawn_time = 8.0

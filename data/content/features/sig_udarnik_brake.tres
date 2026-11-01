@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_6knch"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_6xyl5"]
+
+[sub_resource type="Resource" id="Resource_to7fe"]
+script = ExtResource("2_6xyl5")
+stat = 6
+min_value = 0.15
+max_value = 0.15
+
+[resource]
+script = ExtResource("1_6knch")
+name_key = "FEATURE_UDARNIK_BRAKE"
+description_key = "FEATURE_UDARNIK_BRAKE_DESC"
+stat_changes = Array[ExtResource("2_6xyl5")]([SubResource("Resource_to7fe")])

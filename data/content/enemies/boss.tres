@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_ggdfw"]
+[ext_resource type="PackedScene" path="res://enemies/chaser.tscn" id="2_ui7jn"]
+
+[resource]
+script = ExtResource("1_ggdfw")
+name_key = "ENEMY_BOSS"
+enemy_class = 2
+max_health = 2500.0
+health_bar_height = 4.6
+xp_reward = 400
+money_min = 150
+money_max = 250
+medkit_chance = 0.5
+medkit_heal = 60.0
+move_speed = 6.4
+aggro_range = 120.0
+gravity = 28.0
+melee_damage = 28.0
+melee_range = 3.2
+melee_cooldown = 1.2
+shockwave_interval = 6.0
+shockwave_windup = 0.8
+shockwave_speed = 14.0
+shockwave_radius = 40.0
+shockwave_thickness = 1.5
+shockwave_height = 1.1
+shockwave_damage = 25.0
+phase2_health_fraction = 0.5
+phase2_speed_multiplier = 1.35
+phase2_interval_multiplier = 0.65
+summon_scene = ExtResource("2_ui7jn")
+summon_count = 4
+part_chance = 1.0

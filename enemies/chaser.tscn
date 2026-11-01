@@ -1,0 +1,41 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_chaser.gd" id="1_cux6j"]
+[ext_resource type="Resource" path="res://data/content/enemies/chaser.tres" id="2_k1rt2"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ho883"]
+radius = 0.45
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjo8h"]
+albedo_color = Color(0.82, 0.42, 0.18, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8yvpk"]
+material = SubResource("StandardMaterial3D_bjo8h")
+radius = 0.45
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqjub"]
+albedo_color = Color(0.1, 0.05, 0.05, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3pmxh"]
+material = SubResource("StandardMaterial3D_fqjub")
+size = Vector3(0.5, 0.12, 0.12)
+
+[node name="Chaser" type="CharacterBody3D" unique_id=855552320]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_cux6j")
+settings = ExtResource("2_k1rt2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=178602608]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_ho883")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1205693486]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_8yvpk")
+
+[node name="Eye" type="MeshInstance3D" parent="." unique_id=1356025282]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -0.42)
+mesh = SubResource("BoxMesh_3pmxh")

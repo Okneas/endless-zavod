@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_om4x6"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_dgkr6"]
+
+[sub_resource type="Resource" id="Resource_v2kyp"]
+script = ExtResource("2_dgkr6")
+stat = 4
+min_value = 0.08
+max_value = 0.08
+
+[sub_resource type="Resource" id="Resource_q873c"]
+script = ExtResource("2_dgkr6")
+stat = 5
+min_value = 0.1
+max_value = 0.1
+
+[resource]
+script = ExtResource("1_om4x6")
+name_key = "FEATURE_LUCH_LENS"
+description_key = "FEATURE_LUCH_LENS_DESC"
+stat_changes = Array[ExtResource("2_dgkr6")]([SubResource("Resource_v2kyp"), SubResource("Resource_q873c")])

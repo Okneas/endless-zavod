@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/udarnik.tres" id="1_6c4mh"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_b3utp"]
+
+[resource]
+script = ExtResource("2_b3utp")
+part_type = 4
+name_key = "PART_STOCK_LIGHT"
+recoil_mult = 1.05
+aim_time_mult = 0.92
+movement_spread_mult = 0.8
+manufacturer = ExtResource("1_6c4mh")
+weapon_types = Array[int]([3])
+base_price = 35
+name_words = Array[String](["NAME_ADJ_FOLDING", "NAME_ADJ_LIGHTWEIGHT"])
+model_size = Vector3(0.035, 0.08, 0.17)
+model_offset = Vector3(0, 0, 0.085)

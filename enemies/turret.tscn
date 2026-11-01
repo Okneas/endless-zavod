@@ -1,0 +1,56 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_turret.gd" id="1_ni5yt"]
+[ext_resource type="Resource" path="res://data/content/enemies/turret.tres" id="2_6kck2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l4b7k"]
+size = Vector3(0.9, 1, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgaaa"]
+albedo_color = Color(0.55, 0.2, 0.22, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wcuar"]
+material = SubResource("StandardMaterial3D_wgaaa")
+size = Vector3(0.9, 1, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6rm8"]
+albedo_color = Color(0.35, 0.35, 0.4, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_qqwwr"]
+material = SubResource("StandardMaterial3D_h6rm8")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fn68u"]
+albedo_color = Color(0.2, 0.2, 0.24, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g6sjk"]
+material = SubResource("StandardMaterial3D_fn68u")
+size = Vector3(0.14, 0.14, 0.7)
+
+[node name="Turret" type="CharacterBody3D" unique_id=2026378834]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_ni5yt")
+settings = ExtResource("2_6kck2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1981279710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_l4b7k")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=267689966]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_wcuar")
+
+[node name="Head" type="Node3D" parent="." unique_id=2130304313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+
+[node name="HeadMesh" type="MeshInstance3D" parent="Head" unique_id=1972035669]
+mesh = SubResource("SphereMesh_qqwwr")
+
+[node name="Barrel" type="MeshInstance3D" parent="Head" unique_id=821663401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.55)
+mesh = SubResource("BoxMesh_g6sjk")
+
+[node name="Muzzle" type="Marker3D" parent="Head" unique_id=1952930041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.95)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ProgressionSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/progression_settings.gd" id="1_jv6bg"]
+
+[resource]
+script = ExtResource("1_jv6bg")
+max_level = 40
+xp_base = 240.0
+xp_exponent = 1.4
+crit_per_level = 0.002

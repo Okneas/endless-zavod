@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Manufacturer" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="1_ebf8a"]
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="2_qw5xk"]
+[ext_resource type="Script" path="res://data/definitions/manufacturer.gd" id="3_kfp26"]
+
+[sub_resource type="Resource" id="Resource_dy352"]
+script = ExtResource("1_ebf8a")
+name_key = "MOD_OITP_TOLERANCE"
+stat = 4
+min_value = 0.05
+max_value = 0.12
+
+[sub_resource type="Resource" id="Resource_887s6"]
+script = ExtResource("1_ebf8a")
+name_key = "MOD_OITP_STABILIZER"
+stat = 6
+min_value = 0.05
+max_value = 0.12
+
+[sub_resource type="Resource" id="Resource_pnemn"]
+script = ExtResource("1_ebf8a")
+name_key = "MOD_OITP_ALIGN"
+stat = 7
+min_value = 0.05
+max_value = 0.1
+
+[sub_resource type="Resource" id="Resource_0okug"]
+script = ExtResource("1_ebf8a")
+name_key = "MOD_OITP_CALIBRATE"
+stat = 5
+min_value = 0.05
+max_value = 0.1
+
+[sub_resource type="Resource" id="Resource_msb8e"]
+script = ExtResource("1_ebf8a")
+name_key = "MOD_OITP_LAB"
+stat = 8
+min_value = 0.01
+max_value = 0.03
+
+[resource]
+script = ExtResource("3_kfp26")
+name_key = "MFR_OITP"
+description_key = "MFR_OITP_DESC"
+color = Color(0.3, 0.45, 0.8, 1)
+weapon_types = Array[int]([1, 6, 3, 5, 7])
+damage_mult = 0.95
+spread_mult = 0.8
+recoil_mult = 0.8
+optic_chance_bonus = 1.0
+modifier_pool = Array[ExtResource("1_ebf8a")]([SubResource("Resource_dy352"), SubResource("Resource_887s6"), SubResource("Resource_pnemn"), SubResource("Resource_0okug"), SubResource("Resource_msb8e")])

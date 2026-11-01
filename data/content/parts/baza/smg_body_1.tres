@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_bw6ei"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_i2sj3"]
+
+[resource]
+script = ExtResource("2_i2sj3")
+name_key = "WEAPON_BODY_BAZA_SMG_1"
+weapon_type = 6
+base_damage = 12.0
+base_fire_rate = 12.5
+automatic = true
+base_magazine_size = 30
+base_reload_time = 1.9
+base_spread_deg = 2.4
+base_range = 55.0
+base_recoil_deg = 0.6
+base_aim_time = 0.18
+aim_zoom = 1.4
+manufacturer = ExtResource("1_bw6ei")
+weapon_types = Array[int]([6])
+base_price = 120
+model_size = Vector3(0.06, 0.1, 0.34)
+aim_anchor_position = Vector3(0, 0.067, 0.12)
+optic_aim_anchor_position = Vector3(0, 0.09, 0.03)
+optic_aim_zoom = 1.8
+mount_barrel = Vector3(0, 0.02, -0.17)
+mount_grip = Vector3(0, -0.1, 0.07)
+mount_magazine = Vector3(0, -0.14, -0.03)
+mount_stock = Vector3(0, 0, 0.17)
+mount_accessory = Vector3(0, -0.05, -0.14)

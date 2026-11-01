@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Manufacturer" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="1_v3lyj"]
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="2_25kr4"]
+[ext_resource type="Resource" path="res://data/content/features/acc_electric.tres" id="3_k3n14"]
+[ext_resource type="Script" path="res://data/definitions/manufacturer.gd" id="4_rofyj"]
+
+[sub_resource type="Resource" id="Resource_4kdyb"]
+script = ExtResource("1_v3lyj")
+name_key = "MOD_LUCH_GLOW"
+min_value = 0.04
+max_value = 0.08
+
+[sub_resource type="Resource" id="Resource_2vdw5"]
+script = ExtResource("1_v3lyj")
+name_key = "MOD_LUCH_FOCUS"
+stat = 4
+min_value = 0.04
+max_value = 0.09
+
+[sub_resource type="Resource" id="Resource_sdm01"]
+script = ExtResource("1_v3lyj")
+name_key = "MOD_LUCH_RESONANCE"
+stat = 8
+min_value = 0.015
+max_value = 0.04
+
+[sub_resource type="Resource" id="Resource_oqywa"]
+script = ExtResource("1_v3lyj")
+name_key = "MOD_LUCH_HEATSINK"
+stat = 3
+min_value = 0.05
+max_value = 0.1
+
+[sub_resource type="Resource" id="Resource_6wc7k"]
+script = ExtResource("1_v3lyj")
+name_key = "MOD_LUCH_RECHARGE"
+stat = 2
+min_value = 0.05
+max_value = 0.1
+
+[resource]
+script = ExtResource("4_rofyj")
+name_key = "MFR_LUCH"
+description_key = "MFR_LUCH_DESC"
+color = Color(0.8, 0.25, 0.25, 1)
+weapon_types = Array[int]([2, 6, 3, 5, 7])
+damage_mult = 1.1
+fire_rate_mult = 0.9
+modifier_pool = Array[ExtResource("1_v3lyj")]([SubResource("Resource_4kdyb"), SubResource("Resource_2vdw5"), SubResource("Resource_sdm01"), SubResource("Resource_oqywa"), SubResource("Resource_6wc7k")])
+preferred_features = Array[ExtResource("2_25kr4")]([ExtResource("3_k3n14")])

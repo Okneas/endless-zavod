@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_quema"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_rlj5h"]
+
+[resource]
+script = ExtResource("2_rlj5h")
+name_key = "WEAPON_BODY_LUCH_SNIPER_2"
+weapon_type = 7
+base_damage = 100.0
+base_fire_rate = 1.3
+base_magazine_size = 7
+base_reload_time = 2.5
+base_spread_deg = 0.5
+base_range = 250.0
+base_recoil_deg = 3.2
+base_aim_time = 0.3
+aim_zoom = 2.5
+base_crit_chance = 0.03
+manufacturer = ExtResource("1_quema")
+weapon_types = Array[int]([7])
+base_price = 130
+gender = 1
+family_key = "FAMILY_SNIPER_BOLT"
+model_size = Vector3(0.06, 0.1, 0.5)
+aim_anchor_position = Vector3(0, 0.067, 0.16)
+optic_aim_anchor_position = Vector3(0, 0.095, 0.02)
+optic_aim_zoom = 4.0
+mount_barrel = Vector3(0, 0.02, -0.25)
+mount_grip = Vector3(0, -0.1, 0.1)
+mount_magazine = Vector3(0, -0.12, 0)
+mount_stock = Vector3(0, 0, 0.25)
+mount_accessory = Vector3(0, -0.045, -0.22)

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3]
+
+[ext_resource type="Shader" path="res://assets/placeholders/greybox_grid.gdshader" id="1_r88a3"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_r88a3")
+shader_parameter/base_color = Color(0.34, 0.35, 0.4, 1)
+shader_parameter/line_color = Color(0.221, 0.22749999, 0.26, 1)
+shader_parameter/cell_size = null
+shader_parameter/line_width = null

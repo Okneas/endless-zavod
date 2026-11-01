@@ -1,0 +1,83 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://rooms/room_piece.gd" id="1_w6h8u"]
+[ext_resource type="Material" path="res://assets/placeholders/greybox_floor.tres" id="2_ennip"]
+[ext_resource type="Material" path="res://assets/placeholders/greybox_wall.tres" id="3_ueddj"]
+[ext_resource type="Script" path="res://rooms/room_entrance.gd" id="4_gh36t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j0u7m"]
+material = ExtResource("2_ennip")
+size = Vector3(8, 1, 25.298222)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s06ub"]
+size = Vector3(8, 1, 25.298222)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfrog"]
+material = ExtResource("2_ennip")
+size = Vector3(8, 1, 25.298222)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3npj"]
+size = Vector3(8, 1, 25.298222)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xbigc"]
+material = ExtResource("3_ueddj")
+size = Vector3(2, 14, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0c1q"]
+size = Vector3(2, 14, 24)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l675d"]
+material = ExtResource("3_ueddj")
+size = Vector3(2, 14, 24)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ike8l"]
+size = Vector3(2, 14, 24)
+
+[node name="corridor_ramp_8" type="Node3D" unique_id=1119915138]
+script = ExtResource("1_w6h8u")
+bounds_center = Vector3(0, 6, -12)
+bounds_size = Vector3(8, 14, 24)
+
+[node name="Block" type="StaticBody3D" parent="." unique_id=733050227]
+transform = Transform3D(-1, 0, 0, 0, 0.94868326, 0.31622776, 0, 0.31622776, -0.94868326, 0, 3.5256584, -12.1581135)
+
+[node name="@MeshInstance3D@60" type="MeshInstance3D" parent="Block" unique_id=1263512658]
+mesh = SubResource("BoxMesh_j0u7m")
+
+[node name="@CollisionShape3D@61" type="CollisionShape3D" parent="Block" unique_id=1711579903]
+shape = SubResource("BoxShape3D_s06ub")
+
+[node name="@StaticBody3D@64" type="StaticBody3D" parent="." unique_id=1532164063]
+transform = Transform3D(-1, 0, 0, 0, 0.94868326, 0.31622776, 0, 0.31622776, -0.94868326, 0, 8.474341, -11.8418865)
+
+[node name="@MeshInstance3D@62" type="MeshInstance3D" parent="@StaticBody3D@64" unique_id=107093157]
+mesh = SubResource("BoxMesh_vfrog")
+
+[node name="@CollisionShape3D@63" type="CollisionShape3D" parent="@StaticBody3D@64" unique_id=350494141]
+shape = SubResource("BoxShape3D_r3npj")
+
+[node name="@StaticBody3D@67" type="StaticBody3D" parent="." unique_id=971731971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 6, -12)
+
+[node name="@MeshInstance3D@65" type="MeshInstance3D" parent="@StaticBody3D@67" unique_id=1160762599]
+mesh = SubResource("BoxMesh_xbigc")
+
+[node name="@CollisionShape3D@66" type="CollisionShape3D" parent="@StaticBody3D@67" unique_id=1344132323]
+shape = SubResource("BoxShape3D_g0c1q")
+
+[node name="@StaticBody3D@70" type="StaticBody3D" parent="." unique_id=505841904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 6, -12)
+
+[node name="@MeshInstance3D@68" type="MeshInstance3D" parent="@StaticBody3D@70" unique_id=1441778212]
+mesh = SubResource("BoxMesh_l675d")
+
+[node name="@CollisionShape3D@69" type="CollisionShape3D" parent="@StaticBody3D@70" unique_id=1200499281]
+shape = SubResource("BoxShape3D_ike8l")
+
+[node name="Entrance_A" type="Marker3D" parent="." unique_id=56647037]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
+script = ExtResource("4_gh36t")
+
+[node name="Entrance_B" type="Marker3D" parent="." unique_id=2038186769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -24)
+script = ExtResource("4_gh36t")

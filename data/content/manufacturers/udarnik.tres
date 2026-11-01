@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Manufacturer" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="1_ecqve"]
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="2_b4n2y"]
+[ext_resource type="Script" path="res://data/definitions/manufacturer.gd" id="3_gpnvp"]
+
+[sub_resource type="Resource" id="Resource_eepnu"]
+script = ExtResource("1_ecqve")
+name_key = "MOD_UDARNIK_HARDEN"
+min_value = 0.04
+max_value = 0.08
+
+[sub_resource type="Resource" id="Resource_6gae3"]
+script = ExtResource("1_ecqve")
+name_key = "MOD_UDARNIK_HEAVY"
+stat = 5
+min_value = 0.05
+max_value = 0.1
+
+[sub_resource type="Resource" id="Resource_q0jxr"]
+script = ExtResource("1_ecqve")
+name_key = "MOD_UDARNIK_CASING"
+stat = 6
+min_value = 0.04
+max_value = 0.09
+
+[sub_resource type="Resource" id="Resource_1y217"]
+script = ExtResource("1_ecqve")
+name_key = "MOD_UDARNIK_BOLT"
+stat = 1
+min_value = 0.03
+max_value = 0.06
+
+[sub_resource type="Resource" id="Resource_dbqbk"]
+script = ExtResource("1_ecqve")
+name_key = "MOD_UDARNIK_FORGE"
+stat = 3
+min_value = 0.03
+max_value = 0.06
+
+[resource]
+script = ExtResource("3_gpnvp")
+name_key = "MFR_UDARNIK"
+description_key = "MFR_UDARNIK_DESC"
+color = Color(0.6, 0.42, 0.3, 1)
+weapon_types = Array[int]([1, 3, 4, 7])
+damage_mult = 1.2
+fire_rate_mult = 0.85
+reload_time_mult = 1.2
+range_mult = 1.2
+modifier_pool = Array[ExtResource("1_ecqve")]([SubResource("Resource_eepnu"), SubResource("Resource_6gae3"), SubResource("Resource_q0jxr"), SubResource("Resource_1y217"), SubResource("Resource_dbqbk")])

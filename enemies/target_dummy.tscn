@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/target_dummy.gd" id="1_32mb2"]
+[ext_resource type="Resource" path="res://data/content/enemies/target_dummy.tres" id="2_fojcn"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_03dpu"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bpx2l"]
+albedo_color = Color(0.78, 0.26, 0.22, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_jrwlt"]
+material = SubResource("StandardMaterial3D_bpx2l")
+radius = 0.4
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63mb7"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.05, 0.05, 0.06, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_1b62y"]
+material = SubResource("StandardMaterial3D_63mb7")
+size = Vector2(1.06, 0.18)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j6jml"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.3, 0.9, 0.35, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_yka80"]
+material = SubResource("StandardMaterial3D_j6jml")
+size = Vector2(1, 0.12)
+
+[node name="TargetDummy" type="StaticBody3D" unique_id=668041615]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_32mb2")
+settings = ExtResource("2_fojcn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=87783129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_03dpu")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1147291346]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_jrwlt")
+
+[node name="HealthBar" type="Node3D" parent="." unique_id=1944563025]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.35, 0)
+
+[node name="Back" type="MeshInstance3D" parent="HealthBar" unique_id=1907738297]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.002)
+mesh = SubResource("QuadMesh_1b62y")
+
+[node name="Fill" type="MeshInstance3D" parent="HealthBar" unique_id=1917666784]
+mesh = SubResource("QuadMesh_yka80")
+
+[node name="Value" type="Label3D" parent="HealthBar" unique_id=911065593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+pixel_size = 0.006
+text = "500"
+font_size = 48

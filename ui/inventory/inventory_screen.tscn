@@ -1,0 +1,266 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/inventory/inventory_screen.gd" id="1_gnmoy"]
+[ext_resource type="Script" path="res://ui/inventory/character_preview.gd" id="2_vdve2"]
+[ext_resource type="Script" path="res://ui/inventory/item_card.gd" id="3_b4ckq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gnmoy"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.07, 0.07, 0.09, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdve2"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.07, 0.07, 0.09, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b4ckq"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.07, 0.07, 0.09, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 0.12)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_okhlg"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.09, 0.09, 0.12, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InventoryScreen" type="CanvasLayer" unique_id=564228878]
+process_mode = 3
+layer = 20
+script = ExtResource("1_gnmoy")
+
+[node name="Root" type="Control" parent="." unique_id=1851204004]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root" unique_id=913145582]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.92)
+
+[node name="Title" type="Label" parent="Root" unique_id=1236634814]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 40.0
+offset_top = 18.0
+offset_right = 41.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 48
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+
+[node name="Center" type="CenterContainer" parent="Root" unique_id=347446742]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 96.0
+offset_bottom = -88.0
+mouse_filter = 2
+
+[node name="Main" type="HBoxContainer" parent="Root/Center" unique_id=165108399]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="PreviewColumn" type="VBoxContainer" parent="Root/Center/Main" unique_id=1607325625]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PreviewTitle" type="Label" parent="Root/Center/Main/PreviewColumn" unique_id=2083815005]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+vertical_alignment = 1
+
+[node name="PreviewPanel" type="PanelContainer" parent="Root/Center/Main/PreviewColumn" unique_id=1621205025]
+custom_minimum_size = Vector2(0, 640)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gnmoy")
+
+[node name="PreviewContainer" type="SubViewportContainer" parent="Root/Center/Main/PreviewColumn/PreviewPanel" unique_id=1269732440]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="PreviewViewport" type="SubViewport" parent="Root/Center/Main/PreviewColumn/PreviewPanel/PreviewContainer" unique_id=1250164846]
+unique_name_in_owner = true
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+
+[node name="CharacterPreview" type="Node3D" parent="Root/Center/Main/PreviewColumn/PreviewPanel/PreviewContainer/PreviewViewport" unique_id=156668530]
+unique_name_in_owner = true
+script = ExtResource("2_vdve2")
+
+[node name="EquipmentColumn" type="VBoxContainer" parent="Root/Center/Main" unique_id=896135862]
+custom_minimum_size = Vector2(570, 0)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="EquipmentTitle" type="Label" parent="Root/Center/Main/EquipmentColumn" unique_id=557129492]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(0.85, 0.85, 0.9, 1)
+vertical_alignment = 1
+
+[node name="EquipmentPanel" type="PanelContainer" parent="Root/Center/Main/EquipmentColumn" unique_id=902710455]
+custom_minimum_size = Vector2(0, 640)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_vdve2")
+
+[node name="EquipmentRows" type="VBoxContainer" parent="Root/Center/Main/EquipmentColumn/EquipmentPanel" unique_id=1986649729]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="GridColumn" type="VBoxContainer" parent="Root/Center/Main" unique_id=1542724782]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Controls" type="HBoxContainer" parent="Root/Center/Main/GridColumn" unique_id=2067593832]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="SortOption" type="OptionButton" parent="Root/Center/Main/GridColumn/Controls" unique_id=2146322081]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+clip_text = true
+fit_to_longest_item = false
+
+[node name="DirectionButton" type="Button" parent="Root/Center/Main/GridColumn/Controls" unique_id=1602612006]
+unique_name_in_owner = true
+layout_mode = 2
+focus_mode = 0
+
+[node name="FilterOption" type="OptionButton" parent="Root/Center/Main/GridColumn/Controls" unique_id=1987633849]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+clip_text = true
+fit_to_longest_item = false
+
+[node name="GridPanel" type="PanelContainer" parent="Root/Center/Main/GridColumn" unique_id=1486548088]
+custom_minimum_size = Vector2(0, 640)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_b4ckq")
+
+[node name="GridBody" type="VBoxContainer" parent="Root/Center/Main/GridColumn/GridPanel" unique_id=1493376797]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="GridCenter" type="CenterContainer" parent="Root/Center/Main/GridColumn/GridPanel/GridBody" unique_id=962052005]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="Root/Center/Main/GridColumn/GridPanel/GridBody/GridCenter" unique_id=1398220005]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="Footer" type="HBoxContainer" parent="Root/Center/Main/GridColumn/GridPanel/GridBody" unique_id=1932369309]
+layout_mode = 2
+
+[node name="EmptyLabel" type="Label" parent="Root/Center/Main/GridColumn/GridPanel/GridBody/Footer" unique_id=189808574]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 0.5)
+
+[node name="CapacityLabel" type="Label" parent="Root/Center/Main/GridColumn/GridPanel/GridBody/Footer" unique_id=1231625372]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 34
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+text = "0/20"
+horizontal_alignment = 2
+
+[node name="Card" type="PanelContainer" parent="Root" unique_id=695809213]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_okhlg")
+script = ExtResource("3_b4ckq")
+
+[node name="Content" type="VBoxContainer" parent="Root/Card" unique_id=1662420971]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HintLabel" type="Label" parent="Root" unique_id=157407368]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -64.0
+offset_bottom = -20.0
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(1, 1, 1, 0.7)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="1_mnee8"]
+
+[resource]
+script = ExtResource("1_mnee8")
+part_type = 5
+name_key = "PART_ACCESSORY_FIRE"
+element = 4

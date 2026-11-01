@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_cfsjx"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_v6f25"]
+
+[resource]
+script = ExtResource("2_v6f25")
+part_type = 2
+name_key = "PART_GRIP_HEAVY"
+recoil_mult = 0.8
+aim_time_mult = 1.1
+manufacturer = ExtResource("1_cfsjx")
+weapon_types = Array[int]([6])
+base_price = 25
+name_words = Array[String](["NAME_ADJ_WEIGHTY", "NAME_ADJ_STOCKY"])
+model_size = Vector3(0.05, 0.13, 0.06)

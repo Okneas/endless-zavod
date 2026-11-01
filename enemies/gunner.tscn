@@ -1,0 +1,55 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_gunner.gd" id="1_3h6k2"]
+[ext_resource type="Resource" path="res://data/content/enemies/gunner.tres" id="2_7rm5f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wht4r"]
+radius = 0.45
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5acnp"]
+albedo_color = Color(0.25, 0.55, 0.6, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7yaar"]
+material = SubResource("StandardMaterial3D_5acnp")
+radius = 0.45
+height = 1.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2u3n8"]
+albedo_color = Color(0.05, 0.1, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y0s5j"]
+material = SubResource("StandardMaterial3D_2u3n8")
+size = Vector3(0.5, 0.14, 0.12)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ntb8"]
+albedo_color = Color(0.15, 0.15, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fh4mi"]
+material = SubResource("StandardMaterial3D_3ntb8")
+size = Vector3(0.12, 0.14, 0.7)
+
+[node name="Gunner" type="CharacterBody3D" unique_id=1879878667]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_3h6k2")
+settings = ExtResource("2_7rm5f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=886321919]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_wht4r")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1439491684]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_7yaar")
+
+[node name="Eye" type="MeshInstance3D" parent="." unique_id=241877241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45, -0.42)
+mesh = SubResource("BoxMesh_y0s5j")
+
+[node name="Gun" type="MeshInstance3D" parent="." unique_id=1780173428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 1.2, -0.5)
+mesh = SubResource("BoxMesh_fh4mi")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=1721736952]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38, 1.2, -0.9)

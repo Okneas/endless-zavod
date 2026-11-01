@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_2j073"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_0a21g"]
+
+[resource]
+script = ExtResource("2_0a21g")
+part_type = 4
+name_key = "PART_STOCK_RIGID"
+aim_time_mult = 1.08
+movement_spread_mult = 0.6
+manufacturer = ExtResource("1_2j073")
+weapon_types = Array[int]([3])
+base_price = 40
+name_words = Array[String](["NAME_ADJ_STURDY", "NAME_ADJ_SOLID"])
+model_size = Vector3(0.05, 0.1, 0.24)
+model_offset = Vector3(0, 0, 0.12)

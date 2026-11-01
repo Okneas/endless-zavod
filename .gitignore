@@ -1,0 +1,28 @@
+# Godot 4
+.godot/
+/android/
+
+# Сборки и экспорт
+/build/
+/export/
+
+# Временные файлы
+*.tmp
+*.translation.tmp
+
+# Логи отладки
+/logs/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Редакторы
+.vscode/
+.idea/
+
+# Obsidian: личное состояние окна (настройки и плагины хранятся в гите)
+gameDesign/.obsidian/workspace.json
+gameDesign/.obsidian/workspace-mobile.json
+gameDesign/.obsidian/cache

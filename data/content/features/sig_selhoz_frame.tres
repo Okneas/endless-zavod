@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_u06re"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_kf82g"]
+
+[sub_resource type="Resource" id="Resource_53ojh"]
+script = ExtResource("2_kf82g")
+stat = 6
+min_value = 0.15
+max_value = 0.15
+
+[resource]
+script = ExtResource("1_u06re")
+name_key = "FEATURE_SELHOZ_FRAME"
+description_key = "FEATURE_SELHOZ_FRAME_DESC"
+stat_changes = Array[ExtResource("2_kf82g")]([SubResource("Resource_53ojh")])

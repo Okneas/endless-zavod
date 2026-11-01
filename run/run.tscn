@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://dkpxd14r2whd3"]
+
+[ext_resource type="Script" uid="uid://c26crc1nhsd1i" path="res://run/run.gd" id="1_cfylf"]
+[ext_resource type="Script" uid="uid://cclmauvetvodg" path="res://run/zone_builder.gd" id="2_4ma0c"]
+[ext_resource type="PackedScene" uid="uid://c4wrp4p24c4wb" path="res://player/player.tscn" id="3_wtvrm"]
+[ext_resource type="PackedScene" path="res://ui/hud/hud.tscn" id="4_x2d2o"]
+[ext_resource type="PackedScene" path="res://ui/debug_overlay.tscn" id="5_1kyhq"]
+
+[sub_resource type="Environment" id="Environment_bsfal"]
+background_mode = 1
+background_color = Color(0.1, 0.1, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.7, 0.7, 0.75, 1)
+ambient_light_energy = 0.55
+
+[node name="RunScene" type="Node3D" unique_id=570183691]
+script = ExtResource("1_cfylf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1581666148]
+environment = SubResource("Environment_bsfal")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1248186662]
+transform = Transform3D(0.81915206, -0.5318108, 0.21486555, 0, 0.37460664, 0.92718387, -0.57357645, -0.75950456, 0.3068598, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Zone" type="Node3D" parent="." unique_id=1665188881]
+script = ExtResource("2_4ma0c")
+
+[node name="Player" parent="." unique_id=1557432025 instance=ExtResource("3_wtvrm")]
+
+[node name="Hud" parent="." unique_id=1521349255 instance=ExtResource("4_x2d2o")]
+
+[node name="DebugOverlay" parent="." unique_id=35475875 instance=ExtResource("5_1kyhq")]
+
+[node name="Loading" type="CanvasLayer" parent="." unique_id=331174392]
+layer = 60
+
+[node name="Black" type="ColorRect" parent="Loading" unique_id=180158885]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.03, 1)
+
+[node name="LoadingText" type="Label" parent="Loading" unique_id=1032371263]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Status" type="CanvasLayer" parent="." unique_id=96899726]
+layer = 70
+
+[node name="Label" type="Label" parent="Status" unique_id=1565119137]
+offset_left = 360.0
+offset_top = 14.0
+offset_right = 360.0
+offset_bottom = 14.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20

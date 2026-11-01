@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_84mjp"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_yuaf3"]
+
+[resource]
+script = ExtResource("2_yuaf3")
+part_type = 2
+name_key = "PART_GRIP_LIGHT"
+recoil_mult = 1.15
+aim_time_mult = 0.88
+manufacturer = ExtResource("1_84mjp")
+weapon_types = Array[int]([3])
+base_price = 20
+name_words = Array[String](["NAME_ADJ_LIGHT", "NAME_ADJ_NIMBLE"])
+model_size = Vector3(0.045, 0.11, 0.055)

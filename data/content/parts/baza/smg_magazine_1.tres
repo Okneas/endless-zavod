@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/baza.tres" id="1_7j8g5"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_psvdy"]
+[ext_resource type="Resource" path="res://data/content/features/sig_baza_mag.tres" id="3_xqgx0"]
+
+[resource]
+script = ExtResource("2_psvdy")
+part_type = 3
+name_key = "PART_MAGAZINE_BIG"
+magazine_size_mult = 1.4
+reload_time_mult = 1.15
+manufacturer = ExtResource("1_7j8g5")
+weapon_types = Array[int]([6])
+base_price = 30
+name_words = Array[String](["NAME_ADJ_ROOMY", "NAME_ADJ_MULTISHOT"])
+signature = ExtResource("3_xqgx0")
+model_size = Vector3(0.04, 0.1955, 0.0605)
+model_offset = Vector3(0, -0.03, 0)

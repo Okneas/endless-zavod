@@ -1,0 +1,72 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_bomber.gd" id="1_ybocg"]
+[ext_resource type="Resource" path="res://data/content/enemies/bomber.tres" id="2_rbyap"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3l66d"]
+radius = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mhjih"]
+albedo_color = Color(0.8, 0.2, 0.15, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_1nbpm"]
+material = SubResource("StandardMaterial3D_mhjih")
+radius = 0.4
+height = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xndo0"]
+albedo_color = Color(0.35, 0.08, 0.06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1hu57"]
+material = SubResource("StandardMaterial3D_xndo0")
+size = Vector3(0.12, 0.12, 0.34)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig217"]
+albedo_color = Color(0.35, 0.08, 0.06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_veo8h"]
+material = SubResource("StandardMaterial3D_ig217")
+size = Vector3(0.12, 0.12, 0.34)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_abf3j"]
+albedo_color = Color(0.35, 0.08, 0.06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5rp41"]
+material = SubResource("StandardMaterial3D_abf3j")
+size = Vector3(0.12, 0.12, 0.34)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ugv51"]
+albedo_color = Color(0.35, 0.08, 0.06, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_p0c6u"]
+material = SubResource("StandardMaterial3D_ugv51")
+size = Vector3(0.12, 0.12, 0.34)
+
+[node name="Bomber" type="CharacterBody3D" unique_id=699257219]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_ybocg")
+settings = ExtResource("2_rbyap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2099782913]
+shape = SubResource("SphereShape3D_3l66d")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1492911216]
+mesh = SubResource("SphereMesh_1nbpm")
+
+[node name="Spike0" type="MeshInstance3D" parent="." unique_id=797951560]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -0.28284273, 0, -0.28284273)
+mesh = SubResource("BoxMesh_1hu57")
+
+[node name="Spike1" type="MeshInstance3D" parent="." unique_id=2132624142]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, -0.28284273, 0, 0.28284273)
+mesh = SubResource("BoxMesh_veo8h")
+
+[node name="Spike2" type="MeshInstance3D" parent="." unique_id=374125658]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 0.2828427, 0, 0.28284273)
+mesh = SubResource("BoxMesh_5rp41")
+
+[node name="Spike3" type="MeshInstance3D" parent="." unique_id=458769138]
+transform = Transform3D(0.70710665, 0, -0.7071069, 0, 1, 0, 0.7071069, 0, 0.70710665, 0.28284276, 0, -0.28284267)
+mesh = SubResource("BoxMesh_p0c6u")

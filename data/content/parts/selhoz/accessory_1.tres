@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/selhoz.tres" id="1_mi7m2"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_6bght"]
+
+[resource]
+script = ExtResource("2_6bght")
+part_type = 5
+name_key = "PART_ACCESSORY_MODULE"
+manufacturer = ExtResource("1_mi7m2")
+base_price = 45
+name_words = Array[String](["NAME_ADJ_MODULAR", "NAME_ADJ_ATTACHED"])
+model_size = Vector3(0.03, 0.03, 0.07)

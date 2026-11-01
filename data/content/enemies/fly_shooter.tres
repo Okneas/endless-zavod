@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_8ikgi"]
+
+[resource]
+script = ExtResource("1_8ikgi")
+name_key = "ENEMY_FLY_SHOOTER"
+enemy_class = 3
+max_health = 45.0
+health_bar_height = 0.9
+xp_reward = 11
+money_min = 4
+money_max = 10
+part_chance = 0.025
+medkit_chance = 0.06
+medkit_heal = 30.0
+move_speed = 9.0
+aggro_range = 68.0
+fly_height_offset = 1.2
+shoot_range = 62.0
+aim_time = 0.6
+shoot_interval = 1.4
+projectile_damage = 8.0
+projectile_speed = 32.0
+projectile_lifetime = 4.0
+preferred_range = 21.0
+retreat_range = 11.0
+strafe_fraction = 0.6
+strafe_change_time = 1.5
+projectile_spread = 2.5
+projectile_radius = 0.12
+flank_width = 18.0
+flank_close_distance = 22.0
+flank_fade_distance = 20.0

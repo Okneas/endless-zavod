@@ -1,0 +1,66 @@
+class_name ShootingSettings
+extends Resource
+## Общие правила стрельбы, не зависящие от конкретного оружия. Данные: data/content/balance/shooting_settings.tres.
+## В Inspector открываются у узла Weapon (поле Shooting) или двойным щелчком по .tres.
+## Значения по умолчанию нейтральные: баланс лежит только в .tres, а не в коде.
+## Все числа в .tres стартовые, подобраны ассистентом, требуют проверки в игре.
+
+@export_group("Урон")
+## Во сколько раз крит увеличивает урон.
+@export_range(1.0, 10.0, 0.05, "suffix:x") var crit_multiplier: float = 0.0
+## Нажатие кнопки запоминается на это время: быстрые клики не теряются, пока оружие «остывает».
+@export_range(0.0, 0.5, 0.01, "suffix:с") var fire_buffer_time: float = 0.0
+
+@export_group("Разброс")
+## Скорость, при которой разброс от движения максимален (около скорости спринта).
+@export_range(0.1, 40.0, 0.1, "suffix:м/с") var full_spread_speed: float = 0.0
+## Насколько увеличивается разброс на полной скорости (1.0 = в два раза).
+@export_range(0.0, 5.0, 0.05) var movement_spread_factor: float = 0.0
+## Множитель разброса в воздухе (прыжок, полёт на хуке).
+@export_range(1.0, 5.0, 0.05, "suffix:x") var air_spread_factor: float = 0.0
+## Прибавка разброса за каждый выстрел.
+@export_range(0.0, 3.0, 0.05, "suffix:°") var bloom_per_shot: float = 0.0
+## Потолок накопленной прибавки.
+@export_range(0.0, 10.0, 0.1, "suffix:°") var bloom_max: float = 0.0
+## Как быстро накопленная прибавка возвращается к нулю.
+@export_range(0.0, 60.0, 0.5, "suffix:°/с") var bloom_recovery: float = 0.0
+## Множитель разброса при полном прицеливании (0.4 = на 60% точнее).
+@export_range(0.0, 1.0, 0.05, "suffix:x") var aim_spread_multiplier: float = 0.0
+
+@export_group("Отдача")
+## Как быстро камера «набирает» подъём после выстрела (больше — резче удар, меньше — мягче).
+@export_range(1.0, 100.0, 0.5, "suffix:1/с") var recoil_attack_speed: float = 0.0
+## Как быстро камера возвращается после отдачи (больше — быстрее).
+@export_range(0.5, 40.0, 0.5, "suffix:1/с") var recoil_recovery_speed: float = 0.0
+## Насколько модель оружия отлетает назад за выстрел.
+@export_range(0.0, 0.5, 0.005, "suffix:м") var viewmodel_kick_back: float = 0.0
+## Насколько модель оружия задирается вверх за выстрел.
+@export_range(0.0, 30.0, 0.5, "suffix:°") var viewmodel_kick_up: float = 0.0
+## Как быстро модель оружия возвращается на место.
+@export_range(1.0, 60.0, 0.5, "suffix:1/с") var viewmodel_recover_speed: float = 0.0
+
+@export_group("Положение модели оружия")
+## Положение у бедра относительно камеры.
+@export var hip_position: Vector3 = Vector3.ZERO
+## Прицеливание идёт через прицел самого оружия: модель сдвигается так, чтобы узел AimAnchor
+## (прорезь целика, центр оптики или коллиматора) оказался ровно в центре экрана на этом
+## расстоянии от глаза. Меньше — прицел крупнее и ближе к глазу.
+@export_range(0.05, 1.0, 0.01, "suffix:м") var aim_eye_distance: float = 0.0
+## Во сколько раз слабее «дёргается» модель оружия при выстреле в прицеливании (чтобы прицел не уходил).
+@export_range(0.0, 1.0, 0.05, "suffix:x") var aim_viewmodel_kick_multiplier: float = 0.0
+
+@export_group("Эффекты")
+## Сколько живёт линия трассера.
+@export_range(0.0, 1.0, 0.01, "suffix:с") var tracer_time: float = 0.0
+@export_range(0.001, 0.1, 0.001, "suffix:м") var tracer_thickness: float = 0.0
+## Сколько секунд видна метка попадания в стену (по ним удобно оценивать разброс).
+@export_range(0.0, 60.0, 0.5, "suffix:с") var marker_lifetime: float = 0.0
+@export_range(0.005, 0.5, 0.005, "suffix:м") var marker_size: float = 0.0
+## Максимум меток одновременно.
+@export_range(0, 500, 1) var marker_limit: int = 0
+
+@export_group("Смена оружия")
+## Сколько занимает смена оружия: модель опускается, оружие меняется на середине, поднимается.
+@export_range(0.0, 2.0, 0.01, "suffix:с") var swap_time: float = 0.0
+## Насколько модель опускается при смене.
+@export_range(0.0, 1.0, 0.01, "suffix:м") var swap_drop: float = 0.0

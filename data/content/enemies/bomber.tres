@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_7ibvu"]
+
+[resource]
+script = ExtResource("1_7ibvu")
+name_key = "ENEMY_BOMBER"
+max_health = 30.0
+health_bar_height = 0.9
+xp_reward = 10
+money_min = 3
+money_max = 8
+part_chance = 0.015
+medkit_chance = 0.05
+medkit_heal = 30.0
+move_speed = 9.6
+aggro_range = 56.0
+fly_height_offset = 0.3
+charge_range = 20.0
+charge_windup = 0.7
+charge_speed = 31.0
+charge_max_time = 1.2
+explosion_radius = 4.0
+explosion_damage = 30.0
+flank_width = 16.0
+flank_close_distance = 10.0
+flank_fade_distance = 20.0

@@ -1,0 +1,284 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/hud/hud.gd" id="1_4d6w6"]
+[ext_resource type="Script" path="res://ui/hud/crosshair.gd" id="2_e0nub"]
+[ext_resource type="Script" path="res://ui/hud/ammo_arc.gd" id="3_e0nub"]
+[ext_resource type="Script" path="res://ui/hud/level_badge.gd" id="4_kwc50"]
+[ext_resource type="Script" path="res://ui/hud/coin_icon.gd" id="5_o2lis"]
+[ext_resource type="Script" path="res://ui/hud/pickup_feed.gd" id="6_gfles"]
+[ext_resource type="Script" path="res://ui/hud/weapon_slot_panel.gd" id="7_cxhb7"]
+[ext_resource type="Script" path="res://ui/hud/element_icon.gd" id="8_5uuaq"]
+[ext_resource type="Script" path="res://ui/hud/tab_hint.gd" id="9_p3vm3"]
+[ext_resource type="PackedScene" path="res://ui/inventory/inventory_screen.tscn" id="10_gv4gi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w75iv"]
+bg_color = Color(0.08, 0.08, 0.1, 0.75)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_imuuq"]
+bg_color = Color(0.82, 0.18, 0.18, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Hud" type="CanvasLayer" unique_id=1521349255]
+script = ExtResource("1_4d6w6")
+
+[node name="Root" type="Control" parent="." unique_id=1120337417]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Crosshair" type="Control" parent="Root" unique_id=1513867313]
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+script = ExtResource("2_e0nub")
+
+[node name="AmmoArc" type="Control" parent="Root/Crosshair" unique_id=1778166073]
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("3_e0nub")
+
+[node name="Status" type="MarginContainer" parent="Root" unique_id=809838590]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_bottom = 32
+
+[node name="Column" type="VBoxContainer" parent="Root/Status" unique_id=807367107]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ArmorRow" type="VBoxContainer" parent="Root/Status/Column" unique_id=1585751204]
+visible = false
+layout_mode = 2
+
+[node name="ArmorLabel" type="Label" parent="Root/Status/Column/ArmorRow" unique_id=1521150100]
+layout_mode = 2
+text = "HUD_ARMOR"
+
+[node name="ArmorBar" type="ProgressBar" parent="Root/Status/Column/ArmorRow" unique_id=450718749]
+custom_minimum_size = Vector2(280, 26)
+layout_mode = 2
+show_percentage = false
+
+[node name="HpRow" type="VBoxContainer" parent="Root/Status/Column" unique_id=890845288]
+layout_mode = 2
+
+[node name="HpLabel" type="Label" parent="Root/Status/Column/HpRow" unique_id=285124401]
+layout_mode = 2
+text = "HUD_HP"
+
+[node name="HpBar" type="ProgressBar" parent="Root/Status/Column/HpRow" unique_id=1284181611]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(280, 26)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_w75iv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_imuuq")
+value = 100.0
+show_percentage = false
+
+[node name="HpValue" type="Label" parent="Root/Status/Column/HpRow/HpBar" unique_id=1164475966]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AmmoCounter" type="Label" parent="Root" unique_id=802687078]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -92.0
+offset_right = -32.0
+offset_bottom = -28.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "10/10"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="LevelBadge" type="Control" parent="Root" unique_id=733680443]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = -132.0
+offset_right = 124.0
+offset_bottom = -32.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("4_kwc50")
+
+[node name="MoneyRow" type="HBoxContainer" parent="Root" unique_id=1578821330]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 14.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="CoinIcon" type="Control" parent="Root/MoneyRow" unique_id=1273565094]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("5_o2lis")
+
+[node name="MoneyLabel" type="Label" parent="Root/MoneyRow" unique_id=1128537367]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "0"
+
+[node name="PickupFeed" type="VBoxContainer" parent="Root" unique_id=1979046874]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.2
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 320.0
+offset_bottom = 90.0
+mouse_filter = 2
+script = ExtResource("6_gfles")
+
+[node name="HitFlash" type="ColorRect" parent="Root" unique_id=259678550]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.05, 0.05, 1)
+
+[node name="DeathScreen" type="Control" parent="Root" unique_id=1961673250]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Dim" type="ColorRect" parent="Root/DeathScreen" unique_id=908456330]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Center" type="CenterContainer" parent="Root/DeathScreen" unique_id=268617568]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Box" type="VBoxContainer" parent="Root/DeathScreen/Center" unique_id=951843982]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Root/DeathScreen/Center/Box" unique_id=900487450]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+text = "HUD_DEAD"
+horizontal_alignment = 1
+
+[node name="DeathHint" type="Label" parent="Root/DeathScreen/Center/Box" unique_id=328234341]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+text = "..."
+horizontal_alignment = 1
+
+[node name="WeaponSlots" type="Control" parent="Root" unique_id=907537372]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -140.0
+offset_top = -92.0
+offset_right = 140.0
+offset_bottom = -28.0
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("7_cxhb7")
+
+[node name="ElementIcon" type="Control" parent="Root" unique_id=506108111]
+unique_name_in_owner = true
+anchors_preset = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -140.0
+offset_right = -32.0
+offset_bottom = -96.0
+mouse_filter = 2
+script = ExtResource("8_5uuaq")
+
+[node name="TabHint" type="Control" parent="Root" unique_id=1126831360]
+anchors_preset = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -124.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 52.0
+mouse_filter = 2
+script = ExtResource("9_p3vm3")
+
+[node name="InteractPrompt" type="Label" parent="Root" unique_id=509206791]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.62
+anchor_right = 0.5
+anchor_bottom = 0.62
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+horizontal_alignment = 1
+
+[node name="InventoryScreen" parent="." unique_id=564228878 instance=ExtResource("10_gv4gi")]
+unique_name_in_owner = true

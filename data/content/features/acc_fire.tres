@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_0avc0"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_x2sk2"]
+
+[resource]
+script = ExtResource("1_0avc0")
+name_key = "FEATURE_FIRE"
+description_key = "FEATURE_FIRE_DESC"
+kind = 1
+element = 4

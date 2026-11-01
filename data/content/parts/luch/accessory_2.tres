@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_7d41a"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_26h54"]
+
+[resource]
+script = ExtResource("2_26h54")
+part_type = 5
+name_key = "PART_ACCESSORY_COMPACT"
+manufacturer = ExtResource("1_7d41a")
+base_price = 40
+name_words = Array[String](["NAME_ADJ_MODULAR"])
+model_size = Vector3(0.04, 0.025, 0.05)

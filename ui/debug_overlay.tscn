@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://ui/debug_overlay.gd" id="1_eg61t"]
+
+[node name="DebugOverlay" type="CanvasLayer" unique_id=35475875]
+script = ExtResource("1_eg61t")
+
+[node name="Label" type="Label" parent="." unique_id=1731523972]
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 16.0
+offset_bottom = 64.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6

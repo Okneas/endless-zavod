@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ElementSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/element_settings.gd" id="1_41td5"]
+
+[resource]
+script = ExtResource("1_41td5")
+acid_duration = 5.0
+acid_damage_taken_multiplier = 1.3
+electric_duration = 3.0
+electric_dps_fraction = 0.6
+electric_chain_radius = 6.0
+electric_chain_bonus = 0.5
+electric_chain_max_neighbors = 4
+frost_duration = 3.0
+frost_speed_multiplier = 0.5
+fire_duration = 3.0

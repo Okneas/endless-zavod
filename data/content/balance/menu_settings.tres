@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MenuSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/menu_settings.gd" id="1_a6328"]
+
+[resource]
+script = ExtResource("1_a6328")
+scale_steps = PackedFloat32Array(0.25, 0.5, 0.75, 1, 1.25, 1.5, 2)
+default_scale = 0.75

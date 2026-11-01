@@ -1,0 +1,506 @@
+keys,ru
+DEBUG_CLOCK,"Сутки {day}: {phase}, {time}"
+DEBUG_PHASE_DAY,день
+DEBUG_PHASE_NIGHT,ночь
+DEBUG_LAST_ACTION,"Действие: {action}"
+DEBUG_NO_ACTION,—
+DEBUG_SPEED,"Скорость: {speed} м/с (вертикаль {vertical})"
+DEBUG_STATE,"Состояние: {state}"
+DEBUG_SLIDE,"Подкат с {need} м/с, сейчас {speed}"
+DEBUG_STATE_GROUND,земля
+DEBUG_STATE_CROUCH,приседание
+DEBUG_STATE_SPRINT,спринт
+DEBUG_STATE_AIR,воздух
+DEBUG_STATE_SLIDE,подкат
+DEBUG_STATE_HOOK,хук тянет
+DEBUG_STATE_HANG,хук держит
+DEBUG_STATE_DASH,рывок
+DEBUG_WEAPON,"Оружие: {name}, патроны {ammo}/{cap}, разброс {spread}°, прицел {aim}%"
+WEAPON_STARTER_PISTOL,Заводской пистолет
+PART_STARTER_BODY,Корпус «Заводской»
+PART_STARTER_BARREL,Дуло стандартное
+PART_STARTER_GRIP,Рукоять стандартная
+PART_STARTER_MAGAZINE,Магазин стандартный
+HUD_RELOADING,Перезарядка
+HUD_LEVEL,Ур.
+HUD_PICKUP_MONEY,"+{amount} денег"
+HUD_PICKUP_MEDKIT,"+{amount} здоровья"
+HUD_PICKUP_XP,"+{amount} опыта"
+HUD_LEVEL_UP,"Новый уровень: {level}"
+HUD_DEAD,Вы погибли
+HUD_RESTART_HINT,"Нажмите {key}, чтобы начать заново"
+DEBUG_PROGRESS,"Уровень {level}, опыт {xp}/{next}, деньги {money}"
+ENEMY_CLASS_SWARM,Рой
+ENEMY_CLASS_ARMORED,Бронированные
+ENEMY_CLASS_HEAVY,Тяжёлые
+ENEMY_CLASS_RANGED,Дальние
+ENEMY_CHASER,Преследующий
+ENEMY_FLYER,Летающий
+ENEMY_TURRET,Турель
+ENEMY_SUPPORT,Саппорт
+PART_ACCESSORY_ACID,Аксессуар: кислота
+PART_ACCESSORY_ELECTRIC,Аксессуар: электричество
+PART_ACCESSORY_FROST,Аксессуар: мороз
+PART_ACCESSORY_FIRE,Аксессуар: огонь (заглушка)
+HUD_HP,HP
+HUD_ARMOR,Броня
+FEATURE_BAZA_MAG,Увеличенный магазин
+FEATURE_BAZA_MAG_DESC,Магазин выступает из корпуса: ёмкость заметно больше.
+FEATURE_OITP_OPTIC,Интегрированная оптика
+FEATURE_OITP_OPTIC_DESC,"Оптический прицел встроен в корпус: приближение больше, чем у механических прицелов."
+FEATURE_OITP_MODULE,Прицельный модуль
+FEATURE_OITP_MODULE_DESC,Дополнительный модуль на стволе: разброс меньше.
+FEATURE_UDARNIK_BRAKE,Дульный тормоз
+FEATURE_UDARNIK_BRAKE_DESC,Гасит подброс ствола: отдача заметно меньше.
+FEATURE_LUCH_LENS,Фокусирующая линза
+FEATURE_LUCH_LENS_DESC,"Луч собран плотнее: разброс меньше, дальность больше."
+FEATURE_SELHOZ_FRAME,Литая станина
+FEATURE_SELHOZ_FRAME_DESC,Тяжёлая станина от сельхозмашины гасит отдачу.
+FEATURE_ACID,Кислота
+FEATURE_ACID_DESC,Попадания накладывают кислоту: враг получает больше урона.
+FEATURE_ELECTRIC,Электричество
+FEATURE_ELECTRIC_DESC,"Урон током по времени, сильнее рядом с другими врагами под током."
+FEATURE_FROST,Мороз
+FEATURE_FROST_DESC,Попадания замедляют врагов.
+FEATURE_FIRE,Огонь (заглушка)
+FEATURE_FIRE_DESC,"Стихия огня пока не определена, урона по времени нет."
+FEATURE_SLIDE,Урон в подкате
+FEATURE_SLIDE_DESC,+{value}% урона выстрелов в подкате.
+FEATURE_AIR,Урон в воздухе
+FEATURE_AIR_DESC,+{value}% урона выстрелов в воздухе.
+FEATURE_MELEE,Урон в ближнем бою
+FEATURE_MELEE_DESC,+{value}% урона удара в ближнем бою.
+MOD_BAZA_STAMP,Штамповка
+MOD_BAZA_EXTRA,Лишний рожок
+MOD_BAZA_OIL,Смазка
+MOD_BAZA_CAST,Литьё
+MOD_BAZA_OTK,Проверено ОТК
+MFR_BAZA,Б.А.З.А.
+MFR_BAZA_DESC,"Балабановский Армейский Завод Автоматики, в лоре просто «база». Лёгкие простецкие автоматы: темп и магазин выше, урон и разброс хуже. Фирменное: увеличенный магазин."
+MOD_OITP_TOLERANCE,Допуск в микроны
+MOD_OITP_STABILIZER,Стабилизатор
+MOD_OITP_ALIGN,Юстировка
+MOD_OITP_CALIBRATE,Калибровка
+MOD_OITP_LAB,Лабораторная проверка
+MFR_OITP,ОружИнтТочПром
+MFR_OITP_DESC,"Оружейный Интеллектуально-Точный Промышленный завод. Точные: разброс и отдача ниже, урон чуть ниже. Фирменное: интегрированная оптика на корпусе."
+MOD_UDARNIK_HARDEN,Закалка
+MOD_UDARNIK_HEAVY,Тяжёлая пуля
+MOD_UDARNIK_CASING,Клёпаный кожух
+MOD_UDARNIK_BOLT,Усиленный затвор
+MOD_UDARNIK_FORGE,Кузнечная работа
+MFR_UDARNIK,КБ «Ударник»
+MFR_UDARNIK_DESC,"Конструкторское бюро старой школы. Тяжёлые: урон и дальность выше, темп и перезарядка хуже. Фирменное: дульный тормоз."
+MOD_LUCH_GLOW,Накал
+MOD_LUCH_FOCUS,Фокусировка
+MOD_LUCH_RESONANCE,Резонанс
+MOD_LUCH_HEATSINK,Теплоотвод
+MOD_LUCH_RECHARGE,Подзарядка
+MFR_LUCH,НИИ «Красный луч»
+MFR_LUCH_DESC,"Лучевое и энергетическое оружие на ламповых схемах. Урон выше среднего, темп ниже, аксессуары тянутся к электричеству. Особые механики (заряд, энергосферы) позже."
+MOD_SELHOZ_YIELD,Урожайность
+MOD_SELHOZ_BINS,Закрома
+MOD_SELHOZ_BODY,Прочный корпус
+MOD_SELHOZ_FIELD,Полевые испытания
+MOD_SELHOZ_ENGINE,Тракторный движок
+MFR_SELHOZ,СельхозОборона
+MFR_SELHOZ_DESC,"Производственная организация «СельхозОборон»: оружие двойного назначения из сельхозмашин. Высокий урон, сильный разброс, низкая дальность, долгая перезарядка. Особые механики (дробины у всех, «Посевная») позже."
+QUALITY_JUNK,Брак
+QUALITY_SERIAL,Серийное
+QUALITY_PILOT,Опытное
+QUALITY_EXPERIMENTAL,Экспериментальное
+QUALITY_PROTOTYPE,Прототип
+NAME_PREFIX_FURIOUS_M,Яростный
+NAME_PREFIX_FURIOUS_F,Яростная
+NAME_PREFIX_FURIOUS_N,Яростное
+NAME_PREFIX_RUSTY_M,Ржавый
+NAME_PREFIX_RUSTY_F,Ржавая
+NAME_PREFIX_RUSTY_N,Ржавое
+NAME_PREFIX_FACTORY_M,Заводской
+NAME_PREFIX_FACTORY_F,Заводская
+NAME_PREFIX_FACTORY_N,Заводское
+NAME_PREFIX_SHOCK_M,Ударный
+NAME_PREFIX_SHOCK_F,Ударная
+NAME_PREFIX_SHOCK_N,Ударное
+NAME_PREFIX_GUARDS_M,Гвардейский
+NAME_PREFIX_GUARDS_F,Гвардейская
+NAME_PREFIX_GUARDS_N,Гвардейское
+NAME_PREFIX_CAST_M,Чугунный
+NAME_PREFIX_CAST_F,Чугунная
+NAME_PREFIX_CAST_N,Чугунное
+NAME_PREFIX_MODEL_M,Образцовый
+NAME_PREFIX_MODEL_F,Образцовая
+NAME_PREFIX_MODEL_N,Образцовое
+NAME_PREFIX_COLLECTIVE_M,Колхозный
+NAME_PREFIX_COLLECTIVE_F,Колхозная
+NAME_PREFIX_COLLECTIVE_N,Колхозное
+NAME_PREFIX_STAKHANOV_M,Стахановский
+NAME_PREFIX_STAKHANOV_F,Стахановская
+NAME_PREFIX_STAKHANOV_N,Стахановское
+NAME_PREFIX_SECRET_M,Секретный
+NAME_PREFIX_SECRET_F,Секретная
+NAME_PREFIX_SECRET_N,Секретное
+NAME_PREFIX_NIGHT_M,Ночной
+NAME_PREFIX_NIGHT_F,Ночная
+NAME_PREFIX_NIGHT_N,Ночное
+NAME_PREFIX_TROPHY_M,Трофейный
+NAME_PREFIX_TROPHY_F,Трофейная
+NAME_PREFIX_TROPHY_N,Трофейное
+NAME_ADJ_LONGBARREL_M,Длинноствольный
+NAME_ADJ_LONGBARREL_F,Длинноствольная
+NAME_ADJ_LONGBARREL_N,Длинноствольное
+NAME_ADJ_FARSHOT_M,Дальнобойный
+NAME_ADJ_FARSHOT_F,Дальнобойная
+NAME_ADJ_FARSHOT_N,Дальнобойное
+NAME_ADJ_SNUB_M,Курносый
+NAME_ADJ_SNUB_F,Курносая
+NAME_ADJ_SNUB_N,Курносое
+NAME_ADJ_SAWED_M,Обрезной
+NAME_ADJ_SAWED_F,Обрезная
+NAME_ADJ_SAWED_N,Обрезное
+NAME_ADJ_WEIGHTY_M,Увесистый
+NAME_ADJ_WEIGHTY_F,Увесистая
+NAME_ADJ_WEIGHTY_N,Увесистое
+NAME_ADJ_STOCKY_M,Кряжистый
+NAME_ADJ_STOCKY_F,Кряжистая
+NAME_ADJ_STOCKY_N,Кряжистое
+NAME_ADJ_LIGHT_M,Лёгкий
+NAME_ADJ_LIGHT_F,Лёгкая
+NAME_ADJ_LIGHT_N,Лёгкое
+NAME_ADJ_NIMBLE_M,Шустрый
+NAME_ADJ_NIMBLE_F,Шустрая
+NAME_ADJ_NIMBLE_N,Шустрое
+NAME_ADJ_ROOMY_M,Ёмкий
+NAME_ADJ_ROOMY_F,Ёмкая
+NAME_ADJ_ROOMY_N,Ёмкое
+NAME_ADJ_MULTISHOT_M,Многозарядный
+NAME_ADJ_MULTISHOT_F,Многозарядная
+NAME_ADJ_MULTISHOT_N,Многозарядное
+NAME_ADJ_BRISK_M,Проворный
+NAME_ADJ_BRISK_F,Проворная
+NAME_ADJ_BRISK_N,Проворное
+NAME_ADJ_STURDY_M,Упористый
+NAME_ADJ_STURDY_F,Упористая
+NAME_ADJ_STURDY_N,Упористое
+NAME_ADJ_SOLID_M,Прочный
+NAME_ADJ_SOLID_F,Прочная
+NAME_ADJ_SOLID_N,Прочное
+NAME_ADJ_FOLDING_M,Складной
+NAME_ADJ_FOLDING_F,Складная
+NAME_ADJ_FOLDING_N,Складное
+NAME_ADJ_LIGHTWEIGHT_M,Облегчённый
+NAME_ADJ_LIGHTWEIGHT_F,Облегчённая
+NAME_ADJ_LIGHTWEIGHT_N,Облегчённое
+NAME_ADJ_MODULAR_M,Модульный
+NAME_ADJ_MODULAR_F,Модульная
+NAME_ADJ_MODULAR_N,Модульное
+NAME_ADJ_ATTACHED_M,Навесной
+NAME_ADJ_ATTACHED_F,Навесная
+NAME_ADJ_ATTACHED_N,Навесное
+PART_BARREL_LONG,Длинный ствол
+PART_BARREL_SHORT,Короткий ствол
+PART_GRIP_HEAVY,Тяжёлая рукоять
+PART_GRIP_LIGHT,Лёгкая рукоять
+PART_MAGAZINE_BIG,Ёмкий магазин
+PART_MAGAZINE_FAST,Скоростной магазин
+PART_STOCK_RIGID,Жёсткий приклад
+PART_STOCK_LIGHT,Лёгкий приклад
+PART_ACCESSORY_MODULE,Навесной модуль
+PART_ACCESSORY_COMPACT,Компактный модуль
+WEAPON_TYPE_PISTOL,Пистолет
+WEAPON_BODY_BAZA_PISTOL_1,Штамп
+WEAPON_BODY_BAZA_PISTOL_2,Армейка
+WEAPON_BODY_OITP_PISTOL_1,Допуск
+WEAPON_BODY_OITP_PISTOL_2,Циркуль
+WEAPON_BODY_UDARNIK_PISTOL_1,Молоточек
+WEAPON_BODY_UDARNIK_PISTOL_2,Кувалдочка
+WEAPON_BODY_LUCH_PISTOL_1,Искорка
+WEAPON_BODY_LUCH_PISTOL_2,Лампочка
+WEAPON_BODY_SELHOZ_PISTOL_1,Тяпка
+WEAPON_BODY_SELHOZ_PISTOL_2,Серпик
+WEAPON_TYPE_SMG,ПП
+WEAPON_BODY_BAZA_SMG_1,Рой
+WEAPON_BODY_BAZA_SMG_2,Конвейер
+WEAPON_BODY_OITP_SMG_1,Регламент
+WEAPON_BODY_OITP_SMG_2,Протокол
+WEAPON_BODY_UDARNIK_SMG_1,Дятел
+WEAPON_BODY_UDARNIK_SMG_2,Клёпка
+WEAPON_BODY_LUCH_SMG_1,Разряд
+WEAPON_BODY_LUCH_SMG_2,Трансформатор
+WEAPON_BODY_SELHOZ_SMG_1,Пчела
+WEAPON_BODY_SELHOZ_SMG_2,Сеялка
+WEAPON_TYPE_SHOTGUN,Дробовик
+WEAPON_BODY_BAZA_SHOTGUN_1,Печка
+WEAPON_BODY_BAZA_SHOTGUN_2,Топка
+WEAPON_BODY_OITP_SHOTGUN_1,Шаблон
+WEAPON_BODY_OITP_SHOTGUN_2,Лекало
+WEAPON_BODY_UDARNIK_SHOTGUN_1,Кувалда
+WEAPON_BODY_UDARNIK_SHOTGUN_2,Таран
+WEAPON_BODY_LUCH_SHOTGUN_1,Вспышка
+WEAPON_BODY_LUCH_SHOTGUN_2,Конденсатор
+WEAPON_BODY_SELHOZ_SHOTGUN_1,Борона
+WEAPON_BODY_SELHOZ_SHOTGUN_2,Косилка
+WEAPON_TYPE_ASSAULT_RIFLE,Винтовка
+WEAPON_BODY_BAZA_RIFLE_1,Автомат
+WEAPON_BODY_BAZA_RIFLE_2,Калач
+WEAPON_BODY_OITP_RIFLE_1,Стандарт
+WEAPON_BODY_OITP_RIFLE_2,Эталон
+WEAPON_BODY_UDARNIK_RIFLE_1,Бригадир
+WEAPON_BODY_UDARNIK_RIFLE_2,Стахановец
+WEAPON_BODY_LUCH_RIFLE_1,Маяк
+WEAPON_BODY_LUCH_RIFLE_2,Прожектор
+WEAPON_BODY_SELHOZ_RIFLE_1,Трактор
+WEAPON_BODY_SELHOZ_RIFLE_2,Жатка
+WEAPON_TYPE_SNIPER,Снайперка
+WEAPON_BODY_BAZA_SNIPER_1,Дальнобой
+WEAPON_BODY_BAZA_SNIPER_2,Глазомер
+WEAPON_BODY_OITP_SNIPER_1,Микрометр
+WEAPON_BODY_OITP_SNIPER_2,Нониус
+WEAPON_BODY_UDARNIK_SNIPER_1,Кулак
+WEAPON_BODY_UDARNIK_SNIPER_2,Булыжник
+WEAPON_BODY_LUCH_SNIPER_1,Антенна
+WEAPON_BODY_LUCH_SNIPER_2,Лазерка
+WEAPON_BODY_SELHOZ_SNIPER_1,Колос
+WEAPON_BODY_SELHOZ_SNIPER_2,Журавль
+PART_TYPE_BODY,Корпус
+PART_TYPE_BARREL,Дуло
+PART_TYPE_GRIP,Рукоять
+PART_TYPE_MAGAZINE,Магазин
+PART_TYPE_STOCK,Приклад
+PART_TYPE_ACCESSORY,Аксессуар
+WEAPON_TYPE_REVOLVER,Револьвер
+WEAPON_TYPE_AKIMBO,Акимбо
+WEAPON_TYPE_SEMI_AUTO_RIFLE,Полуавтоматическая винтовка
+WEAPON_TYPE_EXPLOSIVE,Взрывчатое
+DEBUG_WEAPON_INFO,"Слот {slot}/{slots}: {type}, ур. {level}, {quality}, {maker}"
+DEBUG_WEAPON_STATS,"Урон {damage}, темп {rate}, дальность {range}, перезарядка {reload} с, отдача {recoil}°, крит {crit}%"
+FEATURE_OPTIC,Оптический прицел
+FEATURE_OPTIC_DESC,"На корпусе оптика: приближение при прицеливании больше, чем у механических прицелов."
+FAMILY_SHOTGUN_PUMP,Помповый дробовик
+FAMILY_SHOTGUN_DOUBLE,Двустволка
+FAMILY_SHOTGUN_AUTO,Автоматический дробовик
+FAMILY_SNIPER_BOLT,Снайперская винтовка с затвором
+WEAPON_BODY_OITP_REVOLVER_1,Лимб
+WEAPON_BODY_OITP_REVOLVER_2,Градусник
+WEAPON_BODY_UDARNIK_REVOLVER_1,Кулачок
+WEAPON_BODY_UDARNIK_REVOLVER_2,Бугай
+WEAPON_BODY_BAZA_AKIMBO_1,Двойня
+WEAPON_BODY_BAZA_AKIMBO_2,Спарка
+WEAPON_BODY_LUCH_AKIMBO_1,Парочка
+WEAPON_BODY_LUCH_AKIMBO_2,Дуэт
+WEAPON_BODY_OITP_SEMI_1,Ватерпас
+WEAPON_BODY_OITP_SEMI_2,Угломер
+WEAPON_BODY_LUCH_SEMI_1,Светоч
+WEAPON_BODY_LUCH_SEMI_2,Фонарь
+FAMILY_PISTOL_SHOTGUN,Пистолет-дробовик
+WEAPON_BODY_SELHOZ_PISTOL_3,Пугач
+WEAPON_BODY_SELHOZ_PISTOL_4,Картечница
+HUD_PICKUP_ITEM,Подобрано: {name}
+HUD_INVENTORY_FULL,Инвентарь полон
+HUD_NEED_LEVEL,Нужен уровень {level}
+HUD_INTERACT_PICKUP,{key}: подобрать «{name}»
+HUD_ITEM_USED,Использовано: {name}
+ITEM_CATEGORY_WEAPON,Оружие
+ITEM_CATEGORY_CONSUMABLE,Расходники
+ITEM_CATEGORY_MATERIAL,Материалы
+ITEM_CATEGORY_PART,Детали
+ITEM_MEDKIT,Аптечка
+ITEM_MEDKIT_DESC,Восстанавливает здоровье. Применяется из инвентаря.
+INV_TITLE,Инвентарь
+INV_EQUIPMENT,Экипировка
+INV_GRENADE_SLOT,Граната (после прототипа)
+INV_EMPTY_SLOT,Пусто
+INV_EMPTY_GRID,В инвентаре пусто
+INV_CAPACITY,{used}/{max}
+INV_SORT_NONE,Без сортировки
+INV_SORT_LEVEL,По уровню
+INV_SORT_QUALITY,По качеству
+INV_SORT_TYPE,По типу
+INV_SORT_MAKER,По производителю
+INV_SORT_PRICE,По цене
+INV_ASCENDING,Возр.
+INV_DESCENDING,Убыв.
+INV_FILTER_ALL,Все предметы
+INV_HINT_CLOSE,{key} или Esc: закрыть
+CARD_LEVEL,Ур. {level}
+CARD_REQUIRED_LEVEL,Нужен уровень {level}
+CARD_DPS,DPS
+CARD_ETERNAL,Вечное
+CARD_STAT_DAMAGE,Урон
+CARD_STAT_SPREAD,Разброс
+CARD_STAT_RATE,Темп
+CARD_STAT_RELOAD,Перезарядка
+CARD_STAT_MAGAZINE,Магазин
+CARD_STAT_RANGE,Дальность
+CARD_STAT_RECOIL,Отдача
+CARD_STAT_AIM,Прицеливание
+CARD_STAT_CRIT,Крит
+CARD_STAT_STABILITY,Устойчивость
+ELEMENT_ACID,Кислота
+ELEMENT_ELECTRIC,Электричество
+ELEMENT_FROST,Мороз
+ELEMENT_FIRE,Огонь
+CARD_PRICE,Цена: {price}
+CARD_PRICE_STACK,Цена: {price} ({total} за стопку)
+CARD_COUNT,Количество: {count}
+CARD_BTN_EQUIP,Экипировать
+CARD_BTN_UNEQUIP,Снять
+CARD_BTN_COMPARE,Сравнить
+CARD_BTN_EXIT_COMPARE,Выйти из сравнения
+CARD_BTN_COMPONENTS,Компоненты
+CARD_BTN_BACK,Основной вид
+CARD_BTN_DROP,Выбросить
+CARD_BTN_USE,Использовать
+CARD_COMPARE_WITH,Сравнение с: {name}
+CARD_COMPARE_NOTHING,"Слот пуст, сравнивать не с чем"
+CARD_PART_BRAND,бренд
+CARD_PLUS,плюс: {stat}
+CARD_MINUS,минус: {stat}
+CARD_MODIFIERS,модификаторы: {names}
+CARD_PART_PRICE,{price}
+CARD_SIGHT_OPTIC,оптика
+CARD_SIGHT_IRON,механический прицел
+CARD_ELEMENT_ACID,"{name}: враг получает на {value}% больше урона, шанс {chance}%"
+CARD_ELEMENT_ELECTRIC,"{name}: {dps} урона в секунду, шанс {chance}%"
+CARD_ELEMENT_FROST,"{name}: скорость врага ниже на {value}%, шанс {chance}%"
+CARD_ELEMENT_FIRE,{name}: пока без эффекта
+INV_KEY_LMB,ЛКМ
+INV_KEY_RMB,ПКМ
+INV_KEY_MMB,СКМ
+INV_HINT_HOVER,Наведите курсор на предмет: появится карточка и подсказки действий
+CARD_BTN_SELECT_SLOT,Выбрать слот
+CARD_UNIT_PER_SECOND,{value}/с
+CARD_UNIT_SECONDS,{value} с
+CARD_STAT_RELOAD_SHORT,Перезар.
+INV_CHARACTER,Персонаж
+PAUSE_TITLE,Пауза
+PAUSE_RESUME,Продолжить
+PAUSE_SETTINGS,Настройки
+PAUSE_QUIT,Выйти из игры
+SETTINGS_TITLE,Настройки
+SETTINGS_MENU_SCALE,Масштаб меню
+SETTINGS_MENU_SCALE_NOTE,"Применяется к меню (пауза, инвентарь). Интерфейс в забеге не меняется."
+SETTINGS_BACK,Назад
+ROOM_KIND_START,Старт
+ROOM_KIND_COMBAT,Бой
+ROOM_KIND_LOOT,Кладовая
+ROOM_KIND_SHOP,Магазин
+ROOM_KIND_BOSS,Босс
+ROOM_KIND_EVACUATION,Эвакуация
+ROOM_KIND_CORRIDOR,Переход
+ZONE_GENERATING,"Генерация зоны {zone}…"
+ZONE_STATUS,"Зона {zone}, уровень {level}, сид {seed}: комнат {rooms}, переходов {links}, замечаний {warnings}. ] и [ меняют зону, N новый сид"
+ROOM_KIND_GATE,Шлюз
+HUD_ZONE,"Зона {zone}/{total}"
+HUD_NOT_ENOUGH_MONEY,"Не хватает денег: нужно {price}"
+HUD_BOUGHT_ITEM,"Куплено «{name}» за {price}"
+HUD_INTERACT_BUY,"{key}: купить «{name}» за {price}"
+HUD_INTERACT_TERMINAL,"{key}: терминал эвакуации"
+PORTAL_NEXT_ZONE,В следующую зону
+PORTAL_EVACUATE,Эвакуация
+PORTAL_BOSS,Босс побеждён
+TERMINAL_TITLE,Эвакуация
+EVAC_TITLE,Эвакуация
+EVAC_PRICE_MONEY,"Выход стоит {price} денег"
+EVAC_YOUR_MONEY,"У вас {money}"
+EVAC_PAY_MONEY,"Заплатить {price}"
+EVAC_PRICE_LOOT,"Выход стоит лута на {price}"
+EVAC_YOUR_LOOT,"Ваш лут стоит {value}"
+EVAC_PAY_LOOT,Заплатить лутом…
+EVAC_WAVES,"Отстоять волн: {waves}"
+EVAC_CANCEL,Отмена
+INV_PAY,Заплатить
+INV_PAYMENT_STATUS,"Оплата лутом: выбрано на {selected} из {price}"
+RESULT_DEATH,Вы погибли
+RESULT_EVACUATED,Эвакуация
+RESULT_BOSS,Босс отдела побеждён
+RESULT_ZONE,"Зона {zone} из {total}"
+RESULT_MONEY,"Деньги: {money} (за забег {earned})"
+RESULT_LOST,"Потеряно предметов: {count}"
+RESULT_KEPT,Лут сохранён
+RESULT_WORLD_LEVEL,"Уровень мира: {before} → {after}"
+RESULT_NEW_RUN,Новый забег
+OBJ_WAVE,"Волна {wave}/{total}: осталось врагов {left}"
+OBJ_NEXT_WAVE,"Следующая волна ({wave}/{total}) через {seconds} с"
+OBJ_ELITE,Победите элитного врага
+OBJ_BOSS,Победите босса отдела
+OBJ_BOSS_PHASE_2,Босс в ярости: вторая фаза
+OBJ_PORTAL_OPEN,Портал открыт
+ENEMY_ELITE,Элитный враг
+ENEMY_BOSS,Босс отдела
+ENEMY_GUNNER,Стрелок
+ENEMY_FLY_SHOOTER,Летающий стрелок
+ENEMY_BOMBER,Камикадзе
+ENEMY_BEAM_TURRET,Турель-лучемёт
+ENEMY_WARDEN,Щитовик
+CARD_PART_FITS,Подходит: {types}
+CARD_PART_FITS_ANY,Подходит любому оружию
+HUD_CLOCK,"Сутки {day} · {phase}, до смены {time}"
+HUD_PHASE_DAY,день
+HUD_PHASE_NIGHT,ночь
+RESULT_TO_SHOP,Вернуться в магазин
+HUD_INTERACT_COUNTER_EMPTY,"{key}: выставить товар на прилавок {number}"
+HUD_INTERACT_COUNTER,"{key}: прилавок {number}, товар и цена"
+HUD_INTERACT_REGISTER,"{key}: принять оплату ({price})"
+HUD_REGISTER_IDLE,Касса: покупателей нет
+HUD_INTERACT_CHEST,"{key}: открыть сундук"
+HUD_INTERACT_PRICE_BOOK,"{key}: открыть справочник цен"
+HUD_INTERACT_SIGN_OPEN,"{key}: открыть магазин"
+HUD_INTERACT_SIGN_CLOSE,"{key}: закрыть магазин"
+HUD_INTERACT_RUN_DOOR,"{key}: уйти в забег"
+HUD_INTERACT_TRADER,"{key}: поговорить с торговцем"
+HUB_REGISTER,Касса
+HUB_CHEST,Сундук
+HUB_PRICE_BOOK,Справочник цен
+HUB_RUN_DOOR,В забег
+HUB_TRADER,Торговец
+HUB_SIGN_OPEN,Открыто
+HUB_SIGN_CLOSED,Закрыто
+HUB_REACT_CHEAP,Дёшево!
+HUB_REACT_FAIR,Неплохо
+HUB_REACT_EXPENSIVE,Дороговато...
+HUB_REACT_TOO_EXPENSIVE,Грабёж!
+HUB_NOTHING,Ничего подходящего
+HUB_DECLINE,"Нет, не возьму"
+HUB_GAVE_UP,Не дождался...
+HUB_THANKS,Спасибо!
+HUB_DAY_RESULT,"Торговый день закончен: выручка {earned}"
+HUB_COUNTER_TITLE,Прилавок {number}
+HUB_COUNTER_BUSY,Покупатель держит этот товар: подождите
+HUB_COUNTER_PICK,Выберите предмет из рюкзака
+HUB_ACTUAL_SHORT,"по формуле {price}"
+HUB_PLACE,Выставить
+HUB_BACKPACK_EMPTY,"В рюкзаке нечего продавать"
+HUB_ACTUAL_PRICE,"Цена по формуле: {price}"
+HUB_STEP,"{sign} шаг"
+HUB_PRICE_VALUE,"{price}"
+HUB_TAKE_BACK,Убрать с прилавка
+HUB_PLACE_FOR,"Выставить за {price}"
+HUB_BACK,Назад
+HUB_CLOSE,Закрыть
+HUB_BACKPACK_FULL,Рюкзак полон
+HUB_BACKPACK_COUNT,"Рюкзак {count}/{max}"
+HUB_CHEST_COUNT,"Сундук {count}/{max}"
+HUB_TO_CHEST,В сундук
+HUB_TO_BACKPACK,В рюкзак
+HUB_CHEST_FULL,Сундук полон
+BOOK_FORMULA,"Цена оружия = множитель уровня x сумма (цена части x множитель качества) + надбавка за модификаторы"
+BOOK_QUALITY,"Качество: {tiers}"
+BOOK_EXTRAS,"Каждый уровень оружия добавляет {level}% к цене, каждый модификатор части {modifier} монет"
+TRADER_MONEY,"Деньги: {money}"
+TRADER_REFRESH,"Новый ассортимент через {days} сут."
+TRADER_EMPTY,Торговец всё распродал
+TRADER_BUY,Купить
+HUB_REACT_NOT_MINE,Не моё
+DBG_TITLE,Отладка
+DBG_STATUS,"Деньги {money} · Уровень {level} · Мир {world} · Сутки {day}, {phase}"
+DBG_MONEY,"+{amount} монет"
+DBG_GIVE_WEAPON,Выдать оружие
+DBG_GIVE_PART,Выдать деталь
+DBG_GIVE_ITEM,Выдать предмет
+DBG_PHASE_DAY,Сделать день
+DBG_PHASE_NIGHT,Сделать ночь
+DBG_LEVEL_UP,+1 уровень персонажа
+DBG_WORLD,Уровень мира
+DBG_SEED,Сид зон (0 — случайный)
+DBG_NOTE,"Панель отладки, только для разработки: в финальную сборку не попадает"

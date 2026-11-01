@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="ShootingSettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/shooting_settings.gd" id="1_rj0wk"]
+
+[resource]
+script = ExtResource("1_rj0wk")
+crit_multiplier = 2.0
+fire_buffer_time = 0.1
+full_spread_speed = 11.0
+movement_spread_factor = 1.0
+air_spread_factor = 1.8
+bloom_per_shot = 0.4
+bloom_max = 3.0
+bloom_recovery = 1.5
+aim_spread_multiplier = 0.4
+recoil_attack_speed = 25.0
+recoil_recovery_speed = 7.0
+viewmodel_kick_back = 0.06
+viewmodel_kick_up = 4.0
+viewmodel_recover_speed = 14.0
+hip_position = Vector3(0.2, -0.19, -0.58)
+aim_eye_distance = 0.38
+aim_viewmodel_kick_multiplier = 0.35
+tracer_time = 0.06
+tracer_thickness = 0.012
+marker_lifetime = 8.0
+marker_size = 0.05
+marker_limit = 80
+swap_time = 0.35
+swap_drop = 0.22

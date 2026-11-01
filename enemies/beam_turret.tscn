@@ -1,0 +1,42 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_beam_turret.gd" id="1_dnbq7"]
+[ext_resource type="Resource" path="res://data/content/enemies/beam_turret.tres" id="2_skhxi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb724"]
+size = Vector3(0.7, 1.2, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t34we"]
+albedo_color = Color(0.4, 0.15, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cx2cn"]
+material = SubResource("StandardMaterial3D_t34we")
+size = Vector3(0.7, 1.2, 0.7)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jpww8"]
+albedo_color = Color(0.7, 0.3, 0.3, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8ejjn"]
+material = SubResource("StandardMaterial3D_jpww8")
+radius = 0.35
+height = 0.7
+
+[node name="BeamTurret" type="CharacterBody3D" unique_id=1872618860]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_dnbq7")
+settings = ExtResource("2_skhxi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1264022057]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("BoxShape3D_hb724")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1096564310]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+mesh = SubResource("BoxMesh_cx2cn")
+
+[node name="Head" type="Node3D" parent="." unique_id=1177446532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="Hub" type="MeshInstance3D" parent="Head" unique_id=734823485]
+mesh = SubResource("SphereMesh_8ejjn")

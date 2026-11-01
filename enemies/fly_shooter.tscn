@@ -1,0 +1,64 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_fly_shooter.gd" id="1_4fc2h"]
+[ext_resource type="Resource" path="res://data/content/enemies/fly_shooter.tres" id="2_u6kts"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oh1a6"]
+radius = 0.38
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kktm"]
+albedo_color = Color(0.9, 0.7, 0.2, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ohtvt"]
+material = SubResource("StandardMaterial3D_1kktm")
+radius = 0.38
+height = 0.76
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgxb2"]
+albedo_color = Color(1, 0.9, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dd1mo"]
+material = SubResource("StandardMaterial3D_rgxb2")
+size = Vector3(0.7, 0.04, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3e1fh"]
+albedo_color = Color(1, 0.9, 0.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ipja1"]
+material = SubResource("StandardMaterial3D_3e1fh")
+size = Vector3(0.7, 0.04, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51bgo"]
+albedo_color = Color(0.15, 0.15, 0.18, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8apng"]
+material = SubResource("StandardMaterial3D_51bgo")
+size = Vector3(0.1, 0.1, 0.5)
+
+[node name="FlyShooter" type="CharacterBody3D" unique_id=1679053499]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_4fc2h")
+settings = ExtResource("2_u6kts")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=40964971]
+shape = SubResource("SphereShape3D_oh1a6")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1558096192]
+mesh = SubResource("SphereMesh_ohtvt")
+
+[node name="WingL" type="MeshInstance3D" parent="." unique_id=1252768378]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05, 0)
+mesh = SubResource("BoxMesh_dd1mo")
+
+[node name="WingR" type="MeshInstance3D" parent="." unique_id=1720595471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.05, 0)
+mesh = SubResource("BoxMesh_ipja1")
+
+[node name="Barrel" type="MeshInstance3D" parent="." unique_id=1319086402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -0.5)
+mesh = SubResource("BoxMesh_8apng")
+
+[node name="Muzzle" type="Marker3D" parent="." unique_id=497986358]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, -0.8)

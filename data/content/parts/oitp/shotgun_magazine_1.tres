@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_1nnjl"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_ynqvr"]
+
+[resource]
+script = ExtResource("2_ynqvr")
+part_type = 3
+name_key = "PART_MAGAZINE_BIG"
+magazine_size_mult = 1.4
+reload_time_mult = 1.15
+manufacturer = ExtResource("1_1nnjl")
+weapon_types = Array[int]([3])
+base_price = 30
+name_words = Array[String](["NAME_ADJ_ROOMY", "NAME_ADJ_MULTISHOT"])
+model_size = Vector3(0.04, 0.04, 0.26)
+model_offset = Vector3(0, 0, -0.13)

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/luch.tres" id="1_kleoh"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_rg0q5"]
+
+[resource]
+script = ExtResource("2_rg0q5")
+part_type = 3
+name_key = "PART_MAGAZINE_FAST"
+magazine_size_mult = 0.8
+reload_time_mult = 0.8
+manufacturer = ExtResource("1_kleoh")
+weapon_types = Array[int]([3])
+base_price = 28
+name_words = Array[String](["NAME_ADJ_BRISK"])
+model_size = Vector3(0.04, 0.04, 0.17)
+model_offset = Vector3(0, 0, -0.085)

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_hcjdu"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_31ag3"]
+
+[resource]
+script = ExtResource("2_31ag3")
+name_key = "WEAPON_BODY_OITP_SNIPER_1"
+weapon_type = 7
+base_damage = 130.0
+base_fire_rate = 0.9
+base_magazine_size = 5
+base_reload_time = 2.8
+base_spread_deg = 0.35
+base_range = 300.0
+base_recoil_deg = 4.0
+base_aim_time = 0.38
+aim_zoom = 3.0
+base_crit_chance = 0.05
+manufacturer = ExtResource("1_hcjdu")
+weapon_types = Array[int]([7])
+base_price = 120
+family_key = "FAMILY_SNIPER_BOLT"
+model_size = Vector3(0.06, 0.1, 0.5)
+aim_anchor_position = Vector3(0, 0.067, 0.16)
+optic_aim_anchor_position = Vector3(0, 0.095, 0.02)
+optic_aim_zoom = 4.5
+mount_barrel = Vector3(0, 0.02, -0.25)
+mount_grip = Vector3(0, -0.1, 0.1)
+mount_magazine = Vector3(0, -0.12, 0)
+mount_stock = Vector3(0, 0, 0.25)
+mount_accessory = Vector3(0, -0.045, -0.22)

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_pgmjx"]
+
+[resource]
+script = ExtResource("1_pgmjx")
+name_key = "ENEMY_FLYER"
+max_health = 55.0
+health_bar_height = 0.9
+xp_reward = 8
+money_min = 3
+money_max = 8
+medkit_chance = 0.05
+medkit_heal = 30.0
+move_speed = 9.7
+aggro_range = 45.0
+fly_height_offset = 0.2
+melee_damage = 7.0
+melee_range = 1.6
+melee_cooldown = 0.8
+part_chance = 0.015
+flank_width = 14.0
+flank_close_distance = 5.0
+flank_fade_distance = 16.0

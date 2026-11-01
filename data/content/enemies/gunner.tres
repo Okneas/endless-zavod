@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_l8m1j"]
+
+[resource]
+script = ExtResource("1_l8m1j")
+name_key = "ENEMY_GUNNER"
+enemy_class = 3
+max_health = 70.0
+health_bar_height = 2.4
+xp_reward = 14
+money_min = 6
+money_max = 14
+part_chance = 0.03
+medkit_chance = 0.08
+medkit_heal = 30.0
+move_speed = 7.0
+aggro_range = 75.0
+gravity = 28.0
+shoot_range = 68.0
+aim_time = 0.5
+shoot_interval = 1.1
+projectile_damage = 9.0
+projectile_speed = 36.0
+projectile_lifetime = 4.0
+preferred_range = 20.0
+strafe_fraction = 0.5
+strafe_change_time = 1.8
+projectile_spread = 2.0
+projectile_radius = 0.12
+flank_width = 22.0
+flank_close_distance = 16.0
+flank_fade_distance = 25.0

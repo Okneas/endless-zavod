@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="Manufacturer" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="1_awt0j"]
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="2_8vu8i"]
+[ext_resource type="Script" path="res://data/definitions/manufacturer.gd" id="3_uln38"]
+
+[sub_resource type="Resource" id="Resource_n3yfr"]
+script = ExtResource("1_awt0j")
+name_key = "MOD_BAZA_STAMP"
+stat = 1
+min_value = 0.03
+max_value = 0.07
+
+[sub_resource type="Resource" id="Resource_wnysn"]
+script = ExtResource("1_awt0j")
+name_key = "MOD_BAZA_EXTRA"
+stat = 2
+min_value = 0.05
+max_value = 0.12
+
+[sub_resource type="Resource" id="Resource_7p1ut"]
+script = ExtResource("1_awt0j")
+name_key = "MOD_BAZA_OIL"
+stat = 3
+min_value = 0.04
+max_value = 0.09
+
+[sub_resource type="Resource" id="Resource_a046m"]
+script = ExtResource("1_awt0j")
+name_key = "MOD_BAZA_CAST"
+min_value = 0.02
+max_value = 0.05
+
+[sub_resource type="Resource" id="Resource_h7dgu"]
+script = ExtResource("1_awt0j")
+name_key = "MOD_BAZA_OTK"
+stat = 8
+min_value = 0.01
+max_value = 0.03
+
+[resource]
+script = ExtResource("3_uln38")
+name_key = "MFR_BAZA"
+description_key = "MFR_BAZA_DESC"
+color = Color(0.45, 0.5, 0.3, 1)
+weapon_types = Array[int]([0, 2, 6, 3, 4])
+damage_mult = 0.9
+fire_rate_mult = 1.15
+magazine_size_mult = 1.25
+spread_mult = 1.15
+modifier_pool = Array[ExtResource("1_awt0j")]([SubResource("Resource_n3yfr"), SubResource("Resource_wnysn"), SubResource("Resource_7p1ut"), SubResource("Resource_a046m"), SubResource("Resource_h7dgu")])

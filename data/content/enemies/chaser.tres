@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="EnemySettings" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/enemy_settings.gd" id="1_i1set"]
+
+[resource]
+script = ExtResource("1_i1set")
+name_key = "ENEMY_CHASER"
+enemy_class = 2
+max_health = 90.0
+health_bar_height = 2.4
+xp_reward = 12
+money_min = 5
+money_max = 12
+medkit_chance = 0.08
+medkit_heal = 30.0
+move_speed = 8.3
+aggro_range = 40.0
+gravity = 28.0
+melee_damage = 12.0
+melee_range = 1.9
+melee_cooldown = 1.0
+leap_cooldown = 4.5
+leap_min_range = 6.0
+leap_max_range = 16.0
+leap_windup = 0.45
+leap_air_time = 0.65
+leap_damage_multiplier = 1.5
+leap_hit_radius = 1.6
+part_chance = 0.025
+flank_width = 20.0
+flank_close_distance = 6.0
+flank_fade_distance = 16.0

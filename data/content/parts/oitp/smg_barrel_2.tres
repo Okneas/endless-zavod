@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WeaponPart" format=3]
+
+[ext_resource type="Resource" path="res://data/content/manufacturers/oitp.tres" id="1_uudtm"]
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="2_j1lgo"]
+
+[resource]
+script = ExtResource("2_j1lgo")
+part_type = 1
+name_key = "PART_BARREL_SHORT"
+spread_mult = 1.12
+range_mult = 0.85
+aim_time_mult = 0.9
+manufacturer = ExtResource("1_uudtm")
+weapon_types = Array[int]([6])
+base_price = 30
+name_words = Array[String](["NAME_ADJ_SNUB", "NAME_ADJ_SAWED"])
+model_size = Vector3(0.035, 0.035, 0.09)
+model_offset = Vector3(0, 0, -0.045)

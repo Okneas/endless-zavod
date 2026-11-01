@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://enemies/enemy_flyer.gd" id="1_l7rpv"]
+[ext_resource type="Resource" path="res://data/content/enemies/flyer.tres" id="2_lkl5m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3o543"]
+radius = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42jtk"]
+albedo_color = Color(0.25, 0.75, 0.9, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_07d01"]
+material = SubResource("StandardMaterial3D_42jtk")
+radius = 0.35
+height = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d4q4q"]
+albedo_color = Color(0.55, 0.9, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_56i76"]
+material = SubResource("StandardMaterial3D_d4q4q")
+size = Vector3(0.7, 0.04, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tdq1k"]
+albedo_color = Color(0.55, 0.9, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fy550"]
+material = SubResource("StandardMaterial3D_tdq1k")
+size = Vector3(0.7, 0.04, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_li1iw"]
+albedo_color = Color(0.05, 0.1, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3rmhy"]
+material = SubResource("StandardMaterial3D_li1iw")
+size = Vector3(0.3, 0.08, 0.08)
+
+[node name="Flyer" type="CharacterBody3D" unique_id=1360894465]
+collision_layer = 4
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_l7rpv")
+settings = ExtResource("2_lkl5m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=353056381]
+shape = SubResource("SphereShape3D_3o543")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1994635056]
+mesh = SubResource("SphereMesh_07d01")
+
+[node name="WingL" type="MeshInstance3D" parent="." unique_id=1254992881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.05, 0)
+mesh = SubResource("BoxMesh_56i76")
+
+[node name="WingR" type="MeshInstance3D" parent="." unique_id=1675511492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.05, 0)
+mesh = SubResource("BoxMesh_fy550")
+
+[node name="Eye" type="MeshInstance3D" parent="." unique_id=674529189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, -0.33)
+mesh = SubResource("BoxMesh_3rmhy")

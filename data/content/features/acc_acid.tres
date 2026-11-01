@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_5kov6"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_lj0lv"]
+
+[resource]
+script = ExtResource("1_5kov6")
+name_key = "FEATURE_ACID"
+description_key = "FEATURE_ACID_DESC"
+kind = 1
+element = 1

@@ -1,0 +1,21 @@
+[gd_scene format=3]
+
+[ext_resource type="Material" path="res://assets/placeholders/greybox_block.tres" id="1_60bfk"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_60bfk"]
+material = ExtResource("1_60bfk")
+size = Vector3(4, 1, 13.695254)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ecxvo"]
+size = Vector3(4, 1, 13.695254)
+
+[node name="VerticalLink" type="Node3D" unique_id=2004087919]
+
+[node name="Block" type="StaticBody3D" parent="." unique_id=1468806534]
+transform = Transform3D(0, -0.48191875, 0.87621593, 0, 0.87621593, 0.48191875, -1, 0, 0, 0.24095938, -1.7381079, -2)
+
+[node name="@MeshInstance3D@47" type="MeshInstance3D" parent="Block" unique_id=799586269]
+mesh = SubResource("BoxMesh_60bfk")
+
+[node name="@CollisionShape3D@48" type="CollisionShape3D" parent="Block" unique_id=1022144500]
+shape = SubResource("BoxShape3D_ecxvo")

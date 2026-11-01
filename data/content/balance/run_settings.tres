@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="RunSettings" format=3]
+
+[ext_resource type="PackedScene" path="res://enemies/boss.tscn" id="1_bfo8e"]
+[ext_resource type="Script" path="res://data/definitions/run_settings.gd" id="1_fy3fq"]
+[ext_resource type="PackedScene" path="res://enemies/elite.tscn" id="2_pqkfq"]
+[ext_resource type="Resource" path="res://data/content/items/medkit.tres" id="2_u5p5f"]
+
+[resource]
+script = ExtResource("1_fy3fq")
+world_level_step = 20
+world_level_max = 60
+enemy_health_per_level = 0.22
+enemy_damage_per_level = 0.14
+gate_waves = 3
+evacuation_waves = 3
+wave_enemies_base = 9
+wave_enemies_per_wave = 3.0
+wave_enemies_per_zone = 0.75
+wave_enemies_max = 36
+wave_pause = 4.0
+elite_scene = ExtResource("2_pqkfq")
+boss_scene = ExtResource("1_bfo8e")
+evacuation_price = 100
+evacuation_loot_chance = 0.5
+shop_weapons = 3
+shop_medkits = 2
+shop_markup = 1.5
+shop_medkit = ExtResource("2_u5p5f")
+spawn_warning_time = 1.6

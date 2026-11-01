@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_eo7eh"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_bpeik"]
+
+[sub_resource type="Resource" id="Resource_mqyh6"]
+script = ExtResource("2_bpeik")
+stat = 4
+min_value = 0.06
+max_value = 0.06
+
+[resource]
+script = ExtResource("1_eo7eh")
+name_key = "FEATURE_OITP_MODULE"
+description_key = "FEATURE_OITP_MODULE_DESC"
+stat_changes = Array[ExtResource("2_bpeik")]([SubResource("Resource_mqyh6")])

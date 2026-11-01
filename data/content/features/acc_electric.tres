@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PartFeature" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/part_feature.gd" id="1_jo32c"]
+[ext_resource type="Script" path="res://data/definitions/part_modifier.gd" id="2_rdslr"]
+
+[resource]
+script = ExtResource("1_jo32c")
+name_key = "FEATURE_ELECTRIC"
+description_key = "FEATURE_ELECTRIC_DESC"
+kind = 1
+element = 2

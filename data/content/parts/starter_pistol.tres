@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/weapon_part.gd" id="1_nt18g"]
+[ext_resource type="Resource" path="res://data/content/parts/starter_body.tres" id="2_1l18r"]
+[ext_resource type="Resource" path="res://data/content/parts/starter_barrel.tres" id="3_0r83w"]
+[ext_resource type="Resource" path="res://data/content/parts/starter_grip.tres" id="4_wvcc6"]
+[ext_resource type="Resource" path="res://data/content/parts/starter_magazine.tres" id="5_0f2f5"]
+[ext_resource type="Script" path="res://data/definitions/weapon_definition.gd" id="6_tks25"]
+
+[resource]
+script = ExtResource("6_tks25")
+name_key = "WEAPON_STARTER_PISTOL"
+parts = Array[ExtResource("1_nt18g")]([ExtResource("2_1l18r"), ExtResource("3_0r83w"), ExtResource("4_wvcc6"), ExtResource("5_0f2f5")])

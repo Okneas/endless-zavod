@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="ItemDefinition" format=3]
+
+[ext_resource type="Script" path="res://data/definitions/item_definition.gd" id="1_skj8o"]
+
+[resource]
+script = ExtResource("1_skj8o")
+name_key = "ITEM_MEDKIT"
+description_key = "ITEM_MEDKIT_DESC"
+max_stack = 5
+base_price = 25
+icon_color = Color(0.9, 0.25, 0.25, 1)
+heal_amount = 30.0

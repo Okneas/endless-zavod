@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="RoomDefinition" format=3]
+
+[ext_resource type="PackedScene" path="res://rooms/pieces/boss_a.tscn" id="1_ewtvr"]
+[ext_resource type="Script" path="res://data/definitions/room_definition.gd" id="2_cvhr6"]
+
+[resource]
+script = ExtResource("2_cvhr6")
+scene = ExtResource("1_ewtvr")
+kind = 4
